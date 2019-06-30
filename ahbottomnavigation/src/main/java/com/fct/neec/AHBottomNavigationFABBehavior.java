@@ -1,4 +1,4 @@
-package com.aurelhubert.ahbottomnavigation;
+package com.fct.neec;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

@@ -1,4 +1,4 @@
-package com.aurelhubert.ahbottomnavigation;
+package com.fct.neec;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;
@@ -38,8 +38,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
-import com.aurelhubert.ahbottomnavigation.notification.AHNotificationHelper;
+import com.fct.neec.notification.AHNotification;
+import com.fct.neec.notification.AHNotificationHelper;
 
 import java.util.ArrayList;
 import java.util.List;

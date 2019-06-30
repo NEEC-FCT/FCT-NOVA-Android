@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.aurelhubert.ahbottomnavigation.demo"
+        applicationId "com.fct.neec.oficial"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1

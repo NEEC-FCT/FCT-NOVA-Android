@@ -1,4 +1,4 @@
-package com.aurelhubert.ahbottomnavigation.demo;
+package com.fct.neec.oficial;
 
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;

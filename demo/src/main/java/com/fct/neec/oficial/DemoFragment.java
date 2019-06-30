@@ -1,25 +1,20 @@
-package com.aurelhubert.ahbottomnavigation.demo;
+package com.fct.neec.oficial;
 
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.SwitchCompat;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
-import android.widget.Spinner;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.fct.neec.AHBottomNavigation;
 
 import java.util.ArrayList;
 import java.util.List;

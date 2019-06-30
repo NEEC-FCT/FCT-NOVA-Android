@@ -1,4 +1,4 @@
-package com.aurelhubert.ahbottomnavigation;
+package com.fct.neec;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;

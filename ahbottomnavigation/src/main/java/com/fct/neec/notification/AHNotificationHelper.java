@@ -1,4 +1,4 @@
-package com.aurelhubert.ahbottomnavigation.notification;
+package com.fct.neec.notification;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;

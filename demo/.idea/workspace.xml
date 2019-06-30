@@ -10,7 +10,26 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b8a511f-c0f0-4c6f-8136-a05d7087e88a" name="Default Changelist" comment="" />
+    <list default="true" id="6b8a511f-c0f0-4c6f-8136-a05d7087e88a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHBottomNavigation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHBottomNavigation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHBottomNavigationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHBottomNavigationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHBottomNavigationBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHBottomNavigationBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHBottomNavigationFABBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHBottomNavigationFABBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHBottomNavigationItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHBottomNavigationItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHBottomNavigationViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHBottomNavigationViewPager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/VerticalScrollingBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/VerticalScrollingBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/notification/AHNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/notification/AHNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/notification/AHNotificationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/notification/AHNotificationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoViewPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_home.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/../.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/../ahbottomnavigation/build/generated/not_namespaced_r_class_sources/" />
@@ -99,76 +118,82 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+            <state relative-caret-position="-13">
+              <caret line="33" column="42" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="42" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="38" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values-v19/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values-v21/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../settings.gradle">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/build.gradle">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../build.gradle">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13">
-              <caret line="38" column="42" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="42" />
+            <state relative-caret-position="102">
+              <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoActivity.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state>
+              <caret column="8" selection-start-column="8" selection-end-column="28" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoViewPagerAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_5.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_demo_list.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_home.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/layout_item_demo.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -208,6 +233,11 @@
         <option value="$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_5.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/values-v19/styles.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/values-v21/styles.xml" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
@@ -222,6 +252,7 @@
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <hideEmptyPackages AndroidView="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -232,35 +263,42 @@
           <expand>
             <path>
               <item name="demo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="demo" type="feadf853:AndroidModuleNode" />
+              <item name="demo" type="e9137016:NonAndroidModuleNode" />
             </path>
             <path>
               <item name="demo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="demo" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="demo" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
             </path>
             <path>
               <item name="demo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="demo" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="demo" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="demo" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="demo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="demo" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="demo" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="fct" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="demo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="demo" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="demo" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="fct" type="462c0819:PsiDirectoryNode" />
+              <item name="neec" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="demo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="demo" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="demo" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="fct" type="462c0819:PsiDirectoryNode" />
+              <item name="neec" type="462c0819:PsiDirectoryNode" />
+              <item name="oficial" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="demo" type="1abcf292:AndroidViewProjectNode" />
@@ -386,7 +424,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.3295302" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3295302" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -395,15 +433,15 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="4" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.3286119" />
-      <window_info anchor="bottom" id="Find" order="9" />
+      <window_info anchor="bottom" id="Build" order="8" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.3286119" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -413,17 +451,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -453,21 +480,21 @@
     <entry file="file://$PROJECT_DIR$/src/main/res/drawable-hdpi/ic_maps_local_bar.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHBottomNavigation.java">
+    <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHBottomNavigation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="285" selection-start-line="285" selection-end-line="285" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/VerticalScrollingBehavior.java">
+    <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/VerticalScrollingBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1190">
           <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/aurelhubert/ahbottomnavigation/AHHelper.java">
+    <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/src/main/java/com/fct/neec/AHHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="119" column="25" selection-start-line="119" selection-start-column="25" selection-end-line="119" selection-end-column="25" />
@@ -506,7 +533,7 @@
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
           <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
@@ -516,13 +543,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_3.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_5.xml">
       <provider editor-type-id="android-designer2" />
@@ -539,17 +559,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoViewPagerAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoViewPagerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="42" />
+          <caret line="33" column="42" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values-v19/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values-v21/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ahbottomnavigation/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/DemoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
         </state>
       </provider>
     </entry>
