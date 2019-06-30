@@ -10,24 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b8a511f-c0f0-4c6f-8136-a05d7087e88a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-hdpi/ic_maps_place.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-mdpi/ic_maps_place.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/ic_maps_place.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-xxhdpi/ic_maps_place.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-xxxhdpi/ic_maps_place.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_demo_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_demo_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6b8a511f-c0f0-4c6f-8136-a05d7087e88a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/../.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/../ahbottomnavigation/build/generated/not_namespaced_r_class_sources/" />
@@ -115,16 +98,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
+            <state relative-caret-position="253">
               <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-13">
@@ -154,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoViewPagerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
+            <state relative-caret-position="425">
               <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
@@ -401,10 +384,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3295302" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.3295302" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -413,7 +395,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3286119" />
-      <window_info anchor="bottom" id="Logcat" order="1" visible="true" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="4" />
@@ -531,20 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoViewPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/menu/bottom_navigation_menu_3.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
@@ -566,8 +534,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
+        <state relative-caret-position="253">
           <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoViewPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/aurelhubert/ahbottomnavigation/demo/DemoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="42" />
         </state>
       </provider>
     </entry>
