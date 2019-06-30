@@ -12,7 +12,11 @@ import androidx.core.content.ContextCompat;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.OvershootInterpolator;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -62,7 +66,8 @@ public class DemoActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 			AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 		}
-		
+
+
 		bottomNavigation = findViewById(R.id.bottom_navigation);
 		viewPager = findViewById(R.id.view_pager);
 		floatingActionButton = findViewById(R.id.floating_action_button);
@@ -85,6 +90,9 @@ public class DemoActivity extends AppCompatActivity {
 
 		bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
 		bottomNavigation.setTranslucentNavigationEnabled(true);
+		bottomNavigation.setColored(true);
+		bottomNavigation.setCurrentItem(2);
+		updateBottomNavigationItems(true);
 
 		bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
 			@Override
@@ -112,8 +120,9 @@ public class DemoActivity extends AppCompatActivity {
 				currentFragment = adapter.getCurrentFragment();
 				currentFragment.willBeDisplayed();
 
+				Log.d("index", "cliclou em " + position );
+
 				if (position == 1) {
-					bottomNavigation.setNotification("", 1);
 
 					floatingActionButton.setVisibility(View.VISIBLE);
 					floatingActionButton.setAlpha(0f);
@@ -187,13 +196,13 @@ public class DemoActivity extends AppCompatActivity {
 			}
 		});
 		
-		/*
+
 		bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
 			@Override public void onPositionChange(int y) {
 				Log.d("DemoActivity", "BottomNavigation Position: " + y);
 			}
 		});
-		*/
+
 
 		viewPager.setOffscreenPageLimit(4);
 		adapter = new DemoViewPagerAdapter(getSupportFragmentManager());
@@ -201,6 +210,9 @@ public class DemoActivity extends AppCompatActivity {
 
 		currentFragment = adapter.getCurrentFragment();
 
+
+		/*
+		Podemos usar isto num futuro
 		handler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
@@ -215,24 +227,14 @@ public class DemoActivity extends AppCompatActivity {
 						Snackbar.LENGTH_SHORT).show();
 
 			}
-		}, 3000);
+		}, 3000);*/
 		
-		//bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
+		bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
+		bottomNavigation.setSelectedBackgroundVisible(true);
+
 	}
 
-	/**
-	 * Update the bottom navigation colored param
-	 */
-	public void updateBottomNavigationColor(boolean isColored) {
-		bottomNavigation.setColored(isColored);
-	}
 
-	/**
-	 * Return if the bottom navigation is colored
-	 */
-	public boolean isBottomNavigationColored() {
-		return bottomNavigation.isColored();
-	}
 
 	/**
 	 * Add or remove items of the bottom navigation
@@ -243,7 +245,6 @@ public class DemoActivity extends AppCompatActivity {
 			if (addItems) {
 				navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_5);
 				navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
-				bottomNavigation.setNotification("1", 3);
 			} else {
 				navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
 				navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
@@ -255,12 +256,11 @@ public class DemoActivity extends AppCompatActivity {
 						ContextCompat.getDrawable(this, R.drawable.ic_maps_local_bar),
 						ContextCompat.getColor(this, R.color.color_tab_4));
 				AHBottomNavigationItem item5 = new AHBottomNavigationItem(getString(R.string.tab_5),
-						ContextCompat.getDrawable(this, R.drawable.ic_maps_place),
+						ContextCompat.getDrawable(this, R.drawable.map_25),
 						ContextCompat.getColor(this, R.color.color_tab_5));
 
 				bottomNavigation.addItem(item4);
 				bottomNavigation.addItem(item5);
-				bottomNavigation.setNotification("1", 3);
 			} else {
 				bottomNavigation.removeAllItems();
 				bottomNavigation.addItems(bottomNavigationItems);
@@ -268,44 +268,6 @@ public class DemoActivity extends AppCompatActivity {
 		}
 	}
 
-	/**
-	 * Show or hide the bottom navigation with animation
-	 */
-	public void showOrHideBottomNavigation(boolean show) {
-		if (show) {
-			bottomNavigation.restoreBottomNavigation(true);
-		} else {
-			bottomNavigation.hideBottomNavigation(true);
-		}
-	}
 
-	/**
-	 * Show or hide selected item background
-	 */
-	public void updateSelectedBackgroundVisibility(boolean isVisible) {
-		bottomNavigation.setSelectedBackgroundVisible(isVisible);
-	}
-
-	/**
-	 * Set title state for bottomNavigation
-	 */
-	public void setTitleState(AHBottomNavigation.TitleState titleState) {
-		bottomNavigation.setTitleState(titleState);
-	}
-
-	/**
-	 * Reload activity
-	 */
-	public void reload() {
-		startActivity(new Intent(this, DemoActivity.class));
-		finish();
-	}
-
-	/**
-	 * Return the number of items in the bottom navigation
-	 */
-	public int getBottomNavigationNbItems() {
-		return bottomNavigation.getItemsCount();
-	}
 
 }

@@ -6,10 +6,10 @@
     <string name="tab_4">Label 4</string>
     <string name="tab_5">Label 5</string>
 
-    <string name="menu_1">Menu 1</string>
-    <string name="menu_2">Menu 2</string>
-    <string name="menu_3">Menu 3</string>
-    <string name="menu_4">Menu 4</string>
-    <string name="menu_5">Menu 5</string>
+    <string name="menu_1">Sobre NEEC</string>
+    <string name="menu_2">Informação</string>
+    <string name="menu_3">Notícias</string>
+    <string name="menu_4">Calendário</string>
+    <string name="menu_5">Mapa</string>
 
 </resources>
