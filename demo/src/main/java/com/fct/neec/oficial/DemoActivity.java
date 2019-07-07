@@ -8,6 +8,8 @@ import android.os.Handler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 
 public class DemoActivity extends AppCompatActivity {
 
-	private NoticiasFragment currentFragment;
+	private Fragment currentFragment;
 	private DemoViewPagerAdapter adapter;
 	private AHBottomNavigationAdapter navigationAdapter;
 	private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
@@ -98,29 +100,26 @@ public class DemoActivity extends AppCompatActivity {
 					currentFragment = adapter.getCurrentFragment();
 				}
 
-				if (wasSelected) {
-					currentFragment.refresh();
-					return true;
-				}
+                if(position == 4){
+                    currentFragment = adapter.getItem(position);
 
-				if (currentFragment != null) {
-					currentFragment.willBeHidden();
-				}
+                }
 
 				viewPager.setCurrentItem(position, false);
 				
 				if (currentFragment == null) {
 					return true;
 				}
-				
-				currentFragment = adapter.getCurrentFragment();
-				currentFragment.willBeDisplayed();
+
+
+
+
+
+
 
 				Log.d("index", "cliclou em " + position );
 
-				if(position == 2){
 
-                }
 
 				if (position == 1) {
 

@@ -96,9 +96,7 @@ public class NoticiasFragment extends Fragment {
      * Refresh
      */
     public void refresh() {
-        if (getArguments().getInt("index", 0) > 0 && recyclerView != null) {
-            recyclerView.smoothScrollToPosition(0);
-        }
+
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.fct.neec.oficial;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
@@ -11,8 +12,8 @@ import java.util.ArrayList;
  */
 public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 
-	private ArrayList<NoticiasFragment> fragments = new ArrayList<>();
-	private NoticiasFragment currentFragment;
+	private ArrayList<Fragment> fragments = new ArrayList<>();
+	private Fragment currentFragment;
 
 	public DemoViewPagerAdapter(FragmentManager fm) {
 		super(fm);
@@ -22,11 +23,11 @@ public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 		fragments.add(NoticiasFragment.newInstance(1));
 		fragments.add(NoticiasFragment.newInstance(2));
 		fragments.add(NoticiasFragment.newInstance(3));
-		fragments.add(NoticiasFragment.newInstance(4));
+		fragments.add(MapaFragment.newInstance(4));
 	}
 
 	@Override
-	public NoticiasFragment getItem(int position) {
+	public Fragment getItem(int position) {
 		return fragments.get(position);
 	}
 
@@ -38,7 +39,7 @@ public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public void setPrimaryItem(ViewGroup container, int position, Object object) {
 		if (getCurrentFragment() != object) {
-			currentFragment = ((NoticiasFragment) object);
+			currentFragment = (Fragment) object;
 		}
 		super.setPrimaryItem(container, position, object);
 	}
@@ -46,7 +47,7 @@ public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 	/**
 	 * Get the current fragment
 	 */
-	public NoticiasFragment getCurrentFragment() {
+	public Fragment getCurrentFragment() {
 		return currentFragment;
 	}
 }
