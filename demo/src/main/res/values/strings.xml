@@ -11,5 +11,6 @@
     <string name="menu_3">Notícias</string>
     <string name="menu_4">Calendário</string>
     <string name="menu_5">Mapa</string>
+    <string name="app_intro_skip">Skip</string>
 
 </resources>

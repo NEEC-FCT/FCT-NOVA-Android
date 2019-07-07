@@ -2,6 +2,8 @@ package com.fct.neec.oficial;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,6 +48,14 @@ public class DemoActivity extends AppCompatActivity {
 		boolean enabledTranslucentNavigation = getSharedPreferences("shared", Context.MODE_PRIVATE)
 				.getBoolean("translucentNavigation", false);
 		setTheme(enabledTranslucentNavigation ? R.style.AppTheme_TranslucentNavigation : R.style.AppTheme);
+		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+
+		int idName  = pref.getInt("intro", 0);
+		if(idName == 0){
+			Intent intent = new Intent(DemoActivity.this, MyIntro.class);
+			DemoActivity.this.startActivity(intent);
+
+		}
 		setContentView(R.layout.activity_home);
 		initUI();
 	}

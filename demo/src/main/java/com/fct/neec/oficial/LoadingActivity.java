@@ -33,9 +33,5 @@ public class LoadingActivity extends AppCompatActivity {
             }
         },SPLASH_TIME_OUT);
 
-
-
-
-
     }
 }
