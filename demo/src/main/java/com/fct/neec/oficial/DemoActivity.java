@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class DemoActivity extends AppCompatActivity {
 
-	private DemoFragment currentFragment;
+	private NoticiasFragment currentFragment;
 	private DemoViewPagerAdapter adapter;
 	private AHBottomNavigationAdapter navigationAdapter;
 	private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
@@ -118,6 +118,10 @@ public class DemoActivity extends AppCompatActivity {
 
 				Log.d("index", "cliclou em " + position );
 
+				if(position == 2){
+
+                }
+
 				if (position == 1) {
 
 					floatingActionButton.setVisibility(View.VISIBLE);
@@ -196,6 +200,7 @@ public class DemoActivity extends AppCompatActivity {
 		bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
 			@Override public void onPositionChange(int y) {
 				Log.d("DemoActivity", "BottomNavigation Position: " + y);
+
 			}
 		});
 
