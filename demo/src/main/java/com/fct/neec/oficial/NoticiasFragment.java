@@ -66,6 +66,8 @@ public class NoticiasFragment extends Fragment {
             public void onPageFinished(WebView view, String url) {
 
                 webview.loadUrl("javascript:(function() { " +
+                        "document.getElementById('sliding-popup').style.display='none';})()");
+                webview.loadUrl("javascript:(function() { " +
                         "document.getElementById('header3').style.display='none';})()");
                 webview.loadUrl("javascript:(function() { " +
                         "document.getElementById('content_top').style.display='none';})()");
