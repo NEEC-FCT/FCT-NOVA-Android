@@ -7,24 +7,21 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
 import com.fct.neec.AHBottomNavigation;
 import com.fct.neec.AHBottomNavigationAdapter;
 import com.fct.neec.AHBottomNavigationItem;
 import com.fct.neec.AHBottomNavigationViewPager;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 

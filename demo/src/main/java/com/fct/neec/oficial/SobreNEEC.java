@@ -8,17 +8,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
-import android.widget.TabHost;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
-
-import static android.view.View.VISIBLE;
 
 public class SobreNEEC extends Fragment {
 
@@ -49,11 +45,11 @@ public class SobreNEEC extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                Log.d("TAB" , "clicou em: "  + position);
-                if( position == 0){
+                Log.d("TAB", "clicou em: " + position);
+                if (position == 0) {
                     webview.loadUrl("https://fctapp.neec-fct.com/");
                 }
-                if(position == 1){
+                if (position == 1) {
                     webview.loadUrl("https://fctapp.neec-fct.com/equipa/about.html");
                 }
 

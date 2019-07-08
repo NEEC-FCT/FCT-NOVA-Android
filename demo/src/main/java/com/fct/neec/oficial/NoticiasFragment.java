@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
@@ -53,13 +51,13 @@ public class NoticiasFragment extends Fragment {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 webview.setVisibility(View.GONE);
 
-                if(!url.startsWith("https://www.fct.unl.pt/noticias?page=") && !url.equals("https://www.fct.unl.pt/noticias")) {
+                if (!url.startsWith("https://www.fct.unl.pt/noticias?page=") && !url.equals("https://www.fct.unl.pt/noticias")) {
                     webview.loadUrl("https://www.fct.unl.pt/noticias");
                     Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(i);
                     return true;
                 }
-                return  false;
+                return false;
             }
 
             @Override
