@@ -15,14 +15,15 @@ public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 	private ArrayList<Fragment> fragments = new ArrayList<>();
 	private Fragment currentFragment;
 
+
 	public DemoViewPagerAdapter(FragmentManager fm) {
 		super(fm);
 
 		fragments.clear();
-		fragments.add(NoticiasFragment.newInstance(0));
-		fragments.add(NoticiasFragment.newInstance(1));
+		fragments.add(SobreNEEC.newInstance(0));
+		fragments.add(InfoFragment.newInstance(1));
 		fragments.add(NoticiasFragment.newInstance(2));
-		fragments.add(NoticiasFragment.newInstance(3));
+		fragments.add(CalendarioFragment.newInstance(3));
 		fragments.add(MapaFragment.newInstance(4));
 	}
 
@@ -47,7 +48,16 @@ public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 	/**
 	 * Get the current fragment
 	 */
+	public Fragment getInitialFragment() {
+
+		return NoticiasFragment.newInstance(2);
+	}
+
+	/**
+	 * Get the current fragment
+	 */
 	public Fragment getCurrentFragment() {
+
 		return currentFragment;
 	}
 }
