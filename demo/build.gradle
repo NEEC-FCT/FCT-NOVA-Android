@@ -50,6 +50,9 @@ dependencies {
     implementation 'com.android.support:design:28'
     implementation 'com.github.paolorotolo:appintro:4.1.0'
 
+    //calendário
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+
 }
 
 
