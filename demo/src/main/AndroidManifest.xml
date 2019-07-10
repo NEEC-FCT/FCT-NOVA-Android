@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.fct.neec.oficial"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fct.neec.oficial">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -13,16 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.fct.neec.oficial.LoadingActivity">
+        <activity
+            android:name="com.fct.neec.oficial.LoadingActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.fct.neec.oficial.DemoActivity">
-        </activity>
+        <activity
+            android:name="com.fct.neec.oficial.DemoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MyIntro"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
     </application>
 
