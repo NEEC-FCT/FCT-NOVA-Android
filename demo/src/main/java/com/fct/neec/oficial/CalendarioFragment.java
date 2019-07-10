@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -13,7 +12,6 @@ import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
@@ -58,10 +56,10 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
             try {
                 int pos = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
                 long time = itemsData.get(pos).getTimeInMillis();
-                if(time > 0 && !calendar.isAnimating())
+                if (time > 0 && !calendar.isAnimating())
                     calendar.setCurrentDate(new Date(time));
 
-            } catch (Exception ignored){
+            } catch (Exception ignored) {
 
             }
         }
@@ -165,9 +163,10 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
     }
 
-    private void getEvents(){
-        String url = "http://fctapp.neec-fct.com/calendar.php";
-
+    private void getEvents() {
+        String url = "https://fctapp.neec-fct.com/calendar.php";
+        if (getContext() == null)
+            return;
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
 
@@ -183,9 +182,9 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                         Log.d("Response is: ", response);
                         try {
                             JSONArray array = new JSONArray(response);
-                            Log.d("length", ""+array.length());
+                            Log.d("length", "" + array.length());
                             itemsData.clear();
-                            for (int i = 0; i<array.length(); i++){
+                            for (int i = 0; i < array.length(); i++) {
                                 JSONObject obj = array.getJSONObject(i);
                                 int color = Color.parseColor(obj.getString("color"));
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -195,7 +194,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                                 itemsData.add(evt);
                             }
 
-                        }catch (JSONException e){
+                        } catch (JSONException e) {
                             Log.e("json", e.getMessage());
 
                             itemsData.clear();
@@ -228,10 +227,9 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
         queue.add(stringRequest);
 
 
-
     }
 
-    private void refreshAdapter(){
+    private void refreshAdapter() {
         CalendarioAdapter adapter = new CalendarioAdapter(itemsData, this);
         recyclerView.setAdapter(adapter);
         calendar.removeAllEvents();
@@ -239,15 +237,18 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     }
 
 
-    private void setMonthText(){
+    private void setMonthText() {
 
-        if(monthText != null)
+        if (monthText != null)
             monthText.setText(new SimpleDateFormat("MMMM YYYY").format(calendar.getFirstDayOfCurrentMonth()));
     }
 
-    private void scrollToDate(Date dateClicked){
+    private void scrollToDate(Date dateClicked) {
+        if (getContext() == null)
+            return;
         RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getContext()) {
-            @Override protected int getVerticalSnapPreference() {
+            @Override
+            protected int getVerticalSnapPreference() {
                 return LinearSmoothScroller.SNAP_TO_START;
             }
         };
@@ -258,8 +259,8 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
         date.set(Calendar.SECOND, 0);
         date.set(Calendar.MILLISECOND, 0);
         int i;
-        for (i = 0; i<itemsData.size(); i++){
-            if(itemsData.get(i).getTimeInMillis() >= date.getTimeInMillis())
+        for (i = 0; i < itemsData.size(); i++) {
+            if (itemsData.get(i).getTimeInMillis() >= date.getTimeInMillis())
                 break;
         }
         smoothScroller.setTargetPosition(i);
@@ -270,9 +271,9 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     /**
      * Refresh
      */
-    public void refresh() {
+    void refresh() {
         Date date = new Date();
-        if(calendar != null){
+        if (calendar != null) {
             calendar.setCurrentDate(date);
             scrollToDate(date);
             setMonthText();
@@ -283,12 +284,13 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     /**
      * Called when a fragment will be displayed
      */
-    public void willBeDisplayed() {
+    void willBeDisplayed() {
         // Do what you want here, for example animate the content
         if (linearContainer != null) {
+            recyclerView.setAlpha(0);
             Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
             linearContainer.startAnimation(fadeIn);
-            if(calendar != null){
+            if (calendar != null) {
                 refresh();
                 calendar.showCalendarWithAnimation();
             }
@@ -298,11 +300,11 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     /**
      * Called when a fragment will be hidden
      */
-    public void willBeHidden() {
+    void willBeHidden() {
         if (linearContainer != null) {
             Animation fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
             linearContainer.startAnimation(fadeOut);
-            recyclerView.setAlpha(0);
+
         }
     }
 
@@ -310,6 +312,6 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     public void onEventoClick(int pos) {
         long time = itemsData.get(pos).getTimeInMillis();
         if (time > 0)
-        calendar.setCurrentDate(new Date(time));
+            calendar.setCurrentDate(new Date(time));
     }
 }
