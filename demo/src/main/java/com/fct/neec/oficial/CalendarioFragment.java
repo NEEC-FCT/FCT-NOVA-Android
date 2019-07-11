@@ -47,6 +47,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Event> itemsData = new ArrayList<>();
+    private boolean sc = false;
 
     private RecyclerView.OnScrollListener on_scroll = new RecyclerView.OnScrollListener() {
 
@@ -54,10 +55,12 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
             try {
-                int pos = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+                int pos = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
                 long time = itemsData.get(pos).getTimeInMillis();
-                if (time > 0 && !calendar.isAnimating())
+                if (time > 0 && !calendar.isAnimating() && !sc) {
                     calendar.setCurrentDate(new Date(time));
+                    setMonthText();
+                }
 
             } catch (Exception ignored) {
 
@@ -111,10 +114,16 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                 super.onScrollStateChanged(recyclerView, newState);
 
                 if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
+                    Log.d("Scrool", "1");
                 } else if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                    Log.d("Scrool", "2");
+                    sc = false;
                 } else {
                     //Tentativa falhada de corrigir um bug
-                    recyclerView.addOnScrollListener(on_scroll);
+                    //recyclerView.addOnScrollListener(on_scroll);
+
+                    Log.d("Scrool", "3");
+                    sc = false;
 
                 }
             }
@@ -144,13 +153,16 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
             @Override
             public void onDayClick(Date dateClicked) {
-                recyclerView.removeOnScrollListener(on_scroll);
+                //recyclerView.removeOnScrollListener(on_scroll);
+
+                sc = true;
                 scrollToDate(dateClicked);
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 setMonthText();
+                sc = true;
                 scrollToDate(firstDayOfNewMonth);
             }
         });
@@ -164,6 +176,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     }
 
     private void getEvents() {
+        Log.d("Eventos", "Start");
         String url = "https://fctapp.neec-fct.com/calendar.php";
         if (getContext() == null)
             return;
@@ -174,12 +187,13 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
         itemsData.add(new Event(0, 0, "A carregar calendário..."));
         refreshAdapter();
-
+//ParseNetwork response para não bloquear a main thread
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("Response is: ", response);
+                        Log.d("Eventos", "Recv");
+                        //Log.d("Response is: ", response);
                         try {
                             JSONArray array = new JSONArray(response);
                             Log.d("length", "" + array.length());
@@ -209,6 +223,8 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                             itemsData.add(new Event(0, 0, "Ocorreu um erro a processar o calendário(2)."));
                             e.printStackTrace();
                         } finally {
+
+                            Log.d("Eventos", "Added");
                             refreshAdapter();
                             refresh();
                         }
@@ -224,6 +240,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
             }
         });
 
+        Log.d("Eventos", "Q");
         queue.add(stringRequest);
 
 
@@ -264,7 +281,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                 break;
         }
         smoothScroller.setTargetPosition(i);
-        recyclerView.removeOnScrollListener(on_scroll);
+        //recyclerView.removeOnScrollListener(on_scroll);
         layoutManager.startSmoothScroll(smoothScroller);
     }
 
@@ -311,7 +328,9 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     @Override
     public void onEventoClick(int pos) {
         long time = itemsData.get(pos).getTimeInMillis();
-        if (time > 0)
+        if (time > 0) {
             calendar.setCurrentDate(new Date(time));
+            setMonthText();
+        }
     }
 }
