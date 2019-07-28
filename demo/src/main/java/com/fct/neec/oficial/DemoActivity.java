@@ -256,6 +256,13 @@ public class DemoActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        Intent k = new Intent(DemoActivity.this, MenuPrincipal.class);
+        startActivity(k);
+    }
+
     /**
      * Add or remove items of the bottom navigation
      */

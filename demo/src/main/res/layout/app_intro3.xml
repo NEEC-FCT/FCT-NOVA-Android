@@ -31,24 +31,24 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="114dp"
-            android:layout_height="109dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginLeft="56dp"
+            android:layout_width="101dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="68dp"
             android:layout_marginTop="80dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/hm"
+            android:src="@drawable/hmfct"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="114dp"
-            android:layout_height="109dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginLeft="56dp"
-            android:layout_marginTop="212dp"
+            android:layout_width="101dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="216dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:src="@drawable/eco"
@@ -68,9 +68,10 @@
             android:textSize="26sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.434"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.507" />
 
         <TextView
             android:id="@+id/textView3"
