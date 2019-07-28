@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="10"
-    android:background="#03a373"
+    android:background="#416abb"
     android:orientation="vertical">
 
     <TextView
@@ -15,7 +16,7 @@
         android:gravity="center"
         android:paddingLeft="32dp"
         android:paddingRight="29dp"
-        android:text="Amazing Features"
+        android:text="Inúmeras funcionalidades"
         android:textColor="#ffffff"
         android:textSize="27sp"
         android:textStyle="bold" />
@@ -25,15 +26,19 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/linearLayout6">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="249dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/intro2" />
+            android:src="@drawable/introicons"
+            tools:layout_conversion_absoluteHeight="128dp"
+            tools:layout_conversion_absoluteWidth="160dp"
+            tools:layout_editor_absoluteX="126dp"
+            tools:layout_editor_absoluteY="270dp" />
     </LinearLayout>
 
     <TextView
@@ -44,7 +49,7 @@
         android:gravity="center"
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
-        android:text="50+ amazing features and it's 100% free to use."
+        android:text="Desenhadas para te ajudar na tua vida académica"
         android:textColor="#ffffff"
         android:textSize="16sp" />
 

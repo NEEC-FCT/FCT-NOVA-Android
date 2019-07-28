@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="10"
-    android:background="#0385a3"
+    android:background="#7bbd00"
     android:orientation="vertical">
 
     <TextView
@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingLeft="32dp"
         android:paddingRight="29dp"
-        android:text="Welcome to AppIntro"
+        android:text="Bem-vindo à Faculdade de Ciências e Tecnologias"
         android:textColor="#ffffff"
         android:textSize="27sp"
         android:textStyle="bold" />
@@ -30,12 +30,12 @@
         //image link from drawable folder
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="325dp"
+            android:layout_height="209dp"
+            android:layout_gravity="center_horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/intro1" />
+            android:src="@drawable/intro" />
     </LinearLayout>
 
     <TextView
@@ -46,9 +46,9 @@
         android:gravity="center"
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
-        android:text="Amazing android app with cool features."
+        android:text="Conhece a nossa Faculdade com esta app"
         android:textColor="#ffffff"
-        android:textSize="16sp" />
+        android:textSize="24sp" />
 
     <TextView
         android:layout_width="fill_parent"
