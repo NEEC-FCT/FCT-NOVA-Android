@@ -18,24 +18,24 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
     private ArrayList<Event> dataset;
     private eventoListener evento_listener;
 
-    CalendarioAdapter(ArrayList<Event> dataset, eventoListener evento_listener){
+    CalendarioAdapter(ArrayList<Event> dataset, eventoListener evento_listener) {
         this.dataset = dataset;
         this.evento_listener = evento_listener;
     }
 
     @NonNull
     @Override
-    public CalendarioAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+    public CalendarioAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_evento, parent, false);
         return new ViewHolder(v, evento_listener);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int pos){
+    public void onBindViewHolder(@NonNull ViewHolder holder, int pos) {
         Event evt = dataset.get(pos);
-        if (evt != null){
-            holder.titulo.setText((String)evt.getData());
+        if (evt != null) {
+            holder.titulo.setText((String) evt.getData());
             long time = evt.getTimeInMillis();
             if (time > 0) {
                 holder.data.setText(new SimpleDateFormat("dd MMMM").format(time));
@@ -46,8 +46,12 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return dataset.size();
+    }
+
+    public interface eventoListener {
+        void onEventoClick(int pos);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -56,7 +60,8 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
         TextView cor;
 
         eventoListener evento_listener;
-        ViewHolder(View v, eventoListener evento_listener){
+
+        ViewHolder(View v, eventoListener evento_listener) {
             super(v);
             titulo = v.findViewById(R.id.titulo);
             data = v.findViewById(R.id.data);
@@ -69,8 +74,5 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
         public void onClick(View view) {
             evento_listener.onEventoClick(getAdapterPosition());
         }
-    }
-    public interface eventoListener{
-        void onEventoClick(int pos);
     }
 }
