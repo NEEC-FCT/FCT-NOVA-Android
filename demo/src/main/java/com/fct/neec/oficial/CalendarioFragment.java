@@ -105,8 +105,6 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
         calendar.setCurrentDayIndicatorStyle(2);
         calendar.setCurrentSelectedDayIndicatorStyle(2);
 
-        recyclerView.setAlpha(0);
-
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
