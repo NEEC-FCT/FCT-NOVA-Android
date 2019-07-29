@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -32,6 +33,7 @@ public class MapaFragment extends Fragment {
         webview.setVisibility(View.GONE);
 
         webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
         webview.setWebViewClient(new WebViewClient() {
 
