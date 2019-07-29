@@ -58,6 +58,13 @@ public class DemoActivity extends AppCompatActivity {
         initUI();
     }
 
+
+    public void changeFragment(int position){
+        initUI();
+        viewPager.setCurrentItem(position, false);
+        bottomNavigation.setCurrentItem(position);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

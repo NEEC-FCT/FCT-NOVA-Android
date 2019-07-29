@@ -1,19 +1,20 @@
 package com.fct.neec.oficial;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.FrameLayout;
-
+import android.webkit.WebViewClient;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class InfoFragment extends Fragment {
 
+
+    private WebView webview;
 
     /**
      * Create a new instance of the fragment
@@ -28,13 +29,25 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_info, container, false);
-        final WebView webview = view.findViewById(R.id.webview);
+        webview = view.findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl("https://fctapp.neec-fct.com/Informacao/");
         webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
-        return view;
+        webview.setWebViewClient(new WebViewClient() {
 
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                webview.setVisibility(View.GONE);
+
+                if (url.startsWith("https://www.fct.unl.pt/estudante/informacao-academica/prazos") ) {
+                    ((DemoActivity)getActivity()).changeFragment(3);
+                    return false;
+                }
+                return false;
+            }
+        });
+        return view;
     }
 
 
