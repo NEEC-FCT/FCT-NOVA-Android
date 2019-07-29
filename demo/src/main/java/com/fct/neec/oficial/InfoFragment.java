@@ -14,9 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class InfoFragment extends Fragment {
 
-    private FrameLayout fragmentContainer;
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
 
     /**
      * Create a new instance of the fragment
