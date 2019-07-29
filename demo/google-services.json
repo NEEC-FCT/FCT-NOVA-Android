@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "760771196012",
+    "firebase_url": "https://fct-mobile-fb306.firebaseio.com",
+    "project_id": "fct-mobile-fb306",
+    "storage_bucket": "fct-mobile-fb306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760771196012:android:0e30334b588410c6",
+        "android_client_info": {
+          "package_name": "com.fct.neec.oficial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760771196012-upidb1c4kak05p0re7t3vss9h07rsabf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmV9e0SQL12CHGhpwCkMBoJiBDjhiaHM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760771196012-upidb1c4kak05p0re7t3vss9h07rsabf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
