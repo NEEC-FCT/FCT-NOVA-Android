@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +20,15 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MenuPrincipal extends AppCompatActivity {
 
 
-    private long startime = System.currentTimeMillis();
     final String[] items = new String[]{"Contactar Segurança", "Em caso de doença súbita/acidente",
             "Em caso de alarme de evacuação", "Em caso de incêndio", "Em caso de sismo"};
+    private long startime = System.currentTimeMillis();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_main);
 
-        final NDSpinner  spinner = findViewById(R.id.popupspinner);
+        final NDSpinner spinner = findViewById(R.id.popupspinner);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -39,7 +38,7 @@ public class MenuPrincipal extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 long endtime = System.currentTimeMillis();
-                Log.d("Time" , " " + (endtime - startime) );
+                Log.d("Time", " " + (endtime - startime));
 
                 if ((endtime - startime) > 500) {
                     Object item = parent.getItemAtPosition(position);
@@ -80,25 +79,25 @@ public class MenuPrincipal extends AppCompatActivity {
                     }
 
                     //Caso de doença
-                    else if(item.toString().equals(items[1])){
+                    else if (item.toString().equals(items[1])) {
                         Intent myIntent = new Intent(MenuPrincipal.this, RegrasDoenca.class);
                         startActivity(myIntent);
                     }
 
                     //Caso de Evacuação
-                    else if(item.toString().equals(items[2])){
+                    else if (item.toString().equals(items[2])) {
                         Intent myIntent = new Intent(MenuPrincipal.this, RegrasEvacuacao.class);
                         startActivity(myIntent);
                     }
 
                     //Caso de incêndio
-                    else if(item.toString().equals(items[3])){
+                    else if (item.toString().equals(items[3])) {
                         Intent myIntent = new Intent(MenuPrincipal.this, RegrasIncendio.class);
                         startActivity(myIntent);
                     }
 
                     //Caso de sismo
-                    else if(item.toString().equals(items[4])){
+                    else if (item.toString().equals(items[4])) {
                         Intent myIntent = new Intent(MenuPrincipal.this, RegrasSismo.class);
                         startActivity(myIntent);
                     }
@@ -107,7 +106,7 @@ public class MenuPrincipal extends AppCompatActivity {
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
-                Log.d("Time" , spinner.getSelectedItem().toString());
+                Log.d("Time", spinner.getSelectedItem().toString());
             }
         });
 

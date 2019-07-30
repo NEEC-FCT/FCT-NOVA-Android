@@ -23,6 +23,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
         this.evento_listener = evento_listener;
     }
 
+
     @NonNull
     @Override
     public CalendarioAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
