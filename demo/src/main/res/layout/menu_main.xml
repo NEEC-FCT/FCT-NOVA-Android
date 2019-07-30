@@ -174,4 +174,40 @@
         app:layout_constraintEnd_toEndOf="@+id/teambutton"
         app:layout_constraintStart_toStartOf="@+id/teambutton"
         app:layout_constraintTop_toBottomOf="@+id/teambutton" />
+
+    <com.fct.neec.oficial.NDSpinner
+        android:id="@+id/popupspinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        android:spinnerMode="dialog"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/calbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fctlogo" />
+
+    <Button
+        android:id="@+id/sos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textColor="#fff"
+        android:background="@drawable/roundbutton"
+        android:text="Botão SOS"
+        app:layout_constraintEnd_toEndOf="@+id/teambutton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/noticiasbutton"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

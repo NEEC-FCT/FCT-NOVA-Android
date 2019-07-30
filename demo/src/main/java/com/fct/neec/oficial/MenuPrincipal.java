@@ -2,25 +2,93 @@ package com.fct.neec.oficial;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuPrincipal extends AppCompatActivity {
 
 
+    private long startime = System.currentTimeMillis();
+    final String[] items = new String[]{"Contactar Segurança", "Em caso de doença súbita/acidente",
+            "Em caso de alarme de evacuação", "Em caso de incêndio", "Em caso de sismo"};
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_main);
 
+        final NDSpinner  spinner = findViewById(R.id.popupspinner);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_spinner_item, items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                long endtime = System.currentTimeMillis();
+                Log.d("Time" , " " + (endtime - startime) );
+
+                if ((endtime - startime) > 500) {
+                    Object item = parent.getItemAtPosition(position);
+                    Log.d("Spinner", item.toString());
+
+                    //Contactar Segurança
+                    if (item.toString().equals(items[0])) {
+                        new AlertDialog.Builder(MenuPrincipal.this, R.style.AlertDialogCustom)
+                                .setTitle("Contactar Segurança")
+                                .setMessage("Não te esqueças:\n" +
+                                        "o Localização\n" +
+                                        "o Número de vítimas e idade\n" +
+                                        "o Sintomas ou informações importantes\n" +
+                                        "o Outros perigos (gases perigosos, incêndio)")
+
+
+                                .setNeutralButton("Cancelar", null)
+
+                                .setPositiveButton("Grave", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        String phone = "112";
+                                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                                        startActivity(intent);
+                                    }
+                                })
+
+                                .setNegativeButton("Não é grave", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        String phone = "+351916025546";
+                                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                                        startActivity(intent);
+                                    }
+                                })
+
+
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+                    }
+                }
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("Time" , spinner.getSelectedItem().toString());
+            }
+        });
+
         //info
-        ImageView info =  findViewById(R.id.infobutton);
+        ImageView info = findViewById(R.id.infobutton);
         info.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startMainActivity(1);
@@ -28,14 +96,14 @@ public class MenuPrincipal extends AppCompatActivity {
         });
 
         //calendar
-        ImageView calendar =  findViewById(R.id.calbutton);
+        ImageView calendar = findViewById(R.id.calbutton);
         calendar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startMainActivity(3);
             }
         });
         //Mapa
-        ImageView map =  findViewById(R.id.mapbutton);
+        ImageView map = findViewById(R.id.mapbutton);
         map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startMainActivity(4);
@@ -43,7 +111,7 @@ public class MenuPrincipal extends AppCompatActivity {
         });
 
         //Mapa
-        ImageView noticias =  findViewById(R.id.noticiasbutton);
+        ImageView noticias = findViewById(R.id.noticiasbutton);
         noticias.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startMainActivity(2);
@@ -51,7 +119,7 @@ public class MenuPrincipal extends AppCompatActivity {
         });
 
         //Happy meal
-        ImageView hm =  findViewById(R.id.happymealbutton);
+        ImageView hm = findViewById(R.id.happymealbutton);
         hm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startNewActivity(getApplicationContext(), "miguelcalado.restauracaofinal");
@@ -59,18 +127,31 @@ public class MenuPrincipal extends AppCompatActivity {
         });
 
         //Team button
-        ImageView team =  findViewById(R.id.teambutton);
+        ImageView team = findViewById(R.id.teambutton);
         team.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startMainActivity(0);
 
             }
         });
+
+        //Botão SOS
+        final Button sos = findViewById(R.id.sos);
+        sos.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                startime = System.currentTimeMillis();
+
+                spinner.performClick();
+
+
+            }
+        });
     }
 
-    private void startMainActivity(int positon){
+    private void startMainActivity(int positon) {
         SharedPreferences preferences = getSharedPreferences("prefName", MODE_PRIVATE);
-        SharedPreferences.Editor edit= preferences.edit();
+        SharedPreferences.Editor edit = preferences.edit();
         edit.putInt("Separador", positon);
         edit.commit();
         //start activity
