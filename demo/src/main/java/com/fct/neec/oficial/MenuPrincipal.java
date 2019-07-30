@@ -78,6 +78,30 @@ public class MenuPrincipal extends AppCompatActivity {
                                 .setIcon(android.R.drawable.ic_dialog_alert)
                                 .show();
                     }
+
+                    //Caso de doença
+                    else if(item.toString().equals(items[1])){
+                        Intent myIntent = new Intent(MenuPrincipal.this, RegrasDoenca.class);
+                        startActivity(myIntent);
+                    }
+
+                    //Caso de Evacuação
+                    else if(item.toString().equals(items[2])){
+                        Intent myIntent = new Intent(MenuPrincipal.this, RegrasEvacuacao.class);
+                        startActivity(myIntent);
+                    }
+
+                    //Caso de incêndio
+                    else if(item.toString().equals(items[3])){
+                        Intent myIntent = new Intent(MenuPrincipal.this, RegrasIncendio.class);
+                        startActivity(myIntent);
+                    }
+
+                    //Caso de sismo
+                    else if(item.toString().equals(items[4])){
+                        Intent myIntent = new Intent(MenuPrincipal.this, RegrasSismo.class);
+                        startActivity(myIntent);
+                    }
                 }
 
             }

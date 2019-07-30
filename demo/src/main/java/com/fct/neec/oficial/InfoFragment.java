@@ -94,28 +94,32 @@ public class InfoFragment extends Fragment {
         FloatingActionButton sismo = view.findViewById(R.id.sismo);
         sismo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Intent myIntent = new Intent(getContext(), RegrasSismo.class);
+                startActivity(myIntent);
             }
         });
         //Fogo
         FloatingActionButton fogo = view.findViewById(R.id.fogo);
         fogo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Intent myIntent = new Intent(getContext(), RegrasIncendio.class);
+                startActivity(myIntent);
             }
         });
         //Doença
         FloatingActionButton doenca = view.findViewById(R.id.doenca);
         doenca.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Intent myIntent = new Intent(getContext(), RegrasDoenca.class);
+                startActivity(myIntent);
             }
         });
         //Fogo
         FloatingActionButton alarme = view.findViewById(R.id.alarme);
         alarme.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Intent myIntent = new Intent(getContext(), RegrasEvacuacao.class);
+                startActivity(myIntent);
             }
         });
 
