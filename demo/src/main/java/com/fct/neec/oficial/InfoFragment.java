@@ -49,6 +49,11 @@ public class InfoFragment extends Fragment {
                     ((DemoActivity)getActivity()).changeFragment(3);
                     return false;
                 }
+                else {
+                    ((DemoActivity)getActivity()).changeFragment(1);
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(i);
+                }
                 return false;
             }
         });
