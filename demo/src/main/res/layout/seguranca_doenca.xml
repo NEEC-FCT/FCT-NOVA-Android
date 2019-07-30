@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="10"
+    android:background="#63b6e6"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="29dp"
+        android:text="Caso detete um acidentado ou uma vítima de doença súbita, proceda da seguinte forma:"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="391dp"
+        android:layout_height="186dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.19"
+        app:srcCompat="@drawable/doctorintro" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="406dp"
+        android:layout_height="346dp"
+
+        android:layout_marginTop="8dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="29dp"
+        android:text="Avalie a gravidade da situação;\n
+&#8226; Se considerar necessário, solicite o socorro externo através do número 112;\n
+&#8226; Se se sentir habilitado, e sem correr riscos desnecessários, preste os primeiros socorros à vítima;\n
+&#8226; Informe o segurança (91 60 25 546), transmitindo a seguinte informação de forma clara e precisa:\n
+\u0009\u0009&#8226;O tipo de situação (doença, acidente, etc.);\n
+\u0009\u0009&#8226;A localização exata da ocorrência;\n
+\u0009\u0009&#8226;O número e a idade aparente da vitima;\n
+\u0009\u0009&#8226;Principais queixas e alterações que observa;\n
+\u0009\u0009&#8226;A existência de qualquer situação que exija outros meios para o local, por exemplo, libertação de gases, perigo de incêndio, etc."
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
