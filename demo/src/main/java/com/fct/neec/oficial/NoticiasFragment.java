@@ -1,6 +1,8 @@
 package com.fct.neec.oficial;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,9 +30,22 @@ public class NoticiasFragment extends Fragment {
         return fragment;
     }
 
+
+    public boolean isInternetAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        if (!isInternetAvailable()) {
+            Intent intent = new Intent(getContext(), SemNet.class);
+            startActivity(intent);
+        }
+
 
         View view = inflater.inflate(R.layout.fragment_noticias, container, false);
         final WebView webview = view.findViewById(R.id.webview);

@@ -1,6 +1,9 @@
 package com.fct.neec.oficial;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -69,7 +72,6 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
     };
 
-
     /**
      * Create a new instance of the fragment
      */
@@ -83,8 +85,19 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
         return fragment;
     }
 
+    public boolean isInternetAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        if (!isInternetAvailable()) {
+            Intent intent = new Intent(getContext(), SemNet.class);
+            startActivity(intent);
+        }
 
 
         View view = inflater.inflate(R.layout.fragment_calendario, container, false);
