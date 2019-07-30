@@ -32,6 +32,23 @@
             android:name=".MenuPrincipal"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
+
+        <activity
+            android:name=".RegrasDoenca"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".RegrasEvacuacao"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".RegrasIncendio"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".RegrasSismo"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>
