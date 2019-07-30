@@ -1,7 +1,9 @@
 package com.fct.neec.oficial;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import com.github.clans.fab.FloatingActionButton;
 
 public class InfoFragment extends Fragment {
 
@@ -47,6 +52,75 @@ public class InfoFragment extends Fragment {
                 return false;
             }
         });
+
+        //FAB listeners
+        //Telemovel
+        FloatingActionButton phone = view.findViewById(R.id.ligar);
+        phone.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new AlertDialog.Builder(getContext() , R.style.AlertDialogCustom)
+                        .setTitle("Contactar Segurança")
+                        .setMessage("Não te esqueças:\n" +
+                                "o Localização\n" +
+                                "o Número de vítimas e idade\n" +
+                                "o Sintomas ou informações importantes\n" +
+                                "o Outros perigos (gases perigosos, incêndio)")
+
+
+                        .setNeutralButton("Cancelar" , null)
+
+                        .setPositiveButton("Grave", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String phone = "112";
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                                startActivity(intent);
+                            }
+                        })
+
+                        .setNegativeButton("Não é grave", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String phone = "+351916025546";
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                                startActivity(intent);
+                            }
+                        })
+
+
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
+        });
+        //sismo
+        FloatingActionButton sismo = view.findViewById(R.id.sismo);
+        sismo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        //Fogo
+        FloatingActionButton fogo = view.findViewById(R.id.fogo);
+        fogo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        //Doença
+        FloatingActionButton doenca = view.findViewById(R.id.doenca);
+        doenca.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+        //Fogo
+        FloatingActionButton alarme = view.findViewById(R.id.alarme);
+        alarme.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
         return view;
     }
 
