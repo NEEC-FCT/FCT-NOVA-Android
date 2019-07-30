@@ -255,7 +255,23 @@ public class DemoActivity extends AppCompatActivity {
 			}
 		}, 3000);*/
 
-        viewPager.setCurrentItem(2, false);
+
+		//Verifica se foi redirect
+        SharedPreferences sharedPrefs = getSharedPreferences("prefName", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        if(sharedPrefs.contains("Separador")){
+
+            //Obtem valor
+            int position = sharedPrefs.getInt("Separador", 2);
+            //apaga
+            editor.remove("Separador");
+            editor.apply();
+            viewPager.setCurrentItem(position, false);
+            bottomNavigation.setCurrentItem(position);
+        }
+        else {
+            viewPager.setCurrentItem(2, false);
+        }
 
         bottomNavigation.setDefaultBackgroundResource(R.drawable.bottom_navigation_background);
         bottomNavigation.setSelectedBackgroundVisible(true);

@@ -9,7 +9,7 @@
     android:background="#fcfcfc">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/fctlogo"
         android:layout_width="0dp"
         android:layout_height="181dp"
         android:layout_marginTop="64dp"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/fctletras" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/infobutton"
         android:layout_width="0dp"
         android:layout_height="92dp"
         android:layout_marginStart="8dp"
@@ -28,13 +28,13 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/calbutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/fctlogo"
         app:srcCompat="@drawable/info2" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/calbutton"
         android:layout_width="0dp"
         android:layout_height="92dp"
         android:layout_marginStart="2dp"
@@ -42,13 +42,13 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toStartOf="@+id/mapbutton"
+        app:layout_constraintStart_toEndOf="@+id/infobutton"
+        app:layout_constraintTop_toBottomOf="@+id/fctlogo"
         app:srcCompat="@drawable/schedule3" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/mapbutton"
         android:layout_width="0dp"
         android:layout_height="92dp"
         android:layout_marginStart="2dp"
@@ -57,12 +57,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/calbutton"
+        app:layout_constraintTop_toBottomOf="@+id/fctlogo"
         app:srcCompat="@drawable/mapa1" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/noticiasbutton"
         android:layout_width="0dp"
         android:layout_height="92dp"
         android:layout_marginStart="8dp"
@@ -70,13 +70,13 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView10"
+        app:layout_constraintEnd_toStartOf="@+id/happymealbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/news1" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/happymealbutton"
         android:layout_width="0dp"
         android:layout_height="92dp"
         android:layout_marginStart="8dp"
@@ -84,13 +84,13 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView11"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintEnd_toStartOf="@+id/teambutton"
+        app:layout_constraintStart_toEndOf="@+id/noticiasbutton"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:srcCompat="@drawable/hm" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/teambutton"
         android:layout_width="0dp"
         android:layout_height="92dp"
         android:layout_marginStart="2dp"
@@ -99,7 +99,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/happymealbutton"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/team2" />
 
@@ -111,9 +111,9 @@
         android:text="Informações"
         android:textColor="#000"
         android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintEnd_toEndOf="@+id/infobutton"
+        app:layout_constraintStart_toStartOf="@+id/infobutton"
+        app:layout_constraintTop_toBottomOf="@+id/infobutton" />
 
     <TextView
         android:id="@+id/textView5"
@@ -123,9 +123,9 @@
         android:text="Calendário"
         android:textColor="#000"
         android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintEnd_toEndOf="@+id/calbutton"
+        app:layout_constraintStart_toStartOf="@+id/calbutton"
+        app:layout_constraintTop_toBottomOf="@+id/calbutton" />
 
     <TextView
         android:id="@+id/textView6"
@@ -135,9 +135,9 @@
         android:text="Mapa"
         android:textColor="#000"
         android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintEnd_toEndOf="@+id/mapbutton"
+        app:layout_constraintStart_toStartOf="@+id/mapbutton"
+        app:layout_constraintTop_toBottomOf="@+id/mapbutton" />
 
     <TextView
         android:id="@+id/textView7"
@@ -147,9 +147,9 @@
         android:text="Notícias"
         android:textColor="#000"
         android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintEnd_toEndOf="@+id/noticiasbutton"
+        app:layout_constraintStart_toStartOf="@+id/noticiasbutton"
+        app:layout_constraintTop_toBottomOf="@+id/noticiasbutton" />
 
     <TextView
         android:id="@+id/textView8"
@@ -159,9 +159,9 @@
         android:text="HappyMeal"
         android:textColor="#000"
         android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintEnd_toEndOf="@+id/happymealbutton"
+        app:layout_constraintStart_toStartOf="@+id/happymealbutton"
+        app:layout_constraintTop_toBottomOf="@+id/happymealbutton" />
 
     <TextView
         android:id="@+id/textView9"
@@ -171,7 +171,7 @@
         android:text="Equipa"
         android:textColor="#000"
         android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintEnd_toEndOf="@+id/teambutton"
+        app:layout_constraintStart_toStartOf="@+id/teambutton"
+        app:layout_constraintTop_toBottomOf="@+id/teambutton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
