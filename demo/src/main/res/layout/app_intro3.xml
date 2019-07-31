@@ -31,11 +31,11 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="101dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginLeft="68dp"
-            android:layout_marginTop="80dp"
+            android:layout_width="83dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="112dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:src="@drawable/hmfct"
@@ -44,16 +44,16 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="101dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginLeft="68dp"
-            android:layout_marginTop="216dp"
+            android:layout_width="83dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="32dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:src="@drawable/eco"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <TextView
             android:id="@+id/textView2"
@@ -65,7 +65,7 @@
             android:layout_marginRight="8dp"
             android:text="ECO FCT"
             android:textColor="#ffff"
-            android:textSize="26sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.434"
@@ -83,7 +83,7 @@
             android:layout_marginRight="8dp"
             android:text="Happy Meal FCT"
             android:textColor="#ffff"
-            android:textSize="26sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView3"

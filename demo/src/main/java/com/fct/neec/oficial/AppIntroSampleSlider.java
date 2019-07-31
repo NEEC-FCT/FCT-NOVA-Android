@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-/**
- * Created by HP on 10/23/2016.
- */
+
 public class AppIntroSampleSlider extends Fragment {
     //Layout id
     private static final String ARG_LAYOUT_RES_ID = "layoutResId";

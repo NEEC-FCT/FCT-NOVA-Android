@@ -48,7 +48,7 @@
         android:paddingRight="64dp"
         android:text="Os mesmos estarão posteriormente disponíveis na aplicação e facilmente acessíveis"
         android:textColor="#ffffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="fill_parent"

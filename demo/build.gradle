@@ -48,6 +48,8 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4'
     //calendário
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    //imageZoom
+    implementation 'com.github.MikeOrtiz:TouchImageView:2.2.0'
 
 }
 
