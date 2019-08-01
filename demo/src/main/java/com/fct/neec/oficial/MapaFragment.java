@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -37,15 +39,27 @@ public class MapaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.fragment_mapa, container, false);
+
         if (!isInternetAvailable()) {
             Intent intent = new Intent(getContext(), SemNet.class);
             startActivity(intent);
         }
+        else{
 
-        View view = inflater.inflate(R.layout.fragment_mapa, container, false);
+
         final WebView webview = view.findViewById(R.id.webview);
         webview.setVisibility(View.GONE);
+        webview.setWebViewClient(new WebViewClient() {
 
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error){
+                //Your code to do
+                Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
+                startActivity(myIntent);
+            }
+                                 }
+        );
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
@@ -64,7 +78,7 @@ public class MapaFragment extends Fragment {
         });
 
         webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
-
+        }
         return view;
 
     }

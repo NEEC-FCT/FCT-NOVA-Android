@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -40,14 +43,16 @@ public class NoticiasFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_noticias, container, false);
 
         if (!isInternetAvailable()) {
             Intent intent = new Intent(getContext(), SemNet.class);
             startActivity(intent);
         }
 
+        else{
 
-        View view = inflater.inflate(R.layout.fragment_noticias, container, false);
+
         final WebView webview = view.findViewById(R.id.webview);
         webview.setVisibility(View.GONE);
 
@@ -66,6 +71,14 @@ public class NoticiasFragment extends Fragment {
                     return true;
                 }
                 return false;
+            }
+
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error){
+                //Your code to do
+                Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
+                startActivity(myIntent);
             }
 
             @Override
@@ -92,8 +105,10 @@ public class NoticiasFragment extends Fragment {
         });
 
         webview.loadUrl("https://www.fct.unl.pt/noticias");
-
+        }
         return view;
 
     }
+
+
 }

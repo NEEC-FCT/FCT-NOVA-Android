@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +20,9 @@ import com.fct.neec.AHBottomNavigation;
 import com.fct.neec.AHBottomNavigationAdapter;
 import com.fct.neec.AHBottomNavigationItem;
 import com.fct.neec.AHBottomNavigationViewPager;
+import com.fct.neec.notification.AHNotification;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,13 @@ public class DemoActivity extends AppCompatActivity {
     private AHBottomNavigationViewPager viewPager;
     private AHBottomNavigation bottomNavigation;
     private FloatingActionButton floatingActionButton;
+
+    //internet
+    public boolean isInternetAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +118,32 @@ public class DemoActivity extends AppCompatActivity {
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
+
+                if (!isInternetAvailable()) {
+                    Intent intent = new Intent(DemoActivity.this, SemNet.class);
+                    startActivity(intent);
+                }
+
+                if(position == 0){
+                    //Sugestoes
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Setting custom colors for notification
+                /*
+				AHNotification notification = new AHNotification.Builder()
+						.setText(":)")
+						.setBackgroundColor(ContextCompat.getColor(DemoActivity.this, R.color.color_notification_back))
+						.setTextColor(ContextCompat.getColor(DemoActivity.this, R.color.color_notification_text))
+						.build();
+				bottomNavigation.setNotification(notification, 0);*/
+                            Snackbar.make(bottomNavigation, "Tens alguma sugestão ? \n"
+                                            +"Envia um email para geral@neec-fct.com",
+                                    Snackbar.LENGTH_SHORT).setDuration(5000).show();
+
+                        }
+                    }, 1500);
+                }
 
                 if (currentFragment == null) {
                     currentFragment = adapter.getCurrentFragment();
@@ -235,23 +271,8 @@ public class DemoActivity extends AppCompatActivity {
         currentFragment = adapter.getCurrentFragment();
 
 
-		/*
-		Podemos usar isto num futuro
-		handler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				// Setting custom colors for notification
-				AHNotification notification = new AHNotification.Builder()
-						.setText(":)")
-						.setBackgroundColor(ContextCompat.getColor(DemoActivity.this, R.color.color_notification_back))
-						.setTextColor(ContextCompat.getColor(DemoActivity.this, R.color.color_notification_text))
-						.build();
-				bottomNavigation.setNotification(notification, 1);
-				Snackbar.make(bottomNavigation, "Snackbar with bottom navigation",
-						Snackbar.LENGTH_SHORT).show();
 
-			}
-		}, 3000);*/
+
 
 
 		//Verifica se foi redirect

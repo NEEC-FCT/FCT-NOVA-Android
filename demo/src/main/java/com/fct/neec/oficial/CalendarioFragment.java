@@ -98,8 +98,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
             Intent intent = new Intent(getContext(), SemNet.class);
             startActivity(intent);
         }
-
-
+        
         View view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
         linearContainer = view.findViewById(R.id.linear);

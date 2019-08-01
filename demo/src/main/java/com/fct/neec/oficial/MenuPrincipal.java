@@ -22,7 +22,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     final String[] items = new String[]{"Contactar Segurança", "Em caso de doença súbita/acidente",
             "Em caso de alarme de evacuação", "Em caso de incêndio", "Em caso de sismo"};
-    private long startime = System.currentTimeMillis();
+    private boolean star = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +37,10 @@ public class MenuPrincipal extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                long endtime = System.currentTimeMillis();
-                Log.d("Time", " " + (endtime - startime));
 
-                if ((endtime - startime) > 500) {
+
+
+                if (star) {
                     Object item = parent.getItemAtPosition(position);
                     Log.d("Spinner", item.toString());
 
@@ -103,6 +103,8 @@ public class MenuPrincipal extends AppCompatActivity {
                     }
                 }
 
+                star = true;
+
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -163,8 +165,6 @@ public class MenuPrincipal extends AppCompatActivity {
         sos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                startime = System.currentTimeMillis();
-
                 spinner.performClick();
 
 
@@ -180,6 +180,15 @@ public class MenuPrincipal extends AppCompatActivity {
         //start activity
         Intent myIntent = new Intent(MenuPrincipal.this, DemoActivity.class);
         startActivity(myIntent);
+    }
+
+    @Override
+    public void onBackPressed() {
+       //fecha a app
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private void startNewActivity(Context context, String packageName) {

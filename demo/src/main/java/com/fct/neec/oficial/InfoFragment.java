@@ -1,12 +1,16 @@
 package com.fct.neec.oficial;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -29,17 +33,37 @@ public class InfoFragment extends Fragment {
         return fragment;
     }
 
+    public boolean isInternetAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_info, container, false);
+
+        if (!isInternetAvailable()) {
+            Intent intent = new Intent(getContext(), SemNet.class);
+            startActivity(intent);
+        }
+
+        else{
         webview = view.findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl("https://fctapp.neec-fct.com/Informacao/");
         webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
         webview.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error){
+                //Your code to do
+                Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
+                startActivity(myIntent);
+            }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -129,6 +153,7 @@ public class InfoFragment extends Fragment {
         });
 
 
+        }
 
         return view;
     }

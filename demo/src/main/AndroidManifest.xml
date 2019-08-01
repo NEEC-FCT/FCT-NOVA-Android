@@ -55,6 +55,10 @@
             android:name=".SemNet"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".AlgoErradoAconteceu"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>

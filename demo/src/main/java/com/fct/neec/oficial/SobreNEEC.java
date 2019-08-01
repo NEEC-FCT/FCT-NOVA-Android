@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -37,17 +40,31 @@ public class SobreNEEC extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.sobreneec, container, false);
+
         if (!isInternetAvailable()) {
             Intent intent = new Intent(getContext(), SemNet.class);
             startActivity(intent);
         }
 
-        View view = inflater.inflate(R.layout.sobreneec, container, false);
+        else {
+
+
         final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
         final WebView webview = view.findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl("https://fctapp.neec-fct.com/SobreNEEC/");
         webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+            webview.setWebViewClient(new WebViewClient() {
+
+                                         @Override
+                                         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                                             //Your code to do
+                                             Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
+                                             startActivity(myIntent);
+                                         }
+                                     }
+            );
         webview.setHorizontalScrollBarEnabled(false);
         webview.setOnTouchListener(new View.OnTouchListener() {
             float m_downX;
@@ -128,6 +145,7 @@ public class SobreNEEC extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+        }
         return view;
     }
 
