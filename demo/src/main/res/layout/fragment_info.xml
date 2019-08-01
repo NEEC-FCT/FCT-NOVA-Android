@@ -27,7 +27,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/webview"
         app:layout_constraintEnd_toEndOf="@+id/webview"
         app:layout_constraintStart_toStartOf="@+id/webview"
