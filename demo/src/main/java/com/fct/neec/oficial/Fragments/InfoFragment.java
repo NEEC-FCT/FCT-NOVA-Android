@@ -1,4 +1,4 @@
-package com.fct.neec.oficial;
+package com.fct.neec.oficial.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +18,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.fct.neec.oficial.AlgoErradoAconteceu;
+import com.fct.neec.oficial.MainActivity;
+import com.fct.neec.oficial.R;
+import com.fct.neec.oficial.RegrasSegurança.RegrasDoenca;
+import com.fct.neec.oficial.RegrasSegurança.RegrasEvacuacao;
+import com.fct.neec.oficial.RegrasSegurança.RegrasIncendio;
+import com.fct.neec.oficial.RegrasSegurança.RegrasSismo;
+import com.fct.neec.oficial.SemNet;
 import com.github.clans.fab.FloatingActionButton;
 
 public class InfoFragment extends Fragment {
@@ -70,11 +78,11 @@ public class InfoFragment extends Fragment {
                 webview.setVisibility(View.GONE);
 
                 if (url.startsWith("https://www.fct.unl.pt/estudante/informacao-academica/prazos") ) {
-                    ((DemoActivity)getActivity()).changeFragment(3);
+                    ((MainActivity)getActivity()).changeFragment(3);
                     return false;
                 }
                 else {
-                    ((DemoActivity)getActivity()).changeFragment(1);
+                    ((MainActivity)getActivity()).changeFragment(1);
                     Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(i);
                 }

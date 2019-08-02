@@ -1,10 +1,13 @@
-package com.fct.neec.oficial;
+package com.fct.neec.oficial.RegrasSegurança;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.fct.neec.oficial.AppIntroSampleSlider;
+import com.fct.neec.oficial.MainActivity;
+import com.fct.neec.oficial.R;
 import com.github.paolorotolo.appintro.AppIntro;
 
 /**
@@ -49,7 +52,7 @@ public class MyIntro extends AppIntro {
         editor.commit();
         Toast.makeText(getApplicationContext(),
                 getString(R.string.app_intro_skip), Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getApplicationContext(), DemoActivity.class);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
     }
 

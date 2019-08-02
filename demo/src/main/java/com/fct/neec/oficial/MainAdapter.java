@@ -12,17 +12,17 @@ import java.util.ArrayList;
 /**
  *
  */
-public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.ViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private ArrayList<String> mDataset = new ArrayList<>();
 
-    public DemoAdapter(ArrayList<String> dataset) {
+    public MainAdapter(ArrayList<String> dataset) {
         mDataset.clear();
         mDataset.addAll(dataset);
     }
 
     @Override
-    public DemoAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_demo, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;

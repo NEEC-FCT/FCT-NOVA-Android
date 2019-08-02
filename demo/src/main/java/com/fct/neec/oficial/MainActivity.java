@@ -20,21 +20,22 @@ import com.fct.neec.AHBottomNavigation;
 import com.fct.neec.AHBottomNavigationAdapter;
 import com.fct.neec.AHBottomNavigationItem;
 import com.fct.neec.AHBottomNavigationViewPager;
-import com.fct.neec.notification.AHNotification;
+import com.fct.neec.oficial.RegrasSegurança.MyIntro;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
-public class DemoActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Fragment currentFragment;
-    private DemoViewPagerAdapter adapter;
+    private MainViewPagerAdapter adapter;
     private AHBottomNavigationAdapter navigationAdapter;
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private boolean useMenuResource = true;
     private int[] tabColors;
     private Handler handler = new Handler();
+    private Boolean show = true;
 
     // UI
     private AHBottomNavigationViewPager viewPager;
@@ -58,8 +59,8 @@ public class DemoActivity extends AppCompatActivity {
 
         int idName = pref.getInt("intro", 0);
         if (idName == 0) {
-            Intent intent = new Intent(DemoActivity.this, MyIntro.class);
-            DemoActivity.this.startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, MyIntro.class);
+            MainActivity.this.startActivity(intent);
 
         }
         setContentView(R.layout.activity_home);
@@ -120,12 +121,13 @@ public class DemoActivity extends AppCompatActivity {
             public boolean onTabSelected(int position, boolean wasSelected) {
 
                 if (!isInternetAvailable()) {
-                    Intent intent = new Intent(DemoActivity.this, SemNet.class);
+                    Intent intent = new Intent(MainActivity.this, SemNet.class);
                     startActivity(intent);
                 }
 
-                if(position == 0){
+                if(position == 0 && show){
                     //Sugestoes
+                    show = false;
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -133,13 +135,13 @@ public class DemoActivity extends AppCompatActivity {
                 /*
 				AHNotification notification = new AHNotification.Builder()
 						.setText(":)")
-						.setBackgroundColor(ContextCompat.getColor(DemoActivity.this, R.color.color_notification_back))
-						.setTextColor(ContextCompat.getColor(DemoActivity.this, R.color.color_notification_text))
+						.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.color_notification_back))
+						.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.color_notification_text))
 						.build();
 				bottomNavigation.setNotification(notification, 0);*/
                             Snackbar.make(bottomNavigation, "Tens alguma sugestão ? \n"
                                             +"Envia um email para geral@neec-fct.com",
-                                    Snackbar.LENGTH_SHORT).setDuration(5000).show();
+                                    Snackbar.LENGTH_SHORT).setDuration(4000).show();
 
                         }
                     }, 1500);
@@ -258,14 +260,14 @@ public class DemoActivity extends AppCompatActivity {
         bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
             @Override
             public void onPositionChange(int y) {
-                Log.d("DemoActivity", "BottomNavigation Position: " + y);
+                Log.d("MainActivity", "BottomNavigation Position: " + y);
 
             }
         });
 
 
         viewPager.setOffscreenPageLimit(4);
-        adapter = new DemoViewPagerAdapter(getSupportFragmentManager());
+        adapter = new MainViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         currentFragment = adapter.getCurrentFragment();
@@ -301,7 +303,7 @@ public class DemoActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d("CDA", "onBackPressed Called");
-        Intent k = new Intent(DemoActivity.this, MenuPrincipal.class);
+        Intent k = new Intent(MainActivity.this, MenuPrincipal.class);
         startActivity(k);
     }
 

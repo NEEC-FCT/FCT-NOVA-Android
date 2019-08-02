@@ -1,4 +1,4 @@
-package com.fct.neec.oficial;
+package com.fct.neec.oficial.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,12 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.fct.neec.oficial.AlgoErradoAconteceu;
+import com.fct.neec.oficial.R;
+import com.fct.neec.oficial.SemNet;
 
 import static android.view.View.VISIBLE;
 
@@ -54,8 +58,8 @@ public class NoticiasFragment extends Fragment {
 
 
         final WebView webview = view.findViewById(R.id.webview);
-        webview.setVisibility(View.GONE);
 
+        webview.setVisibility(View.GONE);
         webview.getSettings().setJavaScriptEnabled(true);
 
         webview.setWebViewClient(new WebViewClient() {
@@ -76,7 +80,6 @@ public class NoticiasFragment extends Fragment {
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error){
-                //Your code to do
                 Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
                 startActivity(myIntent);
             }

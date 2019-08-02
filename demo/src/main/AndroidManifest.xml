@@ -24,10 +24,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.fct.neec.oficial.DemoActivity"
+            android:name="com.fct.neec.oficial.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MyIntro"
+            android:name=".RegrasSegurança.MyIntro"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
         <activity
@@ -36,19 +36,19 @@
             android:theme="@style/FullscreenTheme" />
 
         <activity
-            android:name=".RegrasDoenca"
+            android:name=".RegrasSegurança.RegrasDoenca"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".RegrasEvacuacao"
+            android:name=".RegrasSegurança.RegrasEvacuacao"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".RegrasIncendio"
+            android:name=".RegrasSegurança.RegrasIncendio"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".RegrasSismo"
+            android:name=".RegrasSegurança.RegrasSismo"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
         <activity

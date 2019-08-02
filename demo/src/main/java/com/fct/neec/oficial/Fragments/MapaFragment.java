@@ -1,8 +1,9 @@
-package com.fct.neec.oficial;
+package com.fct.neec.oficial.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,9 @@ import android.webkit.WebViewClient;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.fct.neec.oficial.AlgoErradoAconteceu;
+import com.fct.neec.oficial.R;
+import com.fct.neec.oficial.SemNet;
 import com.google.android.material.tabs.TabLayout;
 
 import static android.view.View.VISIBLE;
@@ -29,6 +33,7 @@ public class MapaFragment extends Fragment {
      */
 
     private WebView webview;
+    private String currentUrl;
 
     public static MapaFragment newInstance(int index) {
         MapaFragment fragment = new MapaFragment();
@@ -56,20 +61,29 @@ public class MapaFragment extends Fragment {
             final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
             webview = view.findViewById(R.id.webview);
             webview.getSettings().setJavaScriptEnabled(true);
-            webview.setVisibility(View.INVISIBLE);
-            webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
-
-
             webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+            webview.setVisibility(View.GONE);
+            webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
+            currentUrl = "https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16";
             webview.setWebViewClient(new WebViewClient() {
 
                 @Override
-                public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                    Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
-                    startActivity(myIntent);
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                    if (url.equals(currentUrl)) {
+                        view.loadUrl(url);
+                    }
+                    return true;
                 }
-            }
-            );
+
+                @Override
+                public void onPageFinished(WebView view, String url) {
+
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('gbr').style.display='none';})()");
+                    webview.setVisibility(VISIBLE);
+                }
+            });
 
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -78,10 +92,18 @@ public class MapaFragment extends Fragment {
                     int position = tab.getPosition();
                     Log.d("TAB", "clicou em: " + position);
                     if (position == 0) {
-                        webview.setVisibility(View.INVISIBLE);
+                        currentUrl = "https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16";
                         webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
                         webview.setWebViewClient(new WebViewClient() {
 
+                            @Override
+                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                                if (url.equals(currentUrl)) {
+                                    view.loadUrl(url);
+                                }
+                                return true;
+                            }
 
                             @Override
                             public void onPageFinished(WebView view, String url) {
@@ -89,21 +111,23 @@ public class MapaFragment extends Fragment {
                                 webview.loadUrl("javascript:(function() { " +
                                         "document.getElementById('gbr').style.display='none';})()");
                                 webview.setVisibility(VISIBLE);
-
-
                             }
                         });
+                        webview.setVisibility(View.GONE);
+
                     }
                     if (position == 1) {
-                        webview.setVisibility(View.INVISIBLE);
+                        currentUrl = "https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16";
                         webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16");
                         webview.setWebViewClient(new WebViewClient() {
 
                             @Override
-                            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                                //Your code to do
-                                Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
-                                startActivity(myIntent);
+                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                                if (url.equals(currentUrl)) {
+                                    view.loadUrl(url);
+                                }
+                                return true;
                             }
 
                             @Override
@@ -112,10 +136,9 @@ public class MapaFragment extends Fragment {
                                 webview.loadUrl("javascript:(function() { " +
                                         "document.getElementById('gbr').style.display='none';})()");
                                 webview.setVisibility(VISIBLE);
-
-
                             }
                         });
+                        webview.setVisibility(View.GONE);
                     }
                 }
 

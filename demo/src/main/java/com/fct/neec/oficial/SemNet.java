@@ -29,7 +29,7 @@ public class SemNet extends AppCompatActivity {
             @Override
             public void run() {
                 if (isInternetAvailable()){
-                    Intent intent = new Intent(getApplicationContext(), DemoActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
                 else {
@@ -46,7 +46,7 @@ public class SemNet extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (isInternetAvailable()){
-            Intent intent = new Intent(getApplicationContext(), DemoActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
     }

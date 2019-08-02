@@ -1,8 +1,10 @@
-package com.fct.neec.oficial;
+package com.fct.neec.oficial.RegrasSegurança;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.fct.neec.oficial.R;
 
 public class RegrasSismo extends AppCompatActivity {
 

@@ -17,6 +17,11 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.fct.neec.oficial.RegrasSegurança.RegrasDoenca;
+import com.fct.neec.oficial.RegrasSegurança.RegrasEvacuacao;
+import com.fct.neec.oficial.RegrasSegurança.RegrasIncendio;
+import com.fct.neec.oficial.RegrasSegurança.RegrasSismo;
+
 public class MenuPrincipal extends AppCompatActivity {
 
 
@@ -178,7 +183,7 @@ public class MenuPrincipal extends AppCompatActivity {
         edit.putInt("Separador", positon);
         edit.commit();
         //start activity
-        Intent myIntent = new Intent(MenuPrincipal.this, DemoActivity.class);
+        Intent myIntent = new Intent(MenuPrincipal.this, MainActivity.class);
         startActivity(myIntent);
     }
 

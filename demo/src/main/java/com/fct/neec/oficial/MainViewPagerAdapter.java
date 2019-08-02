@@ -6,17 +6,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.fct.neec.oficial.Fragments.InfoFragment;
+import com.fct.neec.oficial.Fragments.MapaFragment;
+import com.fct.neec.oficial.Fragments.NoticiasFragment;
+import com.fct.neec.oficial.Fragments.SobreNEEC;
+
 import java.util.ArrayList;
 
 /**
  *
  */
-public class DemoViewPagerAdapter extends FragmentPagerAdapter {
+public class MainViewPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private Fragment currentFragment;
 
-    public DemoViewPagerAdapter(FragmentManager fm) {
+    public MainViewPagerAdapter(FragmentManager fm) {
         super(fm);
 
         fragments.clear();

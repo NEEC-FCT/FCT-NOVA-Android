@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../FCT-NOVA-Android.iml" filepath="$PROJECT_DIR$/../FCT-NOVA-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ahbottomnavigation/ahbottomnavigation.iml" filepath="$PROJECT_DIR$/../ahbottomnavigation/ahbottomnavigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/demo.iml" filepath="$PROJECT_DIR$/.idea/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo.iml" filepath="$PROJECT_DIR$/demo.iml" />
     </modules>
   </component>
