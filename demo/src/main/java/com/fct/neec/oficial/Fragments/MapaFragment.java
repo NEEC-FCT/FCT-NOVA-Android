@@ -33,7 +33,8 @@ public class MapaFragment extends Fragment {
      */
 
     private WebView webview;
-    private String currentUrl;
+    private int position = 0;
+
 
     public static MapaFragment newInstance(int index) {
         MapaFragment fragment = new MapaFragment();
@@ -64,80 +65,19 @@ public class MapaFragment extends Fragment {
             webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
             webview.setVisibility(View.GONE);
             webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
-            currentUrl = "https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16";
-            webview.setWebViewClient(new WebViewClient() {
-
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                    if (url.equals(currentUrl)) {
-                        view.loadUrl(url);
-                    }
-                    return true;
-                }
-
-                @Override
-                public void onPageFinished(WebView view, String url) {
-
-                    webview.loadUrl("javascript:(function() { " +
-                            "document.getElementById('gbr').style.display='none';})()");
-                    webview.setVisibility(VISIBLE);
-                }
-            });
-
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
-                    int position = tab.getPosition();
+                    position = tab.getPosition();
                     Log.d("TAB", "clicou em: " + position);
                     if (position == 0) {
-                        currentUrl = "https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16";
                         webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
-                        webview.setWebViewClient(new WebViewClient() {
-
-                            @Override
-                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                                if (url.equals(currentUrl)) {
-                                    view.loadUrl(url);
-                                }
-                                return true;
-                            }
-
-                            @Override
-                            public void onPageFinished(WebView view, String url) {
-
-                                webview.loadUrl("javascript:(function() { " +
-                                        "document.getElementById('gbr').style.display='none';})()");
-                                webview.setVisibility(VISIBLE);
-                            }
-                        });
                         webview.setVisibility(View.GONE);
 
                     }
                     if (position == 1) {
-                        currentUrl = "https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16";
                         webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16");
-                        webview.setWebViewClient(new WebViewClient() {
-
-                            @Override
-                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                                if (url.equals(currentUrl)) {
-                                    view.loadUrl(url);
-                                }
-                                return true;
-                            }
-
-                            @Override
-                            public void onPageFinished(WebView view, String url) {
-
-                                webview.loadUrl("javascript:(function() { " +
-                                        "document.getElementById('gbr').style.display='none';})()");
-                                webview.setVisibility(VISIBLE);
-                            }
-                        });
                         webview.setVisibility(View.GONE);
                     }
                 }
@@ -154,6 +94,28 @@ public class MapaFragment extends Fragment {
 
         webview.setWebViewClient(new WebViewClient() {
 
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                Log.d("URL" , url);
+                if (url.equals("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16") || url.equals("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16")) {
+                    webview.loadUrl(url);
+                }
+                if (url.startsWith("https://accounts.google")){
+                    Log.d("URL" , "Apanhei google");
+                    if (position == 0) {
+                        webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
+                        webview.setVisibility(View.GONE);
+
+                    }
+                    if (position == 1) {
+                        webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16");
+                        webview.setVisibility(View.GONE);
+                    }
+                }
+                return false;
+            }
 
             @Override
             public void onPageFinished(WebView view, String url) {
