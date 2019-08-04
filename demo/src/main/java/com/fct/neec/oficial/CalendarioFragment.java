@@ -15,6 +15,7 @@ import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
@@ -33,12 +34,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
+
 
 
 public class CalendarioFragment extends Fragment implements CalendarioAdapter.eventoListener {
@@ -50,11 +54,12 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Event> itemsData = new ArrayList<>();
     private boolean sc = false;
+    private SimpleDateFormat df = new SimpleDateFormat("MMMM YYYY", Locale.getDefault());
 
     private RecyclerView.OnScrollListener on_scroll = new RecyclerView.OnScrollListener() {
 
         @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
             try {
                 int pos = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
@@ -63,7 +68,6 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                     calendar.setCurrentDate(new Date(time));
                     setMonthText();
                 }
-
             } catch (Exception ignored) {
 
             }
@@ -92,7 +96,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (!isInternetAvailable()) {
             Intent intent = new Intent(getContext(), SemNet.class);
@@ -119,7 +123,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
                 if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
@@ -207,10 +211,10 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                             JSONArray array = new JSONArray(response);
                             Log.d("length", "" + array.length());
                             itemsData.clear();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject obj = array.getJSONObject(i);
                                 int color = Color.parseColor(obj.getString("color"));
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                                 long time = dateFormat.parse(obj.getString("time")).getTime();
                                 String name = obj.getString("name");
                                 Event evt = new Event(color, time, name);
@@ -241,7 +245,8 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("Eventos", error.getMessage());
+                if (error != null)
+                    Log.e("Eventos", error.getMessage());
                 itemsData.clear();
                 itemsData.add(new Event(0, 0, "Ocorreu um erro a carregar o calendário."));
                 refreshAdapter();
@@ -265,8 +270,15 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
     private void setMonthText() {
 
-        if (monthText != null)
-            monthText.setText(new SimpleDateFormat("MMMM YYYY").format(calendar.getFirstDayOfCurrentMonth()));
+        if (monthText != null && calendar != null) {
+            try {
+                Date day = calendar.getFirstDayOfCurrentMonth();
+                String string = df.format(day);
+                monthText.setText(string);
+            } catch (Exception e) {
+                Log.e("monthText", e.getMessage());
+            }
+        }
     }
 
     private void scrollToDate(Date dateClicked) {
@@ -300,6 +312,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     void refresh() {
         Date date = new Date();
         if (calendar != null) {
+            sc = true;
             calendar.setCurrentDate(date);
             scrollToDate(date);
             setMonthText();

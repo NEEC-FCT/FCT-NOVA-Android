@@ -12,6 +12,7 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.ViewHolder> {
 
@@ -39,7 +40,7 @@ public class CalendarioAdapter extends RecyclerView.Adapter<CalendarioAdapter.Vi
             holder.titulo.setText((String) evt.getData());
             long time = evt.getTimeInMillis();
             if (time > 0) {
-                holder.data.setText(new SimpleDateFormat("dd MMMM").format(time));
+                holder.data.setText(new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(time));
                 holder.cor.setBackgroundColor(evt.getColor());
             }
         }
