@@ -54,7 +54,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Event> itemsData = new ArrayList<>();
     private boolean sc = false;
-    private SimpleDateFormat df = new SimpleDateFormat("MMMM YYYY", Locale.getDefault());
+    private SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
 
     private RecyclerView.OnScrollListener on_scroll = new RecyclerView.OnScrollListener() {
 
