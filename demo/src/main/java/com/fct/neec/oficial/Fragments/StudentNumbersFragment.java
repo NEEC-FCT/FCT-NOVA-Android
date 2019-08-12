@@ -62,6 +62,27 @@ public class StudentNumbersFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_numbers, container, false);
+        final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("TAB", "clicou em: " + tab.getPosition());
+                if (tab.getPosition() == 0) {
+                    ((MainActivity) getActivity()).changeFragment(3 , false);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
         mListView = view.findViewById(R.id.list_view);
 
         return view;
@@ -143,7 +164,7 @@ public class StudentNumbersFragment extends Fragment
             ClipSettings.saveStudentYearSemesterIdSelected(getActivity(), students.get(groupPosition)
                     .getYears().get(childPosition).getId());
 
-            // Lets go to NavDrawerActivity
+            // Lets go to Horario
             //TODO
 
 

@@ -78,9 +78,6 @@ public abstract class Request {
 
             response = sendRequestWithCookie(context, connection);
 
-         //   Log.d( "CLIP" , "Request - url: " + url);
-         //   Log.d("CLIP" , "codigo: " + response.statusCode());
-          //  Log.d("CLIP" , response.body().toString());
 
             return response.parse();
         } catch (Exception e) {
