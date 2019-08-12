@@ -29,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.Fragments.ClipLoginFragment;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -118,7 +119,15 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 1) {
                     //mudar de fragmento
-                    ((MainActivity) getActivity()).changeFragment(5, false);
+                    // If the user has already login, start the StudentNumbersActivity instead
+                    if( ClipSettings.isUserLoggedIn(getContext()) ) {
+                        Log.d( "CLIP" , "ConnectClipActivity - user has already login");
+                        ((MainActivity) getActivity()).changeFragment(6, false);
+                    }
+                    else{
+                        ((MainActivity) getActivity()).changeFragment(5, false);
+                    }
+
 
                 }
             }

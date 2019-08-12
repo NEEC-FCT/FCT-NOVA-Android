@@ -75,13 +75,16 @@ public abstract class Request {
             if( ClipSettings.isTimeForANewCookie(context) )
                 requestNewCookie(context, ClipSettings.getLoggedInUserName(context),
                         ClipSettings.getLoggedInUserPw(context));
-            
+
             response = sendRequestWithCookie(context, connection);
 
-            Log.d( "CLIP" , "Request - url:" + url);
+         //   Log.d( "CLIP" , "Request - url: " + url);
+         //   Log.d("CLIP" , "codigo: " + response.statusCode());
+          //  Log.d("CLIP" , response.body().toString());
 
             return response.parse();
         } catch (Exception e) {
+            Log.d("CLIP" , e.toString());
             throw new ServerUnavailableException();
         }
 
@@ -98,7 +101,7 @@ public abstract class Request {
         // the login page, request new cookie
         Elements inputs = response.parse()
                 .body().getElementsByTag("input");
-        
+
         for(Element input : inputs)
             if(input.attr("name").equals(ID) || input.attr("name").equals(PW)) {
                 Log.d( "CLIP" , "Request - Requesting with user data");
@@ -106,10 +109,10 @@ public abstract class Request {
 
                 requestNewCookie(context, ClipSettings.getLoggedInUserName(context),
                         ClipSettings.getLoggedInUserPw(context));
-                
+
                 return sendRequestWithCookie(context, connection);
             }
-        
+
         return response;
     }
 

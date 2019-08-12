@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.fct.neec.oficial.ClipRequests.enums.Result;
+import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.tasks.ConnectClipTask;
 import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.R;
@@ -47,6 +48,7 @@ public class ClipLoginFragment extends Fragment implements ConnectClipTask.OnTas
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.cliplogin_fragment, container, false);
 
         final EditText nome = view.findViewById(R.id.nome);
@@ -116,13 +118,12 @@ public class ClipLoginFragment extends Fragment implements ConnectClipTask.OnTas
     public void onTaskFinished(Result result) {
         if(!isAdded())
             return;
-
         //showProgressSpinner(false);
-
         // If there was no errors, lets go to StudentNumbersActivity
         if(result == Result.SUCCESS) {
             //mudar de fragmento
             Toast.makeText(getContext(),"Sucesso!!" , Toast.LENGTH_LONG).show();
+            ((MainActivity) getActivity()).changeFragment(6, false);
         }
         else {
             Toast.makeText(getContext(),"Login incorrecto" , Toast.LENGTH_LONG).show();

@@ -1,6 +1,7 @@
 package com.fct.neec.oficial.ClipRequests.util.tasks;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.exceptions.ServerUnavailableException;
@@ -28,8 +29,10 @@ public class GetStudentYearsTask extends BaseTask<Object, Void, Student> {
         
         try {
             // Get students years
+            Log.d("CLIP", "ID: " + student.getId()  + "  NumberID: " + student.getNumberId());
             return StudentTools.getStudentsYears(mContext, student.getId(), student.getNumberId());
         } catch (ServerUnavailableException e) {
+            Log.d("CLIP",e.toString());
             return null;
         }
     }
