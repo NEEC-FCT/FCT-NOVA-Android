@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,8 +29,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.fct.neec.oficial.Fragments.ClipLoginFragment;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -105,6 +109,33 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
         View view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
+        final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("TAB", "clicou em: " + tab.getPosition());
+                if (tab.getPosition() == 1) {
+                    //mudar de fragmento
+                    ((MainActivity) getActivity()).changeFragment(5, false);
+
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+
+
+
+        //Calendario
         linearContainer = view.findViewById(R.id.linear);
         recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
@@ -148,6 +179,7 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
         calendar.setAnimationListener(new CompactCalendarView.CompactCalendarAnimationListener() {
             @Override
             public void onOpened() {
+
                 refresh();
                 Animation fadeIn = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
                 if (recyclerView != null) {

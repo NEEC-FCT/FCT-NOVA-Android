@@ -7,6 +7,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="@color/color_tab_4">
+
+    <com.google.android.material.tabs.TabItem android:text="Calendário FCT" />
+
+    <com.google.android.material.tabs.TabItem android:text="Clip" />
+    </com.google.android.material.tabs.TabLayout>
+
     <TextView
         android:id="@+id/monthText"
         android:layout_width="match_parent"

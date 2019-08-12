@@ -15,11 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import com.fct.neec.AHBottomNavigation;
 import com.fct.neec.AHBottomNavigationAdapter;
 import com.fct.neec.AHBottomNavigationItem;
 import com.fct.neec.AHBottomNavigationViewPager;
+import com.fct.neec.oficial.Fragments.ClipLoginFragment;
 import com.fct.neec.oficial.RegrasSegurança.MyIntro;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -68,10 +70,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void changeFragment(int position){
-        initUI();
-        viewPager.setCurrentItem(position, false);
-        bottomNavigation.setCurrentItem(position);
+    public void changeFragment(int position , boolean initUI){
+
+       // if(initUI)
+            initUI();
+
+        if( position >= 5){
+            bottomNavigation.setCurrentItem(3);
+            viewPager.setCurrentItem(position, false);
+
+
+        }
+        else{
+            viewPager.setCurrentItem(position, false);
+            bottomNavigation.setCurrentItem(position);
+        }
+
     }
 
     @Override
