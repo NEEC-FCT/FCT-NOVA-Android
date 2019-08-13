@@ -3,6 +3,7 @@ package com.fct.neec.oficial.Fragments;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,11 @@ import android.view.ViewGroup;
 import com.astuetz.PagerSlidingTabStrip;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentScheduleTask;
+import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
+import com.google.android.material.tabs.TabLayout;
 
 public class ScheduleViewPager extends BaseViewPager
         implements GetStudentScheduleTask.OnTaskFinishedListener<Student> {
@@ -61,8 +64,34 @@ public class ScheduleViewPager extends BaseViewPager
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
         // Bind the tabs to the ViewPager
-     //   PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
-     //   tabs.setViewPager(mViewPager);
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
+        tabs.setViewPager(mViewPager);
+        tabs.setDividerColor(R.color.white);
+        tabs.setTextColor(R.color.white);
+        tabs.setIndicatorColor(R.color.white);
+
+        final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("TAB", "clicou em: " + tab.getPosition());
+                if (tab.getPosition() == 0) {
+                    ((MainActivity) getActivity()).changeFragment(3 , false);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
     }
 
     @Override

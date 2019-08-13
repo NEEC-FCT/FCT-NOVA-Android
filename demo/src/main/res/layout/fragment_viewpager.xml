@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/main_view"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/main_view"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabIndicatorColor="@color/color_tab_4">
+
+            <com.google.android.material.tabs.TabItem android:text="Calendário FCT" />
+
+            <com.google.android.material.tabs.TabItem android:text="Clip" />
+        </com.google.android.material.tabs.TabLayout>
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +31,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
+            <com.astuetz.PagerSlidingTabStrip
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textSize="@dimen/tabs_text_size"
+                android:background="@color/main_color"
+                />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -26,3 +52,5 @@
 
     </LinearLayout>
 
+
+</FrameLayout>
