@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,24 +15,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <receiver android:name=".ProximaAula">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/proxima_aula_info" />
+        </receiver>
 
         <!-- Content provider -->
-        <provider android:name="com.fct.neec.oficial.ClipRequests.provider.ClipMobileProvider"
-            android:exported="false"
-            android:authorities="@string/provider_authority"> </provider>
-
+        <provider
+            android:name=".ClipRequests.provider.ClipMobileProvider"
+            android:authorities="@string/provider_authority"
+            android:exported="false"></provider>
 
         <activity
-            android:name="com.fct.neec.oficial.LoadingActivity"
-            android:screenOrientation="portrait"
-            android:noHistory="true">
+            android:name=".LoadingActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.fct.neec.oficial.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegrasSegurança.MyIntro"
@@ -43,7 +52,6 @@
             android:name=".MenuPrincipal"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
-
         <activity
             android:name=".RegrasSegurança.RegrasDoenca"
             android:screenOrientation="portrait"
@@ -69,9 +77,5 @@
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
     </application>
-
-
-
-
 
 </manifest>

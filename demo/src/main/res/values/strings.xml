@@ -86,19 +86,20 @@
     <string name="schedule_no_classes">Sem aulas</string>
 
 
-    -<array name="schedule_tab_array">
+    -
+    <array name="schedule_tab_array">
 
-    <item>Segunda</item>
+        <item>Segunda</item>
 
-    <item>Terça</item>
+        <item>Terça</item>
 
-    <item>Quarta</item>
+        <item>Quarta</item>
 
-    <item>Quinta</item>
+        <item>Quinta</item>
 
-    <item>Sexta</item>
+        <item>Sexta</item>
 
-</array>
+    </array>
 
     <string name="schedule_class_start">Início:</string>
 
@@ -114,64 +115,68 @@
     <string name="categories_available">Categorias disponíveis</string>
 
 
-    -<array name="classes_docs_array">
+    -
+    <array name="classes_docs_array">
 
-    <item>Acetatos</item>
+        <item>Acetatos</item>
 
-    <item>Problemas</item>
+        <item>Problemas</item>
 
-    <item>Protocolos</item>
+        <item>Protocolos</item>
 
-    <item>Seminários</item>
+        <item>Seminários</item>
 
-    <item>Exames</item>
+        <item>Exames</item>
 
-    <item>Testes</item>
+        <item>Testes</item>
 
-    <item>Textos de Apoio</item>
+        <item>Textos de Apoio</item>
 
-    <item>Outros</item>
+        <item>Outros</item>
 
-</array>
-
-
-    -<array name="classes_docs_type_array">
-
-    <item>0ac</item>
-
-    <item>1e</item>
-
-    <item>2tr</item>
-
-    <item>3sm</item>
-
-    <item>ex</item>
-
-    <item>t</item>
-
-    <item>ta</item>
-
-    <item>xot</item>
-
-</array>
+    </array>
 
 
-    -<array name="semester_tab_array">
+    -
+    <array name="classes_docs_type_array">
 
-    <item>1º Semestre</item>
+        <item>0ac</item>
 
-    <item>2º Semestre</item>
+        <item>1e</item>
 
-</array>
+        <item>2tr</item>
+
+        <item>3sm</item>
+
+        <item>ex</item>
+
+        <item>t</item>
+
+        <item>ta</item>
+
+        <item>xot</item>
+
+    </array>
 
 
-    -<array name="exams_tests_tab_array">
+    -
+    <array name="semester_tab_array">
 
-    <item>Testes</item>
+        <item>1º Semestre</item>
 
-    <item>Exames</item>
+        <item>2º Semestre</item>
 
-</array>
+    </array>
+
+
+    -
+    <array name="exams_tests_tab_array">
+
+        <item>Testes</item>
+
+        <item>Exames</item>
+
+    </array>
 
     <!-- Info Contacts Fragment -->
 
@@ -185,68 +190,70 @@
     <string name="info_contacts_external_title">Contactos Externos</string>
 
 
-    -<array name="info_contacts_internal">
+    -
+    <array name="info_contacts_internal">
 
-    <item>Duplix</item>
+        <item>Duplix</item>
 
-    <item>212 952 971</item>
+        <item>212 952 971</item>
 
-    <item>09:00 - 19:00</item>
+        <item>09:00 - 19:00</item>
 
-    <item>Papelaria Solução</item>
+        <item>Papelaria Solução</item>
 
-    <item>927 532 763</item>
+        <item>927 532 763</item>
 
-    <item>08:30 - 00:00</item>
+        <item>08:30 - 00:00</item>
 
-    <item>Livraria Escolar Editora</item>
+        <item>Livraria Escolar Editora</item>
 
-    <item>212 946 367</item>
+        <item>212 946 367</item>
 
-    <item>09:00 - 19:00</item>
+        <item>09:00 - 19:00</item>
 
-    <item>Caixa Geral de Depósitos</item>
+        <item>Caixa Geral de Depósitos</item>
 
-    <item>212 946 200</item>
+        <item>212 946 200</item>
 
-    <item>08:30 - 15:00</item>
+        <item>08:30 - 15:00</item>
 
-    <item>Agência de Viagens Abreu</item>
+        <item>Agência de Viagens Abreu</item>
 
-    <item>213 596 170</item>
+        <item>213 596 170</item>
 
-    <item>-</item>
+        <item>-</item>
 
-</array>
+    </array>
 
 
-    -<array name="info_contacts_external">
+    -
+    <array name="info_contacts_external">
 
-    <item>Polícia de Segurança Pública</item>
+        <item>Polícia de Segurança Pública</item>
 
-    <item>212 746 558</item>
+        <item>212 746 558</item>
 
-    <item>Guarda Nacional Republicana</item>
+        <item>Guarda Nacional Republicana</item>
 
-    <item>212 942 639</item>
+        <item>212 942 639</item>
 
-    <item>Hospital Garcia de Orta</item>
+        <item>Hospital Garcia de Orta</item>
 
-    <item>212 727 100</item>
+        <item>212 727 100</item>
 
-    <item>Bombeiros Voluntários da Trafaria</item>
+        <item>Bombeiros Voluntários da Trafaria</item>
 
-    <item>212 950 093</item>
+        <item>212 950 093</item>
 
-    <item>Auto Estrela Almadense (Táxis)</item>
+        <item>Auto Estrela Almadense (Táxis)</item>
 
-    <item>212 509 660 / 964 991 580 / 939 483 484 / 917 064 142</item>
+        <item>212 509 660 / 964 991 580 / 939 483 484 / 917 064 142</item>
 
-    <item>Ratalma (Táxis)</item>
+        <item>Ratalma (Táxis)</item>
 
-    <item>212 947 070 / 967 373 400 / 917 253 636</item>
+        <item>212 947 070 / 967 373 400 / 917 253 636</item>
 
-</array>
+    </array>
 
     <!-- About dialog Fragment -->
 
@@ -262,5 +269,7 @@
     <string name="about_advisor_title">Advisor</string>
 
     <string name="about_advisor_name">Ricardo Carrapiço</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
