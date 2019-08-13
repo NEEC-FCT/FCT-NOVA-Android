@@ -1,11 +1,12 @@
 package com.fct.neec.oficial.ClipRequests.entities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Student extends Entity {
+public class Student extends Entity implements Serializable {
     private String numberId; // number on URL
     private String number;   // real student number
     private List<StudentYearSemester> years;

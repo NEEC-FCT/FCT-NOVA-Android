@@ -1,9 +1,10 @@
 package com.fct.neec.oficial.ClipRequests.entities;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class User extends Entity {
+public class User extends Entity  implements Serializable {
     private List<Student> students;
 
     public User() {

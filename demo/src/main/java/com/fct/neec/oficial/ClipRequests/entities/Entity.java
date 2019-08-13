@@ -1,6 +1,8 @@
 package com.fct.neec.oficial.ClipRequests.entities;
 
-public abstract class Entity {
+import java.io.Serializable;
+
+public abstract class Entity implements Serializable {
     private String id;
 
     public String getId() {

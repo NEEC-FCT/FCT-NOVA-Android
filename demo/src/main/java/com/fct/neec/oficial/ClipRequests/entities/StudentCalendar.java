@@ -3,7 +3,9 @@ package com.fct.neec.oficial.ClipRequests.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class StudentCalendar extends Entity implements Parcelable {
+import java.io.Serializable;
+
+public class StudentCalendar extends Entity implements Parcelable , Serializable {
     private String name, date, hour, rooms, number;
 
     public StudentCalendar() {}

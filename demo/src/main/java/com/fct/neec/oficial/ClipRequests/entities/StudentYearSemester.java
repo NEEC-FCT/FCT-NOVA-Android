@@ -1,6 +1,8 @@
 package com.fct.neec.oficial.ClipRequests.entities;
 
-public class StudentYearSemester extends Entity {
+import java.io.Serializable;
+
+public class StudentYearSemester extends Entity implements Serializable {
     private String year, semester;
 
     public StudentYearSemester() {}

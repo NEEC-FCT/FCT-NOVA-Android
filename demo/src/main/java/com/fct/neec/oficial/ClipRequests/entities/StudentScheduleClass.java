@@ -3,7 +3,9 @@ package com.fct.neec.oficial.ClipRequests.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class StudentScheduleClass extends Entity implements Parcelable {
+import java.io.Serializable;
+
+public class StudentScheduleClass extends Entity implements Parcelable , Serializable {
     private String name, name_min, type, hour_start, hour_end, room;
 
     public StudentScheduleClass() {}

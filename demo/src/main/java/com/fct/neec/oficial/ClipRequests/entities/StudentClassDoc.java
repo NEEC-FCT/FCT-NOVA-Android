@@ -1,6 +1,8 @@
 package com.fct.neec.oficial.ClipRequests.entities;
 
-public class StudentClassDoc extends Entity {
+import java.io.Serializable;
+
+public class StudentClassDoc extends Entity implements Serializable {
     private String name, url, date, size, type;
 
     public String getName() { return name; }

@@ -5,8 +5,11 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ClipSettings {
@@ -26,6 +29,8 @@ public class ClipSettings {
 
     private final static String STUDENT_CLASS_ID_SELECTED = "com.fct.neec.oficial.studentClassIdSelected";
     private final static String STUDENT_CLASS_SELECTED = "com.fct.neec.oficial.studentClassSelected";
+
+    private final static String STUDENT_SCHEDULE_SELECTED = "com.fct.neec.oficial.studentClassSelected";
 
     private static SharedPreferences get(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -207,4 +212,6 @@ public class ClipSettings {
 
         return calendar.getTime();
     }
+
+
 }

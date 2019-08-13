@@ -1,6 +1,8 @@
 package com.fct.neec.oficial.ClipRequests.entities;
 
-public class StudentClass extends Entity {
+import java.io.Serializable;
+
+public class StudentClass extends Entity implements Serializable {
     private String name, teacher_name, teacher_email, number;
     private int semester;
 

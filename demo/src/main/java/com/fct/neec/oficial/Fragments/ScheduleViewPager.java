@@ -12,6 +12,7 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentScheduleTask;
 import com.fct.neec.oficial.MainActivity;
+import com.fct.neec.oficial.ProximaAula;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
@@ -58,6 +59,7 @@ public class ScheduleViewPager extends BaseViewPager
         // Server is unavailable right now
         if(result == null) return;
 
+        ProximaAula.sethorario(result);
         // Initialize the ViewPager and set the adapter
         mViewPager.setAdapter(new ScheduleViewPagerAdapter(getChildFragmentManager(),
                 getResources().getStringArray(R.array.schedule_tab_array), result));

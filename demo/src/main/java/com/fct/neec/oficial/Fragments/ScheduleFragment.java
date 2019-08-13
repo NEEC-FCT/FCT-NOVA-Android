@@ -11,6 +11,8 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 
 import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
+import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
+import com.fct.neec.oficial.ProximaAula;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.ScheduleListViewAdapter;
 import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
@@ -40,8 +42,14 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments() != null)
-        classes = getArguments().getParcelableArrayList(ScheduleViewPagerAdapter.SCHEDULE_CLASSES_TAG);
+        if(getArguments() != null){
+            classes = getArguments().getParcelableArrayList(ScheduleViewPagerAdapter.SCHEDULE_CLASSES_TAG);
+            //ProximaAula.setDuyuruHaberList(classes);
+        }
+
+
+
+
     }
 
     @Override
