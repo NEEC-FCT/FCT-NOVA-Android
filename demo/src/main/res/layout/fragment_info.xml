@@ -7,6 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
+
     <WebView
         android:id="@+id/webview"
         android:layout_width="0dp"
@@ -108,4 +111,22 @@
             fab:fab_size="normal" />
 
     </com.github.clans.fab.FloatingActionMenu>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="@color/color_tab_2">
+
+        <com.google.android.material.tabs.TabItem android:text="Atos académicos" />
+
+        <com.google.android.material.tabs.TabItem android:text="Clip cadeiras" />
+    </com.google.android.material.tabs.TabLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

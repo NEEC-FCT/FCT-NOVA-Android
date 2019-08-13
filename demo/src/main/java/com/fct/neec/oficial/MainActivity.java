@@ -75,11 +75,15 @@ public class MainActivity extends AppCompatActivity {
        // if(initUI)
             initUI();
 
-        if( position >= 5){
+        if( position >= 5 && position  <= 7){
             bottomNavigation.setCurrentItem(3);
             viewPager.setCurrentItem(position, false);
 
 
+        }
+        else  if( position >= 8 ){
+            bottomNavigation.setCurrentItem(1);
+            viewPager.setCurrentItem(position, false);
         }
         else{
             viewPager.setCurrentItem(position, false);

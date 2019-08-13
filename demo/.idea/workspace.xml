@@ -131,6 +131,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6b8a511f-c0f0-4c6f-8136-a05d7087e88a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_info.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -220,104 +224,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/values/dimens.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/settings/ClipSettings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="102" selection-start-line="102" selection-end-line="102" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentScheduleTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="21" column="98" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ScheduleViewPager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="61" column="75" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="75" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/StudentNumbersFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="165" column="18" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/network/StudentCalendarRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="37" column="39" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/network/StudentClassesDocsRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="17" column="152" selection-start-line="17" selection-start-column="152" selection-end-line="17" selection-end-column="152" />
+            <state relative-caret-position="153">
+              <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/network/Request.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13">
-              <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_viewpager.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
-              <folding>
-                <element signature="e#1517#1540#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="276">
+              <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -328,14 +247,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
-        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>main</find>
       <find>Tab</find>
       <find>onUpdateTaskFinished</find>
       <find>utente</find>
@@ -363,8 +281,9 @@
       <find>GetStudentScheduleTask</find>
       <find>fragment</find>
       <find>Main</find>
-      <find>Toast</find>
       <find>Caused by:</find>
+      <find>Toast</find>
+      <find>initUI</find>
     </findStrings>
     <replaceStrings>
       <replace>Log.d(&quot;CLIP&quot; ,</replace>
@@ -383,15 +302,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/provider/ClipMobileDatabase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/provider/ClipMobileProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/DBUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/ClipMobileApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/provider/ClipMobileContract.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/settings/ClipSettings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/StudentTools.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/BaseTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/ConnectClipTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentCalendarTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesDocsTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesTask.java" />
@@ -400,12 +310,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/UpdateStudentPageTask.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/calendario.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_calendario.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/androidutils/AsyncTask.java" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/androidutils/GenericSimpleLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_dualpane.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/StudentNumbersAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/adapter_group_student_numbers.xml" />
@@ -425,7 +333,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ScheduleFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/ScheduleViewPagerAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/DepthPageTransformer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/cliplogin_fragment.xml" />
@@ -434,6 +341,18 @@
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_viewpager.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentScheduleTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/ClassListViewAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/adapter_class.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/StudentClassesDocsAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/adapter_child_student_classes_docs.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_info.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_classes.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_student_classes_docs.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -504,27 +423,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="oficial" type="462c0819:PsiDirectoryNode" />
-              <item name="ClipRequests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCT-NOVA-Android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCT-NOVA-Android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="demo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="oficial" type="462c0819:PsiDirectoryNode" />
-              <item name="ClipRequests" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCT-NOVA-Android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCT-NOVA-Android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="demo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="oficial" type="462c0819:PsiDirectoryNode" />
               <item name="Fragments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -542,7 +440,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="values" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -682,7 +580,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26107383" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26107383" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -691,14 +589,14 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3286119" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.63172805" />
+      <window_info anchor="bottom" id="Logcat" order="1" visible="true" weight="0.28895184" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="4" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Build" order="8" visible="true" weight="0.15439093" />
+      <window_info anchor="bottom" id="Build" order="8" weight="0.5155807" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.3286119" />
       <window_info anchor="right" id="Assistant" weight="0.3295302" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -710,61 +608,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/MapaFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="68" column="6" selection-start-line="68" selection-start-column="6" selection-end-line="91" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/androidutils/AsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/androidutils/GenericSimpleLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1258">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainAdapter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MenuPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/NDSpinner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_dualpane.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/adapter_group_student_numbers.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/clipmobile_list_longpressed_holo.9.png">
-      <provider editor-type-id="images" />
-      <provider selected="true" editor-type-id="ninepatcheditor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/drawable/clipmobile_list_selector_background_transition_holo_light.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -873,16 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/adapter_schedule_empty.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -938,13 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="172" selection-start-line="172" selection-end-line="172" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/DepthPageTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
@@ -962,14 +788,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -997,13 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/CalendarioFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="117" column="58" lean-forward="true" selection-start-line="117" selection-start-column="58" selection-end-line="117" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ScheduleFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
@@ -1021,14 +832,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_calendario.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="21" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -1079,13 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentScheduleTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
@@ -1120,20 +916,174 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/network/StudentClassesDocsRequest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/adapter_class.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding>
+            <element signature="e#823#849#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/ClassListViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="152" selection-start-line="17" selection-start-column="152" selection-end-line="17" selection-end-column="152" />
+        <state relative-caret-position="189">
+          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="36" selection-start-line="36" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2263#2820#0" expanded="true" />
+            <element signature="e#2819#2820#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/network/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
+        <state relative-caret-position="574">
           <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/StudentClassesDocsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="78" column="27" lean-forward="true" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#721#722#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#965#966#0" expanded="true" />
+            <element signature="e#1001#1002#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1119#1120#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+            <element signature="e#2690#2691#0" expanded="true" />
+            <element signature="e#2717#2718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_calendario.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="21" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/CalendarioFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="115" selection-start-line="115" selection-end-line="146" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="88" column="71" selection-start-line="88" selection-start-column="71" selection-end-line="88" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2146#2184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="138" selection-start-line="138" selection-end-line="138" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="79" lean-forward="true" selection-start-line="8" selection-start-column="79" selection-end-line="8" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/network/StudentClassesDocsRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_info.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="115" column="3" selection-start-line="115" selection-start-column="3" selection-end-line="128" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_classes.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/adapter_child_student_classes_docs.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_student_classes_docs.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="55" column="49" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MenuPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="203" column="14" selection-start-line="203" selection-start-column="14" selection-end-line="203" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
         </state>
       </provider>
     </entry>

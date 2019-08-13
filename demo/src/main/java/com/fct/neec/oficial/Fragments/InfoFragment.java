@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment;
 
 import com.fct.neec.oficial.AlgoErradoAconteceu;
 import com.fct.neec.oficial.BuildConfig;
+import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.RegrasSegurança.RegrasDoenca;
@@ -32,6 +33,7 @@ import com.fct.neec.oficial.RegrasSegurança.RegrasIncendio;
 import com.fct.neec.oficial.RegrasSegurança.RegrasSismo;
 import com.fct.neec.oficial.SemNet;
 import com.github.clans.fab.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 
 
 public class InfoFragment extends Fragment {
@@ -62,6 +64,44 @@ public class InfoFragment extends Fragment {
 
         // Set provider authority
         CONTENT_AUTHORITY = getString(R.string.provider_authority);
+
+
+        final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("TAB", "clicou em: " + tab.getPosition());
+                if (tab.getPosition() == 1) {
+                    //mudar de fragmento
+
+                  /*  if(ClipSettings.getYearSelected(getContext()) != null){
+                        Log.d( "CLIP" , "Vai para o horario");
+                        ((MainActivity) getActivity()).changeFragment(7, false);
+                    }
+                    // If the user has already login, start the StudentNumbersActivity instead
+                    else if( ClipSettings.isUserLoggedIn(getContext()) ) {
+                        Log.d( "CLIP" , "ConnectClipActivity - user has already login");
+                        ((MainActivity) getActivity()).changeFragment(6, false);
+                    }
+                    else{*/
+                        ((MainActivity) getActivity()).changeFragment(8, false);
+                  //  }
+
+
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
 
         if (!isInternetAvailable()) {
             Intent intent = new Intent(getContext(), SemNet.class);
