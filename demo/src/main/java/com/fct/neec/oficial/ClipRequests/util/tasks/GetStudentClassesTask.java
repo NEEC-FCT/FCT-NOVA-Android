@@ -18,6 +18,8 @@ public class GetStudentClassesTask extends BaseTask<Void, Void, Student> {
 
     @Override
     protected Student doInBackground(Void... params) {
+        try{
+
         String studentId = ClipSettings.getStudentIdSelected(mContext);
         String year = ClipSettings.getYearSelected(mContext);
         String yearFormatted = ClipSettings.getYearSelectedFormatted(mContext);
@@ -28,6 +30,10 @@ public class GetStudentClassesTask extends BaseTask<Void, Void, Student> {
         try {
             return StudentTools.getStudentClasses(mContext, studentId, year, yearFormatted, semester, studentNumberId);
         } catch (ServerUnavailableException e) {
+            return null;
+        }
+        }
+        catch (NullPointerException e){
             return null;
         }
     }

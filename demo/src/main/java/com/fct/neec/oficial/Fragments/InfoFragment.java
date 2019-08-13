@@ -76,20 +76,18 @@ public class InfoFragment extends Fragment {
                 if (tab.getPosition() == 1) {
                     //mudar de fragmento
 
-                  /*  if(ClipSettings.getYearSelected(getContext()) != null){
+                    if(ClipSettings.getYearSelected(getContext()) != null){
                         Log.d( "CLIP" , "Vai para o horario");
-                        ((MainActivity) getActivity()).changeFragment(7, false);
+                        ((MainActivity) getActivity()).changeFragment(8, false);
                     }
                     // If the user has already login, start the StudentNumbersActivity instead
                     else if( ClipSettings.isUserLoggedIn(getContext()) ) {
                         Log.d( "CLIP" , "ConnectClipActivity - user has already login");
                         ((MainActivity) getActivity()).changeFragment(6, false);
                     }
-                    else{*/
-                        ((MainActivity) getActivity()).changeFragment(8, false);
-                  //  }
-
-
+                    else{
+                        ((MainActivity) getActivity()).changeFragment(5, false);
+                    }
                 }
             }
 

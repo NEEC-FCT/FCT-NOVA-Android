@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentClassDoc;
 import com.fct.neec.oficial.ClipRequests.network.StudentClassesDocsRequest;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentClassesDocsTask;
+import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.StudentClassesDocsAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -58,6 +61,29 @@ public class ClassesDocsFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_student_classes_docs, container, false);
 
         mListView = (ExpandableListView) view.findViewById(R.id.list_view);
+
+        //Tab
+        final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("TAB", "clicou em: " + tab.getPosition());
+                if (tab.getPosition() == 0) {
+                    ((MainActivity) getActivity()).changeFragment(1 , false);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
 
         return view;
     }

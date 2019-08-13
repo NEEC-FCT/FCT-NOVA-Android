@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.ClassListViewAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
 
@@ -44,12 +46,38 @@ public class ClassesFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_classes, container, false);
         mListView = (ListView) view.findViewById(R.id.list_view);
 
+
+        //Tab
+        final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.d("TAB", "clicou em: " + tab.getPosition());
+                if (tab.getPosition() == 0) {
+                    ((MainActivity) getActivity()).changeFragment(1 , false);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
         // Show progress spinner
        // showProgressSpinner(true);
 
         // Start AsyncTask
         mTask = new GetStudentClassesTask(getActivity(), ClassesFragment.this);
         AndroidUtils.executeOnPool(mTask);
+
+
 
         return view;
     }

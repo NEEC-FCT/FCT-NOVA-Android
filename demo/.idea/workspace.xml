@@ -131,10 +131,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6b8a511f-c0f0-4c6f-8136-a05d7087e88a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_info.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -226,17 +226,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="221">
               <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+            <state relative-caret-position="252">
+              <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/CalendarioFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="122" column="12" selection-start-line="122" selection-start-column="12" selection-end-line="133" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -254,8 +266,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Tab</find>
-      <find>onUpdateTaskFinished</find>
       <find>utente</find>
       <find>onStudentYearsTaskFinished</find>
       <find>ServerUnavailableException</find>
@@ -284,6 +294,8 @@
       <find>Caused by:</find>
       <find>Toast</find>
       <find>initUI</find>
+      <find>view</find>
+      <find>tab</find>
     </findStrings>
     <replaceStrings>
       <replace>Log.d(&quot;CLIP&quot; ,</replace>
@@ -304,7 +316,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentCalendarTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesDocsTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentNumbersTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/UpdateStudentNumbersTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/UpdateStudentPageTask.java" />
@@ -329,7 +340,6 @@
         <option value="$PROJECT_DIR$/src/main/res/layout/adapter_schedule.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/list_view.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/CalendarioFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ScheduleFragment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/ScheduleViewPagerAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/DepthPageTransformer.java" />
@@ -346,13 +356,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/adapters/StudentClassesDocsAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/adapter_child_student_classes_docs.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_info.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_classes.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_student_classes_docs.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/CalendarioFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java" />
       </list>
     </option>
   </component>
@@ -432,15 +444,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FCT-NOVA-Android" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FCT-NOVA-Android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="demo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -577,7 +580,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26107383" />
@@ -589,7 +591,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3286119" />
-      <window_info anchor="bottom" id="Logcat" order="1" visible="true" weight="0.28895184" />
+      <window_info anchor="bottom" id="Logcat" order="1" visible="true" weight="0.24929178" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="4" />
@@ -608,9 +610,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/clipmobile_list_selector_background_transition_holo_light.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/adapter_child_student_numbers.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
@@ -875,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/settings/ClipSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentScheduleTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
@@ -893,16 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="61" column="75" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/StudentNumbersFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="165" column="18" selection-start-line="165" selection-start-column="14" selection-end-line="165" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -933,18 +915,6 @@
           <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="36" selection-start-line="36" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2263#2820#0" expanded="true" />
-            <element signature="e#2819#2820#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -988,34 +958,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="21" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/CalendarioFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="115" selection-start-line="115" selection-end-line="146" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="88" column="71" selection-start-line="88" selection-start-column="71" selection-end-line="88" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2146#2184#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="138" selection-start-line="138" selection-end-line="138" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1073,17 +1015,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesDocsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="64" selection-start-line="64" selection-end-line="85" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/ClassesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/StudentNumbersFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="68" column="64" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/util/tasks/GetStudentClassesTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/ClipRequests/settings/ClipSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainViewPagerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="221">
           <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/CalendarioFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+        <state relative-caret-position="163">
+          <caret line="122" column="12" selection-start-line="122" selection-start-column="12" selection-end-line="133" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fct/neec/oficial/Fragments/InfoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
