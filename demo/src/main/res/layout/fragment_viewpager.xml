@@ -36,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:textSize="@dimen/tabs_text_size"
+                android:textColorPrimary="@color/white"
+                app:pstsIndicatorColor="@color/white"
                 android:background="@color/main_color"
                 />
 

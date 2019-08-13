@@ -9,9 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-
 import androidx.fragment.app.Fragment;
-
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.User;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
@@ -166,8 +164,6 @@ public class StudentNumbersFragment extends Fragment
 
             // Lets go to Horario
             ((MainActivity) getActivity()).changeFragment(7, false);
-
-
             return true;
         }
     };

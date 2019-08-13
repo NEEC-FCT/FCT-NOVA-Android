@@ -19,6 +19,7 @@ public class GetStudentScheduleTask extends BaseTask<Void, Void, Student> {
 
     @Override
     protected Student doInBackground(Void... params) {
+        if(ClipSettings.isUserLoggedIn(mContext) && ClipSettings.getYearSelected(mContext) != null){
         String studentId = ClipSettings.getStudentIdSelected(mContext);
         String year = ClipSettings.getYearSelected(mContext);
         String yearFormatted = ClipSettings.getYearSelectedFormatted(mContext);
@@ -37,8 +38,10 @@ public class GetStudentScheduleTask extends BaseTask<Void, Void, Student> {
             return StudentTools.getStudentSchedule(mContext, studentId, year, yearFormatted, semester,
                     studentNumberId);
         } catch (ServerUnavailableException e) {
-            return null;
+                return null;
+            }
         }
+        return null;
     }
 
     @Override

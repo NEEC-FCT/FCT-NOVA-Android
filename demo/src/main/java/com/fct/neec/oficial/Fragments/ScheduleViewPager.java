@@ -64,12 +64,11 @@ public class ScheduleViewPager extends BaseViewPager
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
         // Bind the tabs to the ViewPager
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
+        PagerSlidingTabStrip tabs =  view.findViewById(R.id.tabs);
         tabs.setViewPager(mViewPager);
-        tabs.setDividerColor(R.color.white);
-        tabs.setTextColor(R.color.white);
-        tabs.setIndicatorColor(R.color.white);
 
+
+        //tabs superiores
         final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
         TabLayout.Tab tab = tabLayout.getTabAt(1);
         tab.select();
@@ -97,7 +96,6 @@ public class ScheduleViewPager extends BaseViewPager
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         cancelTasks(mTask);
     }
 }

@@ -32,7 +32,7 @@
 
     <!-- Text Size -->
     <dimen name="default_text_size">18sp</dimen>
-    <dimen name="tabs_text_size">12sp</dimen>
+    <dimen name="tabs_text_size">10.5sp</dimen>
     <dimen name="drawer_text_size">16sp</dimen>
 
     <!-- Toolbar -->
