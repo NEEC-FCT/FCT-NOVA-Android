@@ -10,8 +10,11 @@ import com.fct.neec.oficial.Fragments.ClipLoginFragment;
 import com.fct.neec.oficial.Fragments.InfoFragment;
 import com.fct.neec.oficial.Fragments.MapaFragment;
 import com.fct.neec.oficial.Fragments.NoticiasFragment;
+import com.fct.neec.oficial.Fragments.ScheduleFragment;
+import com.fct.neec.oficial.Fragments.ScheduleViewPager;
 import com.fct.neec.oficial.Fragments.SobreNEEC;
 import com.fct.neec.oficial.Fragments.StudentNumbersFragment;
+import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
 
 import java.util.ArrayList;
 
@@ -33,6 +36,7 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
         fragments.add(MapaFragment.newInstance(4));
         fragments.add(ClipLoginFragment.newInstance(5));
         fragments.add(StudentNumbersFragment.newInstance(6));
+        fragments.add(ScheduleViewPager.newInstance(7));
     }
 
     @Override

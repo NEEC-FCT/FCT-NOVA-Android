@@ -165,7 +165,7 @@ public class StudentNumbersFragment extends Fragment
                     .getYears().get(childPosition).getId());
 
             // Lets go to Horario
-            //TODO
+            ((MainActivity) getActivity()).changeFragment(7, false);
 
 
             return true;

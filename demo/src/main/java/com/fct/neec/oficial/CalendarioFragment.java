@@ -119,8 +119,13 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 1) {
                     //mudar de fragmento
+
+                    if(ClipSettings.getYearSelected(getContext()) != null){
+                        Log.d( "CLIP" , "Vai para o horario");
+                        ((MainActivity) getActivity()).changeFragment(7, false);
+                    }
                     // If the user has already login, start the StudentNumbersActivity instead
-                    if( ClipSettings.isUserLoggedIn(getContext()) ) {
+                    else if( ClipSettings.isUserLoggedIn(getContext()) ) {
                         Log.d( "CLIP" , "ConnectClipActivity - user has already login");
                         ((MainActivity) getActivity()).changeFragment(6, false);
                     }
