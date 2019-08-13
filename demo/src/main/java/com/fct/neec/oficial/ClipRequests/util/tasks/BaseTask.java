@@ -30,9 +30,8 @@ public abstract class BaseTask<A,B,C> extends AsyncTask<A, B, C> {
         super.onPostExecute(result);
 
         // Server is unavailable right now
-        if(result == null)
-            Toast.makeText(mContext, mContext.getString(R.string.connection_failed),
-                    Toast.LENGTH_SHORT).show();
+      //  if(result == null)
+
     }
     
 }

@@ -37,8 +37,8 @@ public class ConnectClipTask extends BaseTask<String, Void, Result> {
 
         switch(result) {
             case OFFLINE:
-                Toast.makeText(mContext,
-                        mContext.getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(mContext,
+              //          mContext.getString(R.string.connection_failed), Toast.LENGTH_SHORT).show();
                 break;
 
             case ERROR:
