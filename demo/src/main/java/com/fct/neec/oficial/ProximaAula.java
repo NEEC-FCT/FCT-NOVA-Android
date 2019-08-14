@@ -1,25 +1,21 @@
 package com.fct.neec.oficial;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.fct.neec.oficial.ClipRequests.entities.Student;
-import com.fct.neec.oficial.ClipRequests.entities.StudentClass;
 import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
-import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
-import com.fct.neec.oficial.Fragments.ScheduleFragment;
 
-import org.jsoup.safety.Whitelist;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -27,53 +23,119 @@ import java.util.Map;
 /**
  * Implementation of App Widget functionality.
  */
-public class ProximaAula extends AppWidgetProvider  {
+public class ProximaAula extends AppWidgetProvider {
 
-    private static Student data;
-    private static String fileName = "Horario";
+    public static Student data;
+    public static RemoteViews views;
+    private static StudentScheduleClass melhor;
+    public PendingIntent service = null;
 
-
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-
-        Log.d("Widget" , "Vou atualizar");
-        // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.proxima_aula);
-
-        //Obtem o horario
-        if (data == null){
-            Log.d("Widget" , "Lista vazia");
-        }
-         
-        else {
-
+    private long updateUI() {
+        if(data != null) {
             Map<Integer, List<StudentScheduleClass>> horario = data.getScheduleClasses();
             Calendar c = Calendar.getInstance();
             int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
+            int diff = Integer.MAX_VALUE;
+            int pos = 0;
 
-            if(horario.containsKey(dayOfWeek)){
+
+            if (horario.containsKey(dayOfWeek)) {
                 //Vamos mostrar
                 List<StudentScheduleClass> diaAtual = horario.get(dayOfWeek);
                 Iterator<StudentScheduleClass> it = diaAtual.iterator();
-                while (it.hasNext()){
+                int i = 0;
+                while (it.hasNext()) {
                     StudentScheduleClass aula = it.next();
-                    Log.d("Widget" , aula.getName() + " " + aula.getHourStart());
-
-                    //Dar os nomes no widget
-                    views.setTextViewText(R.id.class_name, aula.getName());
-                    views.setTextViewText(R.id.class_hour_start, aula.getHourStart());
-                    views.setTextViewText(R.id.class_hour_end, aula.getHourEnd());
-                    views.setTextViewText(R.id.class_room, aula.getRoom());
+                    i++;
+                    Log.d("Widget", aula.getName() + " " + aula.getHourStart() + " diff: " + diffHoras(hour + ":" + minute, aula.getHourStart()));
+                    int distancia = diffHoras(hour + ":" + minute, aula.getHourStart());
+                    if (distancia <= diff) {
+                        diff = distancia;
+                        melhor = aula;
+                        pos = i;
+                    }
                 }
+
+                //verifica se a hora ja passou
+                //ultima hora mais so amanha
+                if (pos == diaAtual.size()) {
+                    int horaInicio = Integer.parseInt(melhor.getHourEnd().substring(0, melhor.getHourEnd().indexOf(":") ));
+                    Log.d("Widget", "Hora: " + horaInicio);
+                    return ((24 - horaInicio) + 7) * 3600000;
+                } else
+                    return (diff - 15) * 60000;
             }
+            return (24 - hour) * 3600000;
+        }
+        return 60000;
+    }
+
+    private static int diffHoras(String timeString1, String timeString2) {
+
+        String[] fractions1 = timeString1.split(":");
+        String[] fractions2 = timeString2.split(":");
+        Integer hours1 = Integer.parseInt(fractions1[0]);
+        Integer hours2 = Integer.parseInt(fractions2[0]);
+        Integer minutes1 = Integer.parseInt(fractions1[1]);
+        Integer minutes2 = Integer.parseInt(fractions2[1]);
+        int hourDiff = hours1 - hours2;
+        int minutesDiff = minutes1 - minutes2;
+        if (minutesDiff < 0) {
+            minutesDiff = 60 + minutesDiff;
+            hourDiff--;
+        }
+        if (hourDiff < 0) {
+            hourDiff = 24 + hourDiff;
+        }
+        return (hourDiff * 60) + minutesDiff;
+    }
+
+    public static void sethorario(Student data) {
+        ProximaAula.data = data;
+
+    }
+
+    void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                         int appWidgetId) {
+
+
+        long interval = 1000*60;
+        Log.d("Widget", "Vou atualizar");
+
+
+
+        // Construct the RemoteViews object
+         ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.proxima_aula);
+
+        //Obtem o horario
+        if (data == null) {
+            Log.d("Widget", "Lista vazia");
+            // Start AsyncTask
+        } else {
+            Log.d("Widget", "Vou atualizar o UI");
+            interval = updateUI();
 
 
         }
 
-        // Instruct the widget manager to update the widget
+        //set alarm
+        final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        final Calendar TIME = Calendar.getInstance();
+        TIME.set(Calendar.MINUTE, 0);
+        TIME.set(Calendar.SECOND, 0);
+        TIME.set(Calendar.MILLISECOND, 0);
+        final Intent in = new Intent(context, MyService.class);
+        if (service == null) {
+            service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+        }
+        alarmManager.setRepeating(AlarmManager.RTC, 0, interval, service);
+        //onclick refresh
+        views.setOnClickPendingIntent(R.id.class_hour_start, service);
         appWidgetManager.updateAppWidget(appWidgetId, views);
+
+
     }
 
     @Override
@@ -84,20 +146,25 @@ public class ProximaAula extends AppWidgetProvider  {
         }
     }
 
-    public static void sethorario(Student data){
-        ProximaAula.data = data;
-
-
-    }
-
     @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
+
     }
 
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
     }
+
+
+    protected class UpdateTask implements Runnable {
+        public void run() {
+            // Do stuff.  This is UI thread.
+            long delay = updateUI();
+            Log.d("Widget", "PostPoned: " + delay);
+        }
+    }
+
 }
 

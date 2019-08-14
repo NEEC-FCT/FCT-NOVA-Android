@@ -70,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public Context getContext(){
+        return getContext();
+    }
+
     public void changeFragment(int position , boolean initUI){
 
        // if(initUI)
