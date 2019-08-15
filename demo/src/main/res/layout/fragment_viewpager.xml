@@ -105,20 +105,22 @@
             fab:menu_shadowYOffset="3dp"
             fab:menu_showShadow="true">
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/earthquake"
-                fab:fab_label="Sismo"
-                fab:fab_size="normal" />
+
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/semestre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/smartphone"
-                fab:fab_label="Ligar segurança"
+                fab:fab_label="Mudar semestre"
+                fab:fab_size="normal" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/earthquake"
+                fab:fab_label="Logout"
                 fab:fab_size="normal" />
 
 

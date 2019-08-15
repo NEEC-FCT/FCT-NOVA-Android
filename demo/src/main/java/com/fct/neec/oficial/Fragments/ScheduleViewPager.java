@@ -15,7 +15,9 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
+import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentScheduleTask;
+import com.fct.neec.oficial.ClipRequests.util.tasks.UpdateStudentPageTask;
 import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.ProximaAula;
 import com.fct.neec.oficial.R;
@@ -31,9 +33,11 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Calendar;
 
 public class ScheduleViewPager extends BaseViewPager
-        implements GetStudentScheduleTask.OnTaskFinishedListener<Student> {
+        implements GetStudentScheduleTask.OnTaskFinishedListener<Student> ,
+        UpdateStudentPageTask.OnUpdateTaskFinishedListener<Student> {
 
     private GetStudentScheduleTask mTask;
+    private UpdateStudentPageTask mUpdateTask;
 
     /**
      * Create a new instance of the fragment
@@ -94,15 +98,23 @@ public class ScheduleViewPager extends BaseViewPager
         FloatingActionButton Semestre = view.findViewById(R.id.semestre);
         Semestre.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                final String[] colors = {"red", "green", "blue", "black"};
+                final String[] semestres = {"1º Semestre", "2º Semestre", "2º Trimestre"};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Pick a color");
-                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                builder.setTitle("Escolha um semestre");
+                builder.setItems(semestres, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // the user clicked on colors[which]
-                        Log.d("CLIP",colors[which]);
+                        if(which == 0)
+                            ClipSettings.saveSemesterSelected(getContext(), 1);
+                        else if(which == 1)
+                            ClipSettings.saveSemesterSelected(getContext(), 2);
+                        else
+                            ClipSettings.saveSemesterSelected(getContext(), 3);
+                        //atualizer
+                        mUpdateTask = new UpdateStudentPageTask(getContext(), ScheduleViewPager.this);
+                        AndroidUtils.executeOnPool(mUpdateTask);
                     }
                 });
                 builder.show();
@@ -113,6 +125,9 @@ public class ScheduleViewPager extends BaseViewPager
         Logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                Log.d("CLIP","Logout");
+                // Clear user personal data
+                ClipSettings.logoutUser(getContext());
+                ((MainActivity) getActivity()).changeFragment(3, false);
             }
         });
 
@@ -143,9 +158,29 @@ public class ScheduleViewPager extends BaseViewPager
 
     }
 
+
+    @Override
+    public void onUpdateTaskFinished(Student result) {
+
+        // Refresh current view
+        // Initialize the ViewPager and set the adapter
+        mViewPager.setAdapter(new ScheduleViewPagerAdapter(getChildFragmentManager(),
+                getResources().getStringArray(R.array.schedule_tab_array), result));
+        mViewPager.setPageTransformer(true, new DepthPageTransformer());
+
+        // Bind the tabs to the ViewPager
+        PagerSlidingTabStrip tabs =  view.findViewById(R.id.tabs);
+        tabs.setViewPager(mViewPager);
+
+        
+    }
+
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         cancelTasks(mTask);
+        cancelTasks(mUpdateTask);
     }
 }
