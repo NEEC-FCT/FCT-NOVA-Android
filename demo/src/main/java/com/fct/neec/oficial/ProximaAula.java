@@ -30,7 +30,7 @@ public class ProximaAula extends AppWidgetProvider {
     private static StudentScheduleClass melhor;
     public PendingIntent service = null;
 
-    private long updateUI() {
+    private void updateUI() {
         if(data != null) {
             Map<Integer, List<StudentScheduleClass>> horario = data.getScheduleClasses();
             Calendar c = Calendar.getInstance();
@@ -38,8 +38,6 @@ public class ProximaAula extends AppWidgetProvider {
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
             int diff = Integer.MAX_VALUE;
-            int pos = 0;
-
 
             if (horario.containsKey(dayOfWeek)) {
                 //Vamos mostrar
@@ -54,22 +52,10 @@ public class ProximaAula extends AppWidgetProvider {
                     if (distancia <= diff) {
                         diff = distancia;
                         melhor = aula;
-                        pos = i;
                     }
                 }
-
-                //verifica se a hora ja passou
-                //ultima hora mais so amanha
-                if (pos == diaAtual.size()) {
-                    int horaInicio = Integer.parseInt(melhor.getHourEnd().substring(0, melhor.getHourEnd().indexOf(":") ));
-                    Log.d("Widget", "Hora: " + horaInicio);
-                    return ((24 - horaInicio) + 7) * 3600000;
-                } else
-                    return (diff - 15) * 60000;
             }
-            return (24 - hour) * 3600000;
         }
-        return 60000;
     }
 
     private static int diffHoras(String timeString1, String timeString2) {
@@ -112,12 +98,9 @@ public class ProximaAula extends AppWidgetProvider {
         //Obtem o horario
         if (data == null) {
             Log.d("Widget", "Lista vazia");
-            // Start AsyncTask
         } else {
             Log.d("Widget", "Vou atualizar o UI");
-            interval = updateUI();
-
-
+           updateUI();
         }
 
         //set alarm
@@ -130,11 +113,11 @@ public class ProximaAula extends AppWidgetProvider {
         if (service == null) {
             service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
         }
-        alarmManager.setRepeating(AlarmManager.RTC, 0, interval, service);
+        Log.d("Widget" , "Vou atualizar em + " + interval);
+        alarmManager.setRepeating(AlarmManager.RTC, 5000, 60000 , service);
         //onclick refresh
         views.setOnClickPendingIntent(R.id.class_hour_start, service);
         appWidgetManager.updateAppWidget(appWidgetId, views);
-
 
     }
 
@@ -156,15 +139,5 @@ public class ProximaAula extends AppWidgetProvider {
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
     }
-
-
-    protected class UpdateTask implements Runnable {
-        public void run() {
-            // Do stuff.  This is UI thread.
-            long delay = updateUI();
-            Log.d("Widget", "PostPoned: " + delay);
-        }
-    }
-
 }
 
