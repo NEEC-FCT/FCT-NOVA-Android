@@ -1,12 +1,17 @@
 package com.fct.neec.oficial.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
@@ -14,8 +19,13 @@ import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentScheduleTask;
 import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.ProximaAula;
 import com.fct.neec.oficial.R;
+import com.fct.neec.oficial.RegrasSegurança.RegrasDoenca;
+import com.fct.neec.oficial.RegrasSegurança.RegrasEvacuacao;
+import com.fct.neec.oficial.RegrasSegurança.RegrasIncendio;
+import com.fct.neec.oficial.RegrasSegurança.RegrasSismo;
 import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
+import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Calendar;
@@ -78,6 +88,34 @@ public class ScheduleViewPager extends BaseViewPager
             Log.d("CLIP" , "Vou para a tab: " +dayOfWeek);
             mViewPager.setCurrentItem(dayOfWeek);
         }
+
+        //FAB listeners
+        //Semestre
+        FloatingActionButton Semestre = view.findViewById(R.id.semestre);
+        Semestre.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                final String[] colors = {"red", "green", "blue", "black"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Pick a color");
+                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // the user clicked on colors[which]
+                        Log.d("CLIP",colors[which]);
+                    }
+                });
+                builder.show();
+            }
+        });
+        //Logout
+        FloatingActionButton Logout = view.findViewById(R.id.logout);
+        Logout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               Log.d("CLIP","Logout");
+            }
+        });
+
 
 
         //tabs superiores
