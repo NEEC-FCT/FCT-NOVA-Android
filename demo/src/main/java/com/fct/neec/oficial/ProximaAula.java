@@ -33,7 +33,21 @@ public class ProximaAula extends AppWidgetProvider {
 
 
         // Construct the RemoteViews object
-         ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.proxima_aula);
+        if(ProximaAula.data != null){
+            ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.proxima_aula);
+            Intent configIntent = new Intent(context, LoadingActivity.class);
+            PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
+            views.setOnClickPendingIntent(R.id.proxima_aula, configPendingIntent);
+        }
+
+
+        else{
+            ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.sem_aulas);
+            Intent configIntent = new Intent(context, LoadingActivity.class);
+            PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
+            views.setOnClickPendingIntent(R.id.sem_aula, configPendingIntent);
+        }
+
 
         //set alarm
         final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -48,7 +62,6 @@ public class ProximaAula extends AppWidgetProvider {
         Log.d("Widget" , "Vou atualizar ");
         alarmManager.setRepeating(AlarmManager.RTC, 5000, 60000 , service);
         //onclick refresh
-        views.setOnClickPendingIntent(R.id.class_hour_start, service);
         appWidgetManager.updateAppWidget(appWidgetId, views);
 
     }

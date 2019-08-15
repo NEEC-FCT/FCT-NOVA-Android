@@ -78,7 +78,7 @@ public class ScheduleViewPager extends BaseViewPager
             Log.d("CLIP" , "Vou para a tab: " +dayOfWeek);
             mViewPager.setCurrentItem(dayOfWeek);
         }
-        
+
 
         //tabs superiores
         final TabLayout tabLayout = view.findViewById(R.id.tabLayout);

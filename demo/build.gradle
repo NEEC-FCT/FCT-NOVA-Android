@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.fct.neec.oficial"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 6
         versionName "1.05"

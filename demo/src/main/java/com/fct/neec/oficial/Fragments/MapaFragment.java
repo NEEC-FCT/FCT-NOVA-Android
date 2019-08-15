@@ -90,43 +90,44 @@ public class MapaFragment extends Fragment {
                 public void onTabReselected(TabLayout.Tab tab) {
                 }
             });
+
+            webview.setWebViewClient(new WebViewClient() {
+
+
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                    Log.d("URL" , url);
+                    if (url.equals("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16") || url.equals("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16")) {
+                        webview.loadUrl(url);
+                    }
+                    if (url.startsWith("https://accounts.google")){
+                        Log.d("URL" , "Apanhei google");
+                        if (position == 0) {
+                            webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
+                            webview.setVisibility(View.GONE);
+
+                        }
+                        if (position == 1) {
+                            webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16");
+                            webview.setVisibility(View.GONE);
+                        }
+                    }
+                    return false;
+                }
+
+                @Override
+                public void onPageFinished(WebView view, String url) {
+
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('gbr').style.display='none';})()");
+                    webview.setVisibility(VISIBLE);
+
+
+                }
+            });
         }
 
-        webview.setWebViewClient(new WebViewClient() {
-
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                Log.d("URL" , url);
-                if (url.equals("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16") || url.equals("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16")) {
-                    webview.loadUrl(url);
-                }
-                if (url.startsWith("https://accounts.google")){
-                    Log.d("URL" , "Apanhei google");
-                    if (position == 0) {
-                        webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
-                        webview.setVisibility(View.GONE);
-
-                    }
-                    if (position == 1) {
-                        webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16");
-                        webview.setVisibility(View.GONE);
-                    }
-                }
-                return false;
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('gbr').style.display='none';})()");
-                webview.setVisibility(VISIBLE);
-
-
-            }
-        });
         return view;
     }
 

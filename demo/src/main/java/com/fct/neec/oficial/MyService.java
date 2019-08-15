@@ -1,5 +1,6 @@
 package com.fct.neec.oficial;
 
+import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
@@ -98,16 +99,22 @@ public class MyService extends Service {
                     // make operation on UI - on example
                     // on progress bar.
                     Log.d("Widget", "Correr na main");
-                    Log.d("Widget", view.getPackage());
                     view.setTextViewText(R.id.class_name, melhor.getName());
                     view.setTextViewText(R.id.class_hour_start, melhor.getHourStart());
                     view.setTextViewText(R.id.class_hour_end, melhor.getHourEnd());
                     view.setTextViewText(R.id.class_room, melhor.getRoom());
-
-
+                    Intent configIntent = new Intent(getApplicationContext(), LoadingActivity.class);
+                    PendingIntent configPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, configIntent, 0);
+                    view.setOnClickPendingIntent(R.id.proxima_aula, configPendingIntent);
 
                 }
 
+            }
+            else{
+                view = new RemoteViews(getPackageName(), R.layout.sem_aulas);
+                Intent configIntent = new Intent(getApplicationContext(), LoadingActivity.class);
+                PendingIntent configPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, configIntent, 0);
+                view.setOnClickPendingIntent(R.id.sem_aula, configPendingIntent);
             }
 
             manager.updateAppWidget(thisWidget, view);

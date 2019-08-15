@@ -1,0 +1,19 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/rounded"
+    android:id="@+id/sem_aula"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:padding="10dp"
+        android:text="Aceda à tab do CLIP de modo a obter o horário\n\nE espere 1 minuto,o Widget atualiza-se automáticamente"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
