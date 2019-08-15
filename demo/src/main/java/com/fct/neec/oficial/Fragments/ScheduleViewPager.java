@@ -18,6 +18,8 @@ import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Calendar;
+
 public class ScheduleViewPager extends BaseViewPager
         implements GetStudentScheduleTask.OnTaskFinishedListener<Student> {
 
@@ -69,6 +71,14 @@ public class ScheduleViewPager extends BaseViewPager
         PagerSlidingTabStrip tabs =  view.findViewById(R.id.tabs);
         tabs.setViewPager(mViewPager);
 
+        //vou para tab do dia atual
+        Calendar c = Calendar.getInstance();
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - 2;
+        if( dayOfWeek >= 0 && dayOfWeek <= 4){
+            Log.d("CLIP" , "Vou para a tab: " +dayOfWeek);
+            mViewPager.setCurrentItem(dayOfWeek);
+        }
+        
 
         //tabs superiores
         final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
