@@ -54,6 +54,8 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.8.3'
     //Tab do horario
     implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    //Permissoes
+    implementation group: 'gun0912.ted', name: 'tedpermission', version: '2.2.0'
 
 }
 

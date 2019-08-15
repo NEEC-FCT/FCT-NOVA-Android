@@ -1,5 +1,6 @@
 package com.fct.neec.oficial.Fragments;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,6 +35,10 @@ import com.fct.neec.oficial.RegrasSegurança.RegrasSismo;
 import com.fct.neec.oficial.SemNet;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 
 public class InfoFragment extends Fragment {
@@ -75,19 +80,29 @@ public class InfoFragment extends Fragment {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 1) {
                     //mudar de fragmento
+                    //call back after permission granted
+                    PermissionListener permissionlistener = new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted() {
+                            CLIP();
+                        }
 
-                    if(ClipSettings.getYearSelected(getContext()) != null){
-                        Log.d( "CLIP" , "Vai para o horario");
-                        ((MainActivity) getActivity()).changeFragment(8, false);
-                    }
-                    // If the user has already login, start the StudentNumbersActivity instead
-                    else if( ClipSettings.isUserLoggedIn(getContext()) ) {
-                        Log.d( "CLIP" , "ConnectClipActivity - user has already login");
-                        ((MainActivity) getActivity()).changeFragment(6, false);
-                    }
-                    else{
-                        ((MainActivity) getActivity()).changeFragment(5, false);
-                    }
+                        @Override
+                        public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                            TabLayout.Tab tab = tabLayout.getTabAt(0);
+                            tab.select();
+                        }
+
+                    };
+
+                    //check all needed permissions together
+                    TedPermission.with(getContext())
+                            .setPermissionListener(permissionlistener)
+                            .setDeniedMessage("Se recusar não poderá usar o CLIP\n" +
+                                    "\n" +
+                                    "Por favor vá a [Definições] > [Permissões]")
+                            .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            .check();
                 }
             }
 
@@ -211,6 +226,21 @@ public class InfoFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void CLIP() {
+        if(ClipSettings.getYearSelected(getContext()) != null){
+            Log.d( "CLIP" , "Vai para o horario");
+            ((MainActivity) getActivity()).changeFragment(8, false);
+        }
+        // If the user has already login, start the StudentNumbersActivity instead
+        else if( ClipSettings.isUserLoggedIn(getContext()) ) {
+            Log.d( "CLIP" , "ConnectClipActivity - user has already login");
+            ((MainActivity) getActivity()).changeFragment(6, false);
+        }
+        else{
+            ((MainActivity) getActivity()).changeFragment(5, false);
+        }
     }
 
 
