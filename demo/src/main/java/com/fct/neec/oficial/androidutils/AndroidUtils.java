@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  */
 
 package com.fct.neec.oficial.androidutils;
@@ -26,6 +26,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.view.View;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

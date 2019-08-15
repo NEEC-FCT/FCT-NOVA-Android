@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -13,8 +14,8 @@ import com.fct.neec.oficial.R;
 public class BaseViewPager extends Fragment {
 
 
-    ViewPager mViewPager;
     protected View view;
+    ViewPager mViewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class BaseViewPager extends Fragment {
      * Shows the progress spinner
      */
     protected void showProgressSpinnerOnly(final boolean show) {
-       // mProgressSpinner.setVisibility(show ? View.VISIBLE : View.GONE);
+        // mProgressSpinner.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     @Override

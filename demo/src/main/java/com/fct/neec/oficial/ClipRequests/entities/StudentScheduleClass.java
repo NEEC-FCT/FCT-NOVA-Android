@@ -5,28 +5,23 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class StudentScheduleClass extends Entity implements Parcelable , Serializable {
+public class StudentScheduleClass extends Entity implements Parcelable, Serializable {
+    @SuppressWarnings("unused")
+    public static final Creator<StudentScheduleClass> CREATOR = new Creator<StudentScheduleClass>() {
+        @Override
+        public StudentScheduleClass createFromParcel(Parcel in) {
+            return new StudentScheduleClass(in);
+        }
+
+        @Override
+        public StudentScheduleClass[] newArray(int size) {
+            return new StudentScheduleClass[size];
+        }
+    };
     private String name, name_min, type, hour_start, hour_end, room;
 
-    public StudentScheduleClass() {}
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name;}
-
-    public String getNameMin() { return name_min; }
-    public void setNameMin(String name_min) { this.name_min = name_min; }
-
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
-
-    public String getHourStart() { return hour_start; }
-    public void setHourStart(String hour_start) { this.hour_start = hour_start; }
-
-    public String getHourEnd() { return hour_end; }
-    public void setHourEnd(String hour_end) { this.hour_end = hour_end; }
-
-    public String getRoom() { return room; }
-    public void setRoom(String room) {this.room = room; }
+    public StudentScheduleClass() {
+    }
 
     protected StudentScheduleClass(Parcel in) {
         name = in.readString();
@@ -35,6 +30,54 @@ public class StudentScheduleClass extends Entity implements Parcelable , Seriali
         hour_start = in.readString();
         hour_end = in.readString();
         room = in.readString();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNameMin() {
+        return name_min;
+    }
+
+    public void setNameMin(String name_min) {
+        this.name_min = name_min;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getHourStart() {
+        return hour_start;
+    }
+
+    public void setHourStart(String hour_start) {
+        this.hour_start = hour_start;
+    }
+
+    public String getHourEnd() {
+        return hour_end;
+    }
+
+    public void setHourEnd(String hour_end) {
+        this.hour_end = hour_end;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
     }
 
     @Override
@@ -51,18 +94,5 @@ public class StudentScheduleClass extends Entity implements Parcelable , Seriali
         dest.writeString(hour_end);
         dest.writeString(room);
     }
-
-    @SuppressWarnings("unused")
-    public static final Creator<StudentScheduleClass> CREATOR = new Creator<StudentScheduleClass>() {
-        @Override
-        public StudentScheduleClass createFromParcel(Parcel in) {
-            return new StudentScheduleClass(in);
-        }
-
-        @Override
-        public StudentScheduleClass[] newArray(int size) {
-            return new StudentScheduleClass[size];
-        }
-    };
 
 }

@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentCalendar;
 import com.fct.neec.oficial.ClipRequests.entities.StudentClass;
@@ -30,10 +29,10 @@ public class DBUtils {
 
         final Cursor user_cursor = mContext.getContentResolver().query(
                 ClipMobileContract.Users.CONTENT_URI,
-                new String[] { ClipMobileContract.Users._ID },
-                ClipMobileContract.Users.USERNAME + "=?", new String[] { username }, null);
+                new String[]{ClipMobileContract.Users._ID},
+                ClipMobileContract.Users.USERNAME + "=?", new String[]{username}, null);
 
-        if(user_cursor.getCount() == 0) {
+        if (user_cursor.getCount() == 0) {
             user_cursor.close();
 
             return -1;
@@ -64,13 +63,13 @@ public class DBUtils {
 
         final Cursor students_cursor = mContext.getContentResolver().query(
                 ClipMobileContract.Students.CONTENT_URI, null,
-                ClipMobileContract.Users.REF_USERS_ID + "=?", new String[] { String.valueOf(userId) }, null);
+                ClipMobileContract.Users.REF_USERS_ID + "=?", new String[]{String.valueOf(userId)}, null);
 
         User user = new User();
-        while(students_cursor.moveToNext()) {
-                String id = students_cursor.getString(0);
-                String number_id = students_cursor.getString(2);
-                String number = students_cursor.getString(3);
+        while (students_cursor.moveToNext()) {
+            String id = students_cursor.getString(0);
+            String number_id = students_cursor.getString(2);
+            String number = students_cursor.getString(3);
 
             Student student = new Student();
             student.setId(id);
@@ -86,7 +85,7 @@ public class DBUtils {
 
     public static void insertStudentsNumbers(Context mContext, long userId, User user) {
 
-        for(Student student : user.getStudents()) {
+        for (Student student : user.getStudents()) {
             ContentValues values = new ContentValues();
             values.put(ClipMobileContract.Users.REF_USERS_ID, userId);
             values.put(ClipMobileContract.Students.NUMBER_ID, student.getNumberId());
@@ -95,7 +94,7 @@ public class DBUtils {
             Uri uri = mContext.getContentResolver().insert(ClipMobileContract.Students.CONTENT_URI, values);
             System.out.println("student inserted! " + uri.getPath());
 
-            String newId = String.valueOf( ContentUris.parseId(uri) );
+            String newId = String.valueOf(ContentUris.parseId(uri));
             student.setId(newId);
         }
 
@@ -111,10 +110,10 @@ public class DBUtils {
         final Cursor studentYears_cursor = mContext.getContentResolver().query(
                 ClipMobileContract.StudentsYearSemester.CONTENT_URI, null,
                 ClipMobileContract.Students.REF_STUDENTS_ID + "=? AND " +
-                ClipMobileContract.StudentsYearSemester.SEMESTER + "=?", new String[] { student_id, "1" }, null);
+                        ClipMobileContract.StudentsYearSemester.SEMESTER + "=?", new String[]{student_id, "1"}, null);
 
         Student student = new Student();
-        while(studentYears_cursor.moveToNext()) {
+        while (studentYears_cursor.moveToNext()) {
             String id = studentYears_cursor.getString(0);
             String year = studentYears_cursor.getString(2);
 
@@ -132,9 +131,9 @@ public class DBUtils {
     public static void insertStudentYears(Context mContext, String studentId, Student student) {
 
         // For every year, lets add the 2 semesters (and the trimester) already
-        for(StudentYearSemester year : student.getYears()) {
+        for (StudentYearSemester year : student.getYears()) {
 
-            for(int semester=1; semester<=3; semester++) {
+            for (int semester = 1; semester <= 3; semester++) {
                 ContentValues values = new ContentValues();
                 values.put(ClipMobileContract.Students.REF_STUDENTS_ID, studentId);
                 values.put(ClipMobileContract.StudentsYearSemester.YEAR, year.getYear());
@@ -143,7 +142,7 @@ public class DBUtils {
                 Uri uri = mContext.getContentResolver().insert(ClipMobileContract.StudentsYearSemester.CONTENT_URI, values);
                 System.out.println("student year semester inserted! " + uri.getPath());
 
-                String newId = String.valueOf( ContentUris.parseId(uri) );
+                String newId = String.valueOf(ContentUris.parseId(uri));
                 year.setId(newId);
             }
         }
@@ -159,7 +158,7 @@ public class DBUtils {
         // Delete Student Numbers
         mContext.getContentResolver().delete(ClipMobileContract.Students.CONTENT_URI,
                 ClipMobileContract.Users.REF_USERS_ID + "=?",
-                new String[] { String.valueOf(userId) });
+                new String[]{String.valueOf(userId)});
     }
 
     public static void deleteStudentsInfo(Context mContext, String studentYearSemesterId) {
@@ -181,16 +180,16 @@ public class DBUtils {
         // First, we get the yearSemester ID
         final Cursor studentYearSemester_cursor = mContext.getContentResolver().query(
                 ClipMobileContract.StudentsYearSemester.CONTENT_URI,
-                new String[] { ClipMobileContract.StudentsYearSemester._ID },
+                new String[]{ClipMobileContract.StudentsYearSemester._ID},
                 ClipMobileContract.Students.REF_STUDENTS_ID + "=? AND " +
                         ClipMobileContract.StudentsYearSemester.YEAR + "=? AND " +
                         ClipMobileContract.StudentsYearSemester.SEMESTER + "=?",
-                new String[] { studentId, year, String.valueOf(semester) }, null);
+                new String[]{studentId, year, String.valueOf(semester)}, null);
 
-        if(studentYearSemester_cursor.getCount() == 0) {
+        if (studentYearSemester_cursor.getCount() == 0) {
             studentYearSemester_cursor.close();
 
-            Log.d( "CLIP" ,"getYearSemesterId - COUNT==0");
+            Log.d("CLIP", "getYearSemesterId - COUNT==0");
 
             return null;
         }
@@ -208,29 +207,29 @@ public class DBUtils {
         // Then, we get the schedule days
         final Cursor studentScheduleDays_cursor = mContext.getContentResolver().query(
                 ClipMobileContract.ScheduleDays.CONTENT_URI,
-                    new String[] { ClipMobileContract.ScheduleDays._ID, ClipMobileContract.ScheduleDays.DAY },
+                new String[]{ClipMobileContract.ScheduleDays._ID, ClipMobileContract.ScheduleDays.DAY},
                 ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID + "=?",
-                    new String[] { yearSemesterId }, null);
+                new String[]{yearSemesterId}, null);
 
-        if(studentScheduleDays_cursor.getCount() == 0) {
+        if (studentScheduleDays_cursor.getCount() == 0) {
             studentScheduleDays_cursor.close();
 
             return null;
         }
 
         Student student = new Student();
-        while(studentScheduleDays_cursor.moveToNext()) {
+        while (studentScheduleDays_cursor.moveToNext()) {
             String scheduleDayId = studentScheduleDays_cursor.getString(0);
             int scheduleDay = studentScheduleDays_cursor.getInt(1);
-            Log.d( "CLIP" ,"--> scheduleDay: " + scheduleDay);
+            Log.d("CLIP", "--> scheduleDay: " + scheduleDay);
 
             // Finally, we get the schedule classes
             final Cursor studentScheduleClasses_cursor = mContext.getContentResolver().query(
                     ClipMobileContract.ScheduleClasses.CONTENT_URI, null,
                     ClipMobileContract.ScheduleDays.REF_SCHEDULE_DAYS_ID + "=?",
-                        new String[] { scheduleDayId }, null);
+                    new String[]{scheduleDayId}, null);
 
-            while(studentScheduleClasses_cursor.moveToNext()) {
+            while (studentScheduleClasses_cursor.moveToNext()) {
                 String name = studentScheduleClasses_cursor.getString(2);
                 String nameAbbreviation = studentScheduleClasses_cursor.getString(3);
                 String type = studentScheduleClasses_cursor.getString(4);
@@ -260,16 +259,16 @@ public class DBUtils {
 
         Map<Integer, List<StudentScheduleClass>> schedule = student.getScheduleClasses();
 
-        Log.d( "CLIP" ,"yearSemesterId !!!-> " + yearSemesterId);
-        Log.d( "CLIP" ,"schedulesize -> " + schedule.size());
+        Log.d("CLIP", "yearSemesterId !!!-> " + yearSemesterId);
+        Log.d("CLIP", "schedulesize -> " + schedule.size());
 
         // From monday(2) to friday(6)
-        for(int day=2; day<=6; day++) {
-            Log.d( "CLIP" ,"dia: " + day);
+        for (int day = 2; day <= 6; day++) {
+            Log.d("CLIP", "dia: " + day);
 
             // If we don't have classes today, continue
-            if(schedule.get(day) == null) {
-                Log.d( "CLIP" ,"UPS! dia: " + day);
+            if (schedule.get(day) == null) {
+                Log.d("CLIP", "UPS! dia: " + day);
                 continue;
             }
 
@@ -278,13 +277,13 @@ public class DBUtils {
             values.put(ClipMobileContract.ScheduleDays.DAY, day);
 
             Uri uri = mContext.getContentResolver().insert(ClipMobileContract.ScheduleDays.CONTENT_URI, values);
-            Log.d( "CLIP" ,"schedule day inserted! " + uri.getPath());
+            Log.d("CLIP", "schedule day inserted! " + uri.getPath());
 
             String dayId = String.valueOf(ContentUris.parseId(uri));
 
-            for(StudentScheduleClass classes : schedule.get(day)) {
+            for (StudentScheduleClass classes : schedule.get(day)) {
 
-                Log.d( "CLIP" ,"SCHEDULE class!!!  dayID:" + dayId + " , name:" + classes.getName()
+                Log.d("CLIP", "SCHEDULE class!!!  dayID:" + dayId + " , name:" + classes.getName()
                         + ", type:" + classes.getType() + ", hour:" + classes.getHourStart() + " , " + classes.getHourEnd()
                         + ", room:" + classes.getRoom());
 
@@ -298,7 +297,7 @@ public class DBUtils {
                 values.put(ClipMobileContract.ScheduleClasses.ROOM, classes.getRoom());
 
                 uri = mContext.getContentResolver().insert(ClipMobileContract.ScheduleClasses.CONTENT_URI, values);
-                Log.d( "CLIP" ,"schedule class inserted! " + uri.getPath());
+                Log.d("CLIP", "schedule class inserted! " + uri.getPath());
 
             }
 
@@ -316,16 +315,16 @@ public class DBUtils {
         final Cursor studentClasses_cursor = mContext.getContentResolver().query(
                 ClipMobileContract.StudentClasses.CONTENT_URI, null,
                 ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID + "=?",
-                new String[] { yearSemesterId }, null);
+                new String[]{yearSemesterId}, null);
 
-        if(studentClasses_cursor.getCount() == 0) {
+        if (studentClasses_cursor.getCount() == 0) {
             studentClasses_cursor.close();
 
             return null;
         }
 
         Student student = new Student();
-        while(studentClasses_cursor.moveToNext()) {
+        while (studentClasses_cursor.moveToNext()) {
             String classId = studentClasses_cursor.getString(0);
             String className = studentClasses_cursor.getString(2);
             String classNumber = studentClasses_cursor.getString(3);
@@ -347,18 +346,18 @@ public class DBUtils {
     public static void insertStudentClasses(Context mContext, String yearSemesterId, Student student) {
         Map<Integer, List<StudentClass>> classes = student.getClasses();
 
-        Log.d( "CLIP" ,"yearSemesterId !!!-> " + yearSemesterId);
-        Log.d( "CLIP" ,"classes size -> " + classes.size());
+        Log.d("CLIP", "yearSemesterId !!!-> " + yearSemesterId);
+        Log.d("CLIP", "classes size -> " + classes.size());
 
         // For two semesters (and one trimester)
         for (int semester = 1; semester <= 3; semester++) {
             List<StudentClass> studentClass = classes.get(semester);
 
             // we don't have classes in this semester, yet
-            if(studentClass == null)
+            if (studentClass == null)
                 continue;
 
-            for(StudentClass cl : studentClass) {
+            for (StudentClass cl : studentClass) {
                 ContentValues values = new ContentValues();
                 values.put(ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID, yearSemesterId);
                 values.put(ClipMobileContract.StudentClasses.NAME, cl.getName());
@@ -366,7 +365,7 @@ public class DBUtils {
                 values.put(ClipMobileContract.StudentClasses.SEMESTER, cl.getSemester());
 
                 Uri uri = mContext.getContentResolver().insert(ClipMobileContract.StudentClasses.CONTENT_URI, values);
-                Log.d( "CLIP" ,"class inserted! " + uri.getPath());
+                Log.d("CLIP", "class inserted! " + uri.getPath());
 
                 // Set class Id
                 String classId = String.valueOf(ContentUris.parseId(uri));
@@ -388,16 +387,16 @@ public class DBUtils {
                 ClipMobileContract.StudentClassesDocs.CONTENT_URI, null,
                 ClipMobileContract.StudentClasses.REF_STUDENT_CLASSES_ID + "=? AND " +
                         ClipMobileContract.StudentClassesDocs.TYPE + "=?",
-                new String[] { studentClassId, docType }, null);
+                new String[]{studentClassId, docType}, null);
 
-        if(studentClassesDocs_cursor.getCount() == 0) {
+        if (studentClassesDocs_cursor.getCount() == 0) {
             studentClassesDocs_cursor.close();
 
             return null;
         }
 
         Student student = new Student();
-        while(studentClassesDocs_cursor.moveToNext()) {
+        while (studentClassesDocs_cursor.moveToNext()) {
             String docName = studentClassesDocs_cursor.getString(2);
             String docUrl = studentClassesDocs_cursor.getString(3);
             String docDate = studentClassesDocs_cursor.getString(4);
@@ -420,10 +419,10 @@ public class DBUtils {
     public static void insertStudentClassesDocs(Context mContext, String studentClassId, Student student) {
         List<StudentClassDoc> classDocs = student.getClassesDocs();
 
-        Log.d( "CLIP" ,"studentClassId !!!-> " + studentClassId);
-        Log.d( "CLIP" ,"classes docs size -> " + classDocs.size());
+        Log.d("CLIP", "studentClassId !!!-> " + studentClassId);
+        Log.d("CLIP", "classes docs size -> " + classDocs.size());
 
-        for(StudentClassDoc cl : classDocs) {
+        for (StudentClassDoc cl : classDocs) {
             ContentValues values = new ContentValues();
             values.put(ClipMobileContract.StudentClasses.REF_STUDENT_CLASSES_ID, studentClassId);
             values.put(ClipMobileContract.StudentClassesDocs.NAME, cl.getName());
@@ -433,7 +432,7 @@ public class DBUtils {
             values.put(ClipMobileContract.StudentClassesDocs.TYPE, cl.getType());
 
             Uri uri = mContext.getContentResolver().insert(ClipMobileContract.StudentClassesDocs.CONTENT_URI, values);
-            Log.d( "CLIP" ,"class doc inserted! " + uri.getPath());
+            Log.d("CLIP", "class doc inserted! " + uri.getPath());
         }
 
     }
@@ -448,16 +447,16 @@ public class DBUtils {
         final Cursor studentCalendar_cursor = mContext.getContentResolver().query(
                 ClipMobileContract.StudentCalendar.CONTENT_URI, null,
                 ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID + "=?",
-                new String[] { yearSemesterId }, null);
+                new String[]{yearSemesterId}, null);
 
-        if(studentCalendar_cursor.getCount() == 0) {
+        if (studentCalendar_cursor.getCount() == 0) {
             studentCalendar_cursor.close();
 
             return null;
         }
 
         Student student = new Student();
-        while(studentCalendar_cursor.moveToNext()) {
+        while (studentCalendar_cursor.moveToNext()) {
             int calendarAppointmentIsExam = studentCalendar_cursor.getInt(2);
             String calendarAppointmentName = studentCalendar_cursor.getString(3);
             String calendarAppointmentDate = studentCalendar_cursor.getString(4);
@@ -465,7 +464,7 @@ public class DBUtils {
             String calendarAppointmentRooms = studentCalendar_cursor.getString(6);
             String calendarAppointmentNumber = studentCalendar_cursor.getString(7);
 
-            Log.d( "CLIP" ,"REQUEST NAME:: " + calendarAppointmentName);
+            Log.d("CLIP", "REQUEST NAME:: " + calendarAppointmentName);
 
             StudentCalendar calendarAppointement = new StudentCalendar();
             calendarAppointement.setName(calendarAppointmentName);
@@ -489,7 +488,7 @@ public class DBUtils {
 
         // For two types (exam and test)
         for (int type = 0; type <= 1; type++) {
-            List<StudentCalendar> calendar = studentCalendar.get(type==1);
+            List<StudentCalendar> calendar = studentCalendar.get(type == 1);
 
             // we don't have any calendar of this type, yet
             if (calendar == null)
@@ -498,7 +497,7 @@ public class DBUtils {
             for (StudentCalendar calendarAppointment : calendar) {
                 ContentValues values = new ContentValues();
                 values.put(ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID, yearSemesterId);
-                values.put(ClipMobileContract.StudentCalendar.IS_EXAM, type==1);
+                values.put(ClipMobileContract.StudentCalendar.IS_EXAM, type == 1);
                 values.put(ClipMobileContract.StudentCalendar.NAME, calendarAppointment.getName());
                 values.put(ClipMobileContract.StudentCalendar.DATE, calendarAppointment.getDate());
                 values.put(ClipMobileContract.StudentCalendar.HOUR, calendarAppointment.getHour());

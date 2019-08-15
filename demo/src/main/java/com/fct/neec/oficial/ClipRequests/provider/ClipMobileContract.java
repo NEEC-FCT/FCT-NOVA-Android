@@ -8,6 +8,17 @@ import com.fct.neec.oficial.Fragments.InfoFragment;
 
 public class ClipMobileContract {
 
+    public static final String PATH_USERS = "users";
+    public static final String PATH_STUDENTS = "students";
+    public static final String PATH_STUDENTS_YEAR_SEMESTER = "students_year_semester";
+    public static final String PATH_SCHEDULE_DAYS = "schedule_days";
+    public static final String PATH_SCHEDULE_CLASSES = "schedule_classes";
+    public static final String PATH_STUDENT_CLASSES = "student_classes";
+    public static final String PATH_STUDENT_CLASSES_DOCS = "student_classes_docs";
+    public static final String PATH_STUDENT_CALENDAR = "student_calendar";
+    private static final Uri BASE_CONTENT_URI = Uri.parse("content://"
+            + InfoFragment.CONTENT_AUTHORITY);
+
     interface UsersColumns {
 
         /**
@@ -41,7 +52,6 @@ public class ClipMobileContract {
 
         String SEMESTER = "students_year_semester_semester";
     }
-
 
     interface ScheduleDaysColumns {
 
@@ -105,7 +115,6 @@ public class ClipMobileContract {
         String TYPE = "student_classes_docs_type";
     }
 
-
     interface StudentCalendarColumns {
 
         /**
@@ -125,28 +134,6 @@ public class ClipMobileContract {
 
         String NUMBER = "student_calendar_number";
     }
-
-
-
-    private static final Uri BASE_CONTENT_URI = Uri.parse("content://"
-            + InfoFragment.CONTENT_AUTHORITY);
-
-    public static final String PATH_USERS = "users";
-
-    public static final String PATH_STUDENTS = "students";
-
-    public static final String PATH_STUDENTS_YEAR_SEMESTER = "students_year_semester";
-
-    public static final String PATH_SCHEDULE_DAYS = "schedule_days";
-
-    public static final String PATH_SCHEDULE_CLASSES = "schedule_classes";
-
-    public static final String PATH_STUDENT_CLASSES = "student_classes";
-
-    public static final String PATH_STUDENT_CLASSES_DOCS = "student_classes_docs";
-
-    public static final String PATH_STUDENT_CALENDAR = "student_calendar";
-
 
     public static class Users implements UsersColumns, BaseColumns {
 

@@ -24,18 +24,18 @@ public class StudentClassesRequest extends Request {
 
         Student student = new Student();
 
-        for(Element href : hrefs) {
+        for (Element href : hrefs) {
             String linkHref = href.attr("href");
 
-            if(linkHref.matches("/utente/eu/aluno/ano_lectivo/unidades[?](.)*&tipo_de_per%EDodo_lectivo=s&(.)*")) {
+            if (linkHref.matches("/utente/eu/aluno/ano_lectivo/unidades[?](.)*&tipo_de_per%EDodo_lectivo=s&(.)*")) {
                 String[] class_url = linkHref.split("&");
 
                 String semester = class_url[class_url.length - 1];
-                String classID  = class_url[class_url.length - 3];
+                String classID = class_url[class_url.length - 3];
 
                 String className = href.text();
                 int semester_final = Integer.valueOf(semester.substring(semester.length() - 1));
-                String classID_final  = classID.substring(8);
+                String classID_final = classID.substring(8);
 
                 System.out.println("-> CLASS!" + className + ", " + semester_final + ", " + classID_final);
 
@@ -45,17 +45,15 @@ public class StudentClassesRequest extends Request {
                 cl.setNumber(classID_final);
 
                 student.addStudentClass(semester_final, cl);
-            }
-
-            else if(linkHref.matches("/utente/eu/aluno/ano_lectivo/unidades[?](.)*&tipo_de_per%EDodo_lectivo=t&(.)*")) {
+            } else if (linkHref.matches("/utente/eu/aluno/ano_lectivo/unidades[?](.)*&tipo_de_per%EDodo_lectivo=t&(.)*")) {
                 String[] class_url = linkHref.split("&");
 
                 //String semester = class_url[class_url.length - 1];
-                String classID  = class_url[class_url.length - 3];
+                String classID = class_url[class_url.length - 3];
 
                 String className = href.text();
                 //int semester_final = Integer.valueOf(semester.substring(semester.length() - 1));
-                String classID_final  = classID.substring(8);
+                String classID_final = classID.substring(8);
 
                 //System.out.println("-> CLASS!" + className + ", " + semester_final + ", " + classID_final);
 

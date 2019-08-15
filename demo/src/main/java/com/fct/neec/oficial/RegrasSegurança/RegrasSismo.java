@@ -15,6 +15,5 @@ public class RegrasSismo extends AppCompatActivity {
         setContentView(R.layout.seguranca_sismo);
 
 
-
     }
 }

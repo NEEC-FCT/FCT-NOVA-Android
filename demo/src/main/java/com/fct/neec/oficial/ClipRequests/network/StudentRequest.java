@@ -3,7 +3,6 @@ package com.fct.neec.oficial.ClipRequests.network;
 import android.content.Context;
 import android.util.Log;
 
-
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentYearSemester;
 import com.fct.neec.oficial.ClipRequests.entities.User;
@@ -42,8 +41,8 @@ public class StudentRequest extends Request {
                 student.setNumberId(student_numberID);
                 student.setNumber(student_number);
 
-                Log.d( "CLIP" ,"StudentRequest - signIn - numberID:" + student_numberID);
-                Log.d( "CLIP" ,"StudentRequest - signIn - number:" + student_number);
+                Log.d("CLIP", "StudentRequest - signIn - numberID:" + student_numberID);
+                Log.d("CLIP", "StudentRequest - signIn - number:" + student_number);
 
                 user.addStudent(student);
             }
@@ -86,11 +85,11 @@ public class StudentRequest extends Request {
                 student.setNumberId(student_numberID);
                 student.setNumber(student_number);
 
-                Log.d( "CLIP" ,"StudentRequest - getStudentsNumbers - numberID:" + student_numberID);
+                Log.d("CLIP", "StudentRequest - getStudentsNumbers - numberID:" + student_numberID);
                 System.out.println("StudentRequest - getStudentsNumbers - numberID:" + student_numberID);
 
-                Log.d( "CLIP" ,"StudentRequest - getStudentsNumbers - number:" + student_number);
-                Log.d( "CLIP" ,"StudentRequest - getStudentsNumbers - number:" + student_number);
+                Log.d("CLIP", "StudentRequest - getStudentsNumbers - number:" + student_number);
+                Log.d("CLIP", "StudentRequest - getStudentsNumbers - number:" + student_number);
 
                 user.addStudent(student);
             }
@@ -110,16 +109,16 @@ public class StudentRequest extends Request {
 
         Student student = new Student();
 
-        for(Element link : links) {
+        for (Element link : links) {
             String linkHref = link.attr("href");
 
-            if(linkHref.matches("/utente/eu/aluno/ano_lectivo[?][_a-zA-Z0-9=;&.%]*ano_lectivo=[0-9]*")) {
+            if (linkHref.matches("/utente/eu/aluno/ano_lectivo[?][_a-zA-Z0-9=;&.%]*ano_lectivo=[0-9]*")) {
                 String year = link.text();
 
                 StudentYearSemester studentYear = new StudentYearSemester();
                 studentYear.setYear(year);
 
-                Log.d( "CLIP" ,"StudentRequest - getStudentsYears - year:" + year);
+                Log.d("CLIP", "StudentRequest - getStudentsYears - year:" + year);
 
                 student.addYear(studentYear);
             }

@@ -15,6 +15,5 @@ public class RegrasDoenca extends AppCompatActivity {
         setContentView(R.layout.seguranca_doenca);
 
 
-
     }
 }

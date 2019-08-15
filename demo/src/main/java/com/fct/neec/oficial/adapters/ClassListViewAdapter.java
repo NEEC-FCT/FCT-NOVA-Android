@@ -22,7 +22,7 @@ public class ClassListViewAdapter extends ArrayAdapter<Object> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
 
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_class, parent, false);
 
             viewHolder = new ViewHolder();

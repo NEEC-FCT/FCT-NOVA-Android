@@ -8,9 +8,9 @@ import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.StudentTools;
 
 public class GetStudentCalendarTask extends BaseTask<Void, Void, Student> {
-    
+
     private OnTaskFinishedListener<Student> mListener;
-    
+
     public GetStudentCalendarTask(Context context, OnTaskFinishedListener<Student> listener) {
         super(context);
         mListener = listener;

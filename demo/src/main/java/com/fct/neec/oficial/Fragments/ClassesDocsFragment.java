@@ -33,8 +33,36 @@ public class ClassesDocsFragment extends Fragment
     private ExpandableListView mListView;
     private StudentClassesDocsAdapter mListAdapter;
     private List<StudentClassDoc> classDocs;
-    private GetStudentClassesDocsTask mDocsTask;
+    ExpandableListView.OnChildClickListener onChildClickListener = new ExpandableListView.OnChildClickListener() {
 
+        @Override
+        public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+            String name = classDocs.get(childPosition).getName();
+            String url = classDocs.get(childPosition).getUrl();
+
+            // Download document
+            StudentClassesDocsRequest.downloadDoc(getActivity(), name, url);
+
+            return true;
+        }
+    };
+    private GetStudentClassesDocsTask mDocsTask;
+    ExpandableListView.OnGroupClickListener onGroupClickListener = new ExpandableListView.OnGroupClickListener() {
+        @Override
+        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+            if (mListView.isGroupExpanded(groupPosition))
+                mListView.collapseGroup(groupPosition);
+
+            else {
+                // showProgressSpinnerOnly(true);
+
+                mDocsTask = new GetStudentClassesDocsTask(getActivity(), ClassesDocsFragment.this);
+                AndroidUtils.executeOnPool(mDocsTask, groupPosition);
+            }
+
+            return true;
+        }
+    };
 
     public static ClassesDocsFragment newInstance(int index) {
         ClassesDocsFragment fragment = new ClassesDocsFragment();
@@ -46,7 +74,6 @@ public class ClassesDocsFragment extends Fragment
         return cm.getActiveNetworkInfo() != null;
 
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +98,7 @@ public class ClassesDocsFragment extends Fragment
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 0) {
-                    ((MainActivity) getActivity()).changeFragment(1 , false);
+                    ((MainActivity) getActivity()).changeFragment(1, false);
                 }
 
             }
@@ -99,8 +126,8 @@ public class ClassesDocsFragment extends Fragment
         mListView.setOnChildClickListener(onChildClickListener);
 
         // Unfinished task around?
-       // if (mDocsTask != null && mDocsTask.getStatus() != AsyncTask.Status.FINISHED)
-           // showProgressSpinnerOnly(true);
+        // if (mDocsTask != null && mDocsTask.getStatus() != AsyncTask.Status.FINISHED)
+        // showProgressSpinnerOnly(true);
 
         /*// The view has been loaded already
         if(mListAdapter != null) {
@@ -111,36 +138,19 @@ public class ClassesDocsFragment extends Fragment
         }*/
     }
 
-    ExpandableListView.OnGroupClickListener onGroupClickListener = new ExpandableListView.OnGroupClickListener() {
-        @Override
-        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-            if(mListView.isGroupExpanded(groupPosition))
-                mListView.collapseGroup(groupPosition);
-
-            else {
-               // showProgressSpinnerOnly(true);
-
-                mDocsTask = new GetStudentClassesDocsTask(getActivity(), ClassesDocsFragment.this);
-                AndroidUtils.executeOnPool(mDocsTask, groupPosition);
-            }
-
-            return true;
-        }
-    };
-
     @Override
     public void onTaskFinished(Student result, int groupPosition) {
-        if(!isAdded())
+        if (!isAdded())
             return;
 
         //showProgressSpinnerOnly(false);
 
         // Server is unavailable right now
-        if(result == null || result.getClassesDocs().size() == 0)
+        if (result == null || result.getClassesDocs().size() == 0)
             return;
 
         // Collapse last expanded group
-        if(lastExpandedGroupPosition != -1)
+        if (lastExpandedGroupPosition != -1)
             mListView.collapseGroup(lastExpandedGroupPosition);
 
         lastExpandedGroupPosition = groupPosition;
@@ -153,20 +163,6 @@ public class ClassesDocsFragment extends Fragment
         // Expand group position
         mListView.expandGroup(groupPosition, true);
     }
-
-    ExpandableListView.OnChildClickListener onChildClickListener = new ExpandableListView.OnChildClickListener() {
-
-        @Override
-        public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-            String name = classDocs.get(childPosition).getName();
-            String url = classDocs.get(childPosition).getUrl();
-
-            // Download document
-            StudentClassesDocsRequest.downloadDoc(getActivity(), name, url);
-
-            return true;
-        }
-    };
 
     @Override
     public void onDestroy() {

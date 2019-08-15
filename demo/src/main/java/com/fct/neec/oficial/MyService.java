@@ -20,6 +20,27 @@ import java.util.Map;
 public class MyService extends Service {
     static RemoteViews view;
     private static StudentScheduleClass melhor;
+
+    private static int diffHoras(String timeString1, String timeString2) {
+
+        String[] fractions1 = timeString1.split(":");
+        String[] fractions2 = timeString2.split(":");
+        Integer hours1 = Integer.parseInt(fractions1[0]);
+        Integer hours2 = Integer.parseInt(fractions2[0]);
+        Integer minutes1 = Integer.parseInt(fractions1[1]);
+        Integer minutes2 = Integer.parseInt(fractions2[1]);
+        int hourDiff = hours1 - hours2;
+        int minutesDiff = minutes1 - minutes2;
+        if (minutesDiff < 0) {
+            minutesDiff = 60 + minutesDiff;
+            hourDiff--;
+        }
+        if (hourDiff < 0) {
+            hourDiff = 24 + hourDiff;
+        }
+        return (hourDiff * 60) + minutesDiff;
+    }
+
     @Override
     public void onCreate() {
         view = new RemoteViews(getPackageName(), R.layout.proxima_aula);
@@ -51,8 +72,8 @@ public class MyService extends Service {
 
         @Override
         protected void onPreExecute() {
-          //  view.setViewVisibility(R.id.progressBar, 0);
-           // view.setProgressBar(R.id.progressBar, 0, 0, false);
+            //  view.setViewVisibility(R.id.progressBar, 0);
+            // view.setProgressBar(R.id.progressBar, 0, 0, false);
             manager.updateAppWidget(thisWidget, view);
             super.onPreExecute();
         }
@@ -69,7 +90,7 @@ public class MyService extends Service {
             /*
              * Update widget UI like below sample, replace with your code*/
             Log.d("Widget", "Called");
-            if(ProximaAula.data != null) {
+            if (ProximaAula.data != null) {
                 Map<Integer, List<StudentScheduleClass>> horario = ProximaAula.data.getScheduleClasses();
                 Calendar c = Calendar.getInstance();
                 int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
@@ -109,8 +130,7 @@ public class MyService extends Service {
 
                 }
 
-            }
-            else{
+            } else {
                 view = new RemoteViews(getPackageName(), R.layout.sem_aulas);
                 Intent configIntent = new Intent(getApplicationContext(), LoadingActivity.class);
                 PendingIntent configPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, configIntent, 0);
@@ -121,26 +141,5 @@ public class MyService extends Service {
 
             stopSelf();
         }
-    }
-
-
-    private static int diffHoras(String timeString1, String timeString2) {
-
-        String[] fractions1 = timeString1.split(":");
-        String[] fractions2 = timeString2.split(":");
-        Integer hours1 = Integer.parseInt(fractions1[0]);
-        Integer hours2 = Integer.parseInt(fractions2[0]);
-        Integer minutes1 = Integer.parseInt(fractions1[1]);
-        Integer minutes2 = Integer.parseInt(fractions2[1]);
-        int hourDiff = hours1 - hours2;
-        int minutesDiff = minutes1 - minutes2;
-        if (minutesDiff < 0) {
-            minutesDiff = 60 + minutesDiff;
-            hourDiff--;
-        }
-        if (hourDiff < 0) {
-            hourDiff = 24 + hourDiff;
-        }
-        return (hourDiff * 60) + minutesDiff;
     }
 }

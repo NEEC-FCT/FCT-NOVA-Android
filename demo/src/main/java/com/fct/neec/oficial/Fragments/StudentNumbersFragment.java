@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+
 import androidx.fragment.app.Fragment;
+
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.User;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
@@ -29,20 +31,70 @@ public class StudentNumbersFragment extends Fragment
         GetStudentYearsTask.OnTaskFinishedListener,
         UpdateStudentNumbersTask.OnUpdateTaskFinishedListener<User> {
 
+    ExpandableListView mListView;
     private StudentNumbersAdapter mListAdapter;
     private List<Student> students;
-    ExpandableListView mListView;
-
     private GetStudentYearsTask mYearsTask;
-    private UpdateStudentNumbersTask mUpdateTask;
-    private GetStudentNumbersTask mNumbersTask;
+    ExpandableListView.OnGroupClickListener onGroupClickListener = new ExpandableListView.OnGroupClickListener() {
+        @Override
+        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+            Log.d("CLIP", "StudentNumbersFragment - group clicked");
 
+            // If the yearsTask is running, do not allow group click
+            if (mYearsTask != null && mYearsTask.getStatus() != AsyncTask.Status.FINISHED) {
+                System.out.println("YEARS TASK IS ALREADY RUNNING!");
+                return true;
+            }
+
+            if (mListView.isGroupExpanded(groupPosition))
+                mListView.collapseGroup(groupPosition);
+
+            else {
+                //  showProgressSpinnerOnly(true);
+
+                System.out.println("GETSTUDENTS YEARS TASK student.getId() " + students.get(groupPosition).getId() +
+                        ", student.getNumberId() " + students.get(groupPosition).getNumberId());
+
+                mYearsTask = new GetStudentYearsTask(getActivity(), StudentNumbersFragment.this);
+                AndroidUtils.executeOnPool(mYearsTask, students.get(groupPosition), groupPosition);
+            }
+
+            return true;
+        }
+    };
+    private UpdateStudentNumbersTask mUpdateTask;
+    ExpandableListView.OnChildClickListener onChildClickListener = new ExpandableListView.OnChildClickListener() {
+
+        @Override
+        public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+            Log.d("CLIP", "StudentNumbersFragment - child clicked");
+
+            // If the updateTask is running, do not allow child click
+            if (mUpdateTask != null && mUpdateTask.getStatus() != AsyncTask.Status.FINISHED) {
+                System.out.println("UPDATE TASK IS RUNNING!");
+                return true;
+            }
+
+            // Save year, studentId and studentNumberId selected
+            String yearSelected = students.get(groupPosition).getYears().get(childPosition).getYear();
+
+            ClipSettings.saveYearSelected(getActivity(), yearSelected);
+            ClipSettings.saveStudentIdSelected(getActivity(), students.get(groupPosition).getId());
+            ClipSettings.saveStudentNumberId(getActivity(), students.get(groupPosition).getNumberId());
+            ClipSettings.saveStudentYearSemesterIdSelected(getActivity(), students.get(groupPosition)
+                    .getYears().get(childPosition).getId());
+
+            // Lets go to Horario
+            ((MainActivity) getActivity()).changeFragment(7, false);
+            return true;
+        }
+    };
+    private GetStudentNumbersTask mNumbersTask;
 
     public static StudentNumbersFragment newInstance(int index) {
         StudentNumbersFragment fragment = new StudentNumbersFragment();
         return fragment;
     }
-
 
     public boolean isInternetAvailable() {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -68,7 +120,7 @@ public class StudentNumbersFragment extends Fragment
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 0) {
-                    ((MainActivity) getActivity()).changeFragment(3 , false);
+                    ((MainActivity) getActivity()).changeFragment(3, false);
                 }
 
             }
@@ -91,91 +143,31 @@ public class StudentNumbersFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
 
         // Unfinished task around?
-        if ( ( mYearsTask != null && mYearsTask.getStatus() != AsyncTask.Status.FINISHED ) ||
-                ( mUpdateTask != null && mUpdateTask.getStatus() != AsyncTask.Status.FINISHED ) )
-          //  showProgressSpinnerOnly(true);
+        if ((mYearsTask != null && mYearsTask.getStatus() != AsyncTask.Status.FINISHED) ||
+                (mUpdateTask != null && mUpdateTask.getStatus() != AsyncTask.Status.FINISHED))
+            //  showProgressSpinnerOnly(true);
 
-        // The view has been loaded already
-        if(mListAdapter != null) {
-            mListView.setAdapter(mListAdapter);
-            mListView.setOnGroupClickListener(onGroupClickListener);
-            mListView.setOnChildClickListener(onChildClickListener);
-            return;
-        }
+            // The view has been loaded already
+            if (mListAdapter != null) {
+                mListView.setAdapter(mListAdapter);
+                mListView.setOnGroupClickListener(onGroupClickListener);
+                mListView.setOnChildClickListener(onChildClickListener);
+                return;
+            }
 
-       // showProgressSpinner(true);
+        // showProgressSpinner(true);
 
         // Start AsyncTask
         mNumbersTask = new GetStudentNumbersTask(getActivity(), StudentNumbersFragment.this);
         AndroidUtils.executeOnPool(mNumbersTask);
     }
 
-
-
-
-    ExpandableListView.OnGroupClickListener onGroupClickListener = new ExpandableListView.OnGroupClickListener() {
-        @Override
-        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-            Log.d( "CLIP" , "StudentNumbersFragment - group clicked");
-
-            // If the yearsTask is running, do not allow group click
-            if( mYearsTask != null && mYearsTask.getStatus() != AsyncTask.Status.FINISHED ) {
-                System.out.println("YEARS TASK IS ALREADY RUNNING!");
-                return true;
-            }
-
-            if(mListView.isGroupExpanded(groupPosition))
-                mListView.collapseGroup(groupPosition);
-
-            else {
-              //  showProgressSpinnerOnly(true);
-
-                System.out.println("GETSTUDENTS YEARS TASK student.getId() " + students.get(groupPosition).getId() +
-                        ", student.getNumberId() " + students.get(groupPosition).getNumberId());
-
-                mYearsTask = new GetStudentYearsTask(getActivity(), StudentNumbersFragment.this);
-                AndroidUtils.executeOnPool(mYearsTask, students.get(groupPosition), groupPosition);
-            }
-
-            return true;
-        }
-    };
-
-    ExpandableListView.OnChildClickListener onChildClickListener = new ExpandableListView.OnChildClickListener() {
-
-        @Override
-        public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-            Log.d( "CLIP" ,"StudentNumbersFragment - child clicked");
-
-            // If the updateTask is running, do not allow child click
-            if( mUpdateTask != null && mUpdateTask.getStatus() != AsyncTask.Status.FINISHED ) {
-                System.out.println("UPDATE TASK IS RUNNING!");
-                return true;
-            }
-
-            // Save year, studentId and studentNumberId selected
-            String yearSelected = students.get(groupPosition).getYears().get(childPosition).getYear();
-
-            ClipSettings.saveYearSelected(getActivity(), yearSelected);
-            ClipSettings.saveStudentIdSelected(getActivity(), students.get(groupPosition).getId());
-            ClipSettings.saveStudentNumberId(getActivity(), students.get(groupPosition).getNumberId());
-            ClipSettings.saveStudentYearSemesterIdSelected(getActivity(), students.get(groupPosition)
-                    .getYears().get(childPosition).getId());
-
-            // Lets go to Horario
-            ((MainActivity) getActivity()).changeFragment(7, false);
-            return true;
-        }
-    };
-
-
-
     @Override
     public void onStudentNumbersTaskFinished(User result) {
-        if(!isAdded())
+        if (!isAdded())
             return;
 
-        Log.d( "CLIP" ,"StudentNumbersFragment - onStudentNumbersTaskFinished");
+        Log.d("CLIP", "StudentNumbersFragment - onStudentNumbersTaskFinished");
 
         students = result.getStudents();
         //showProgressSpinner(false);
@@ -188,15 +180,15 @@ public class StudentNumbersFragment extends Fragment
 
     @Override
     public void onStudentYearsTaskFinished(Student result, int groupPosition) {
-        if(!isAdded())
+        if (!isAdded())
             return;
 
-        Log.d( "CLIP" ,"StudentNumbersFragment - onStudentYearsTaskFinished");
+        Log.d("CLIP", "StudentNumbersFragment - onStudentYearsTaskFinished");
 
-       // showProgressSpinnerOnly(false);
+        // showProgressSpinnerOnly(false);
 
         // Server is unavailable right now
-        if(result == null)
+        if (result == null)
             return;
 
         // Set new data and notifyDataSetChanged
@@ -209,13 +201,13 @@ public class StudentNumbersFragment extends Fragment
 
     @Override
     public void onUpdateTaskFinished(User result) {
-        if(!isAdded())
+        if (!isAdded())
             return;
 
-        Log.d( "CLIP" ,"StudentNumbersFragment - onUpdateTaskFinished");
+        Log.d("CLIP", "StudentNumbersFragment - onUpdateTaskFinished");
 
         // Server is unavailable right now
-        if(result == null)
+        if (result == null)
             return;
 
         // Set new data and notifyDataSetChanged

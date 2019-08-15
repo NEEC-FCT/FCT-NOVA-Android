@@ -8,7 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
+
 import com.fct.neec.oficial.ClipRequests.entities.Student;
+
 import java.util.Calendar;
 
 
@@ -22,7 +24,6 @@ public class ProximaAula extends AppWidgetProvider {
     public PendingIntent service = null;
 
 
-
     public static void sethorario(Student data) {
         ProximaAula.data = data;
 
@@ -33,15 +34,12 @@ public class ProximaAula extends AppWidgetProvider {
 
 
         // Construct the RemoteViews object
-        if(ProximaAula.data != null){
+        if (ProximaAula.data != null) {
             ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.proxima_aula);
             Intent configIntent = new Intent(context, LoadingActivity.class);
             PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
             views.setOnClickPendingIntent(R.id.proxima_aula, configPendingIntent);
-        }
-
-
-        else{
+        } else {
             ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.sem_aulas);
             Intent configIntent = new Intent(context, LoadingActivity.class);
             PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
@@ -59,8 +57,8 @@ public class ProximaAula extends AppWidgetProvider {
         if (service == null) {
             service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
         }
-        Log.d("Widget" , "Vou atualizar ");
-        alarmManager.setRepeating(AlarmManager.RTC, 5000, 60000 , service);
+        Log.d("Widget", "Vou atualizar ");
+        alarmManager.setRepeating(AlarmManager.RTC, 5000, 60000, service);
         //onclick refresh
         appWidgetManager.updateAppWidget(appWidgetId, views);
 

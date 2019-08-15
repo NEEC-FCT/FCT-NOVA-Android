@@ -1,14 +1,7 @@
 package com.fct.neec.oficial.ClipRequests.util;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.CalendarContract;
 import android.util.Log;
-import android.widget.Toast;
-
 
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.User;
@@ -20,11 +13,6 @@ import com.fct.neec.oficial.ClipRequests.network.StudentClassesRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentScheduleRequest;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
-
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class StudentTools {
 
@@ -38,13 +26,13 @@ public class StudentTools {
         User user = StudentRequest.signIn(mContext, username, password);
 
         // Invalid credentials
-        if(! user.hasStudents())
+        if (!user.hasStudents())
             return Result.ERROR;
 
         long userId = DBUtils.getUserId(mContext, username);
 
         // If the user doesn't exist, create a new one
-        if(userId == -1) {
+        if (userId == -1) {
             userId = DBUtils.createUser(mContext, username);
 
             // Insert Students
@@ -71,10 +59,10 @@ public class StudentTools {
 
         Student student = DBUtils.getStudentYears(mContext, studentId);
 
-        
-        Log.d("CLIP" ,"has " + student.hasStudentYears());
 
-        if(student.hasStudentYears())
+        Log.d("CLIP", "has " + student.hasStudentYears());
+
+        if (student.hasStudentYears())
             return student;
 
         // Check for connectivity
@@ -92,17 +80,17 @@ public class StudentTools {
     public static User updateStudentNumbersAndYears(Context mContext, long userId)
             throws ServerUnavailableException {
 
-        Log.d("CLIP" ,"request!");
+        Log.d("CLIP", "request!");
 
         // Get (new) studentsNumbers from the server
         User user = StudentRequest.getStudentsNumbers(mContext);
 
-        Log.d("CLIP" ,"deleting!");
+        Log.d("CLIP", "deleting!");
 
         // Delete studentsNumbers and studentsYears
         DBUtils.deleteStudentsNumbers(mContext, userId);
 
-        Log.d("CLIP" ,"inserting!");
+        Log.d("CLIP", "inserting!");
 
         // Insert Students
         DBUtils.insertStudentsNumbers(mContext, userId, user);
@@ -114,17 +102,17 @@ public class StudentTools {
                                             String studentYearSemesterId)
             throws ServerUnavailableException {
 
-        Log.d("CLIP" ,"request!");
+        Log.d("CLIP", "request!");
 
         // Get (new) student info from the server
         Student student = StudentRequest.getStudentsYears(mContext, studentNumberId);
 
-        Log.d("CLIP" ,"deleting!");
+        Log.d("CLIP", "deleting!");
 
         // Delete students info
         DBUtils.deleteStudentsInfo(mContext, studentYearSemesterId);
 
-        Log.d("CLIP" ,"inserting!");
+        Log.d("CLIP", "inserting!");
 
         // Insert students info
         DBUtils.insertStudentYears(mContext, studentId, student);
@@ -146,9 +134,9 @@ public class StudentTools {
 
         Student student = DBUtils.getStudentSchedule(mContext, yearSemesterId);
 
-        Log.d("CLIP" ,"has " + (student != null));
+        Log.d("CLIP", "has " + (student != null));
 
-        if(student != null)
+        if (student != null)
             return student;
 
 
@@ -158,12 +146,12 @@ public class StudentTools {
         // Get student schedule from the server
         student = StudentScheduleRequest.getSchedule(mContext, studentNumberId, yearFormatted, semester);
 
-        Log.d("CLIP" ,"schedule request done!");
+        Log.d("CLIP", "schedule request done!");
 
         // Insert schedule on database
         DBUtils.insertStudentSchedule(mContext, yearSemesterId, student);
 
-        Log.d("CLIP" ,"schedule inserted!");
+        Log.d("CLIP", "schedule inserted!");
 
         return student;
     }
@@ -174,7 +162,7 @@ public class StudentTools {
 
 
     public static Student getStudentClasses(Context mContext, String studentId, String year, String yearFormatted,
-                                             int semester, String studentNumberId)
+                                            int semester, String studentNumberId)
             throws ServerUnavailableException {
 
         // First, we get the yearSemesterId
@@ -182,9 +170,9 @@ public class StudentTools {
 
         Student student = DBUtils.getStudentClasses(mContext, yearSemesterId);
 
-        Log.d("CLIP" ,"has " + (student != null));
+        Log.d("CLIP", "has " + (student != null));
 
-        if(student != null)
+        if (student != null)
             return student;
 
 
@@ -194,26 +182,26 @@ public class StudentTools {
         // Get student classes from the server
         student = StudentClassesRequest.getClasses(mContext, studentNumberId, yearFormatted);
 
-        Log.d("CLIP" ,"classes request done!");
+        Log.d("CLIP", "classes request done!");
 
         // Insert classes on database
         DBUtils.insertStudentClasses(mContext, yearSemesterId, student);
 
-        Log.d("CLIP" ,"classes inserted!");
+        Log.d("CLIP", "classes inserted!");
 
         return student;
     }
 
     public static Student getStudentClassesDocs(Context mContext, String studentClassId, String yearFormatted,
-                                            int semester, String studentNumberId, String studentClassSelected,
-                                            String docType)
+                                                int semester, String studentNumberId, String studentClassSelected,
+                                                String docType)
             throws ServerUnavailableException {
 
         Student student = DBUtils.getStudentClassesDocs(mContext, studentClassId, docType);
 
-        Log.d("CLIP" ,"has " + (student != null));
+        Log.d("CLIP", "has " + (student != null));
 
-        if(student != null)
+        if (student != null)
             return student;
 
 
@@ -224,12 +212,12 @@ public class StudentTools {
         student = StudentClassesDocsRequest.getClassesDocs(mContext, studentNumberId,
                 yearFormatted, semester, studentClassSelected, docType);
 
-        Log.d("CLIP" ,"classes docs request done!");
+        Log.d("CLIP", "classes docs request done!");
 
         // Insert classes docs on database
         DBUtils.insertStudentClassesDocs(mContext, studentClassId, student);
 
-        Log.d("CLIP" ,"classes docs inserted!");
+        Log.d("CLIP", "classes docs inserted!");
 
         return student;
     }
@@ -247,9 +235,9 @@ public class StudentTools {
 
         Student student = DBUtils.getStudentCalendar(mContext, yearSemesterId);
 
-        Log.d("CLIP" ,"has " + (student != null));
+        Log.d("CLIP", "has " + (student != null));
 
-        if(student != null)
+        if (student != null)
             return student;
 
 
@@ -267,18 +255,15 @@ public class StudentTools {
         // Get student test calendar from the server
         StudentCalendarRequest.getTestCalendar(mContext, student, studentNumberId, yearFormatted, semester);
 
-        Log.d("CLIP" ,"calendar request done!");
+        Log.d("CLIP", "calendar request done!");
 
         // Insert calendar on database
         DBUtils.insertStudentCalendar(mContext, yearSemesterId, student);
 
-        Log.d("CLIP" ,"calendar inserted!");
+        Log.d("CLIP", "calendar inserted!");
 
         return student;
     }
-
-
-
 
 
 }

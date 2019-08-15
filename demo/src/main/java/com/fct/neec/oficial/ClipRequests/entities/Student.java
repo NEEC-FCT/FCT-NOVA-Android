@@ -15,7 +15,7 @@ public class Student extends Entity implements Serializable {
     private Map<Boolean, List<StudentCalendar>> studentCalendar; // <isExam, calendar>
     private List<StudentClassDoc> studentClassesDocs;
 
-    public Student(){
+    public Student() {
         this.years = new LinkedList<StudentYearSemester>();
         this.scheduleClasses = new HashMap<Integer, List<StudentScheduleClass>>(5);
         this.studentClasses = new HashMap<Integer, List<StudentClass>>(2);
@@ -61,7 +61,7 @@ public class Student extends Entity implements Serializable {
 
     public void addScheduleClass(int day, StudentScheduleClass scheduleClass) {
         List<StudentScheduleClass> classes = this.scheduleClasses.get(day);
-        if(classes == null)
+        if (classes == null)
             classes = new LinkedList<StudentScheduleClass>();
 
         classes.add(scheduleClass);
@@ -77,7 +77,7 @@ public class Student extends Entity implements Serializable {
 
     public void addStudentClass(int semester, StudentClass scheduleClass) {
         List<StudentClass> classes = this.studentClasses.get(semester);
-        if(classes == null)
+        if (classes == null)
             classes = new LinkedList<StudentClass>();
 
         classes.add(scheduleClass);
@@ -99,7 +99,7 @@ public class Student extends Entity implements Serializable {
 
     public void addStudentCalendarAppointment(boolean isExam, StudentCalendar calendarAppointment) {
         List<StudentCalendar> calendar = this.studentCalendar.get(isExam);
-        if(calendar == null)
+        if (calendar == null)
             calendar = new LinkedList<StudentCalendar>();
 
         calendar.add(calendarAppointment);

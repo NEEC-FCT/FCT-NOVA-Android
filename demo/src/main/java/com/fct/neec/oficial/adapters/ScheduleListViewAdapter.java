@@ -22,7 +22,7 @@ public class ScheduleListViewAdapter extends ArrayAdapter<Object> {
 
     @Override
     public int getItemViewType(int position) {
-        if(getItem(position) instanceof ScheduleFragment.ListViewItem)
+        if (getItem(position) instanceof ScheduleFragment.ListViewItem)
             return VIEW_TYPE_ITEM;
 
         return VIEW_TYPE_ITEM_EMPTY;
@@ -37,13 +37,13 @@ public class ScheduleListViewAdapter extends ArrayAdapter<Object> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
 
-        if(getItemViewType(position) == VIEW_TYPE_ITEM_EMPTY) {
+        if (getItemViewType(position) == VIEW_TYPE_ITEM_EMPTY) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_schedule_empty, parent, false);
             convertView.setOnClickListener(null);
             return convertView;
         }
 
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_schedule, parent, false);
 
             viewHolder = new ViewHolder();
@@ -62,7 +62,7 @@ public class ScheduleListViewAdapter extends ArrayAdapter<Object> {
         viewHolder.hour_start.setText(item.hour_start);
         viewHolder.hour_end.setText(item.hour_end);
 
-        if(item.room == null)
+        if (item.room == null)
             viewHolder.room.setText(" - ");
         else
             viewHolder.room.setText(item.room);

@@ -5,25 +5,23 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class StudentCalendar extends Entity implements Parcelable , Serializable {
+public class StudentCalendar extends Entity implements Parcelable, Serializable {
+    @SuppressWarnings("unused")
+    public static final Creator<StudentCalendar> CREATOR = new Creator<StudentCalendar>() {
+        @Override
+        public StudentCalendar createFromParcel(Parcel in) {
+            return new StudentCalendar(in);
+        }
+
+        @Override
+        public StudentCalendar[] newArray(int size) {
+            return new StudentCalendar[size];
+        }
+    };
     private String name, date, hour, rooms, number;
 
-    public StudentCalendar() {}
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getDate() { return date; }
-    public void setDate(String date) { this.date = date; }
-
-    public String getHour() { return hour; }
-    public void setHour(String hour) { this.hour = hour; }
-
-    public String getRooms() { return rooms; }
-    public void setRooms(String rooms) { this.rooms = rooms; }
-
-    public String getNumber() { return number; }
-    public void setNumber(String number) { this.number = number; }
+    public StudentCalendar() {
+    }
 
     protected StudentCalendar(Parcel in) {
         name = in.readString();
@@ -31,6 +29,46 @@ public class StudentCalendar extends Entity implements Parcelable , Serializable
         hour = in.readString();
         rooms = in.readString();
         number = in.readString();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(String rooms) {
+        this.rooms = rooms;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     @Override
@@ -46,19 +84,6 @@ public class StudentCalendar extends Entity implements Parcelable , Serializable
         dest.writeString(rooms);
         dest.writeString(number);
     }
-
-    @SuppressWarnings("unused")
-    public static final Creator<StudentCalendar> CREATOR = new Creator<StudentCalendar>() {
-        @Override
-        public StudentCalendar createFromParcel(Parcel in) {
-            return new StudentCalendar(in);
-        }
-
-        @Override
-        public StudentCalendar[] newArray(int size) {
-            return new StudentCalendar[size];
-        }
-    };
 
 
 }

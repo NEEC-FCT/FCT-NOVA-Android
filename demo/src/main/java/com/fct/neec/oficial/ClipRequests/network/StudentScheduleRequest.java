@@ -28,8 +28,8 @@ public class StudentScheduleRequest extends Request {
             throws ServerUnavailableException {
 
         String url = STUDENT_SCHEDULE_1 + year + STUDENT_SCHEDULE_2 + studentNumberId;
-        if(semester == 3) // Trimester
-            url += STUDENT_SCHEDULE_3_TRIMESTER + (semester-1);
+        if (semester == 3) // Trimester
+            url += STUDENT_SCHEDULE_3_TRIMESTER + (semester - 1);
         else
             url += STUDENT_SCHEDULE_3 + semester;
 
@@ -38,10 +38,10 @@ public class StudentScheduleRequest extends Request {
                 .select("tr[valign=center]");
 
         Student student = new Student();
-        for(Element tr : trs) {
+        for (Element tr : trs) {
 
             Elements tds = tr.select("td[class~=turno.* celulaDeCalendario]");
-            for(Element td : tds) {
+            for (Element td : tds) {
                 List<Node> child = td.child(0).childNodes();
 
                 // Remove all the garbage
@@ -52,28 +52,28 @@ public class StudentScheduleRequest extends Request {
                 Element horas_inicio = tr.child(0);
                 Element horas_fim = tr.child(1);
 
-                int scheduleDayNumber = Character.getNumericValue(dia.charAt(dia.length()-1));
+                int scheduleDayNumber = Character.getNumericValue(dia.charAt(dia.length() - 1));
                 String scheduleClassType = turno.substring(5);
-                scheduleClassType += href[8].substring(href[8].length()-1);
+                scheduleClassType += href[8].substring(href[8].length() - 1);
                 String scheduleClassName = td.attr("title");
                 String scheduleClassNameMin = child.get(0).toString();
-                
+
                 String scheduleClassRoom = null;
-                if(child.size() > 4)
+                if (child.size() > 4)
                     scheduleClassRoom = Html.fromHtml(child.get(4).toString()).toString();
 
                 String scheduleClassDuration = td.attr("rowspan");
 
                 // Calculate scheduleClassHourStart & End
                 String scheduleClassHourStart = null;
-                String scheduleClassHourEnd   = null;
+                String scheduleClassHourEnd = null;
 
                 try {
                     SimpleDateFormat format1 = new SimpleDateFormat("k:mm");
 
                     int dateDuration = (Integer.parseInt(scheduleClassDuration) / 2);
 
-                    if(horas_fim.text().length() == 1) {
+                    if (horas_fim.text().length() == 1) {
                         // Start hour
                         scheduleClassHourStart = horas_inicio.text();
 

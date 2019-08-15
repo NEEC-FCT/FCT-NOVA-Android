@@ -2,9 +2,7 @@ package com.fct.neec.oficial.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,10 +19,6 @@ import com.fct.neec.oficial.ClipRequests.util.tasks.UpdateStudentPageTask;
 import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.ProximaAula;
 import com.fct.neec.oficial.R;
-import com.fct.neec.oficial.RegrasSegurança.RegrasDoenca;
-import com.fct.neec.oficial.RegrasSegurança.RegrasEvacuacao;
-import com.fct.neec.oficial.RegrasSegurança.RegrasIncendio;
-import com.fct.neec.oficial.RegrasSegurança.RegrasSismo;
 import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
 import com.github.clans.fab.FloatingActionButton;
@@ -33,9 +27,10 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Calendar;
 
 public class ScheduleViewPager extends BaseViewPager
-        implements GetStudentScheduleTask.OnTaskFinishedListener<Student> ,
+        implements GetStudentScheduleTask.OnTaskFinishedListener<Student>,
         UpdateStudentPageTask.OnUpdateTaskFinishedListener<Student> {
 
+    public Student resultado;
     private GetStudentScheduleTask mTask;
     private UpdateStudentPageTask mUpdateTask;
 
@@ -67,29 +62,31 @@ public class ScheduleViewPager extends BaseViewPager
 
     @Override
     public void onTaskFinished(Student result) {
-        if(!isAdded())
+        if (!isAdded())
             return;
+
 
         showProgressSpinnerOnly(false);
 
         // Server is unavailable right now
-        if(result == null) return;
+        if (result == null) return;
 
+        this.resultado = result;
         ProximaAula.sethorario(result);
         // Initialize the ViewPager and set the adapter
         mViewPager.setAdapter(new ScheduleViewPagerAdapter(getChildFragmentManager(),
-                getResources().getStringArray(R.array.schedule_tab_array), result));
+                getResources().getStringArray(R.array.schedule_tab_array), this.resultado));
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
         // Bind the tabs to the ViewPager
-        PagerSlidingTabStrip tabs =  view.findViewById(R.id.tabs);
+        PagerSlidingTabStrip tabs = view.findViewById(R.id.tabs);
         tabs.setViewPager(mViewPager);
 
         //vou para tab do dia atual
         Calendar c = Calendar.getInstance();
         int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - 2;
-        if( dayOfWeek >= 0 && dayOfWeek <= 4){
-            Log.d("CLIP" , "Vou para a tab: " +dayOfWeek);
+        if (dayOfWeek >= 0 && dayOfWeek <= 4) {
+            Log.d("CLIP", "Vou para a tab: " + dayOfWeek);
             mViewPager.setCurrentItem(dayOfWeek);
         }
 
@@ -106,9 +103,9 @@ public class ScheduleViewPager extends BaseViewPager
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // the user clicked on colors[which]
-                        if(which == 0)
+                        if (which == 0)
                             ClipSettings.saveSemesterSelected(getContext(), 1);
-                        else if(which == 1)
+                        else if (which == 1)
                             ClipSettings.saveSemesterSelected(getContext(), 2);
                         else
                             ClipSettings.saveSemesterSelected(getContext(), 3);
@@ -124,13 +121,12 @@ public class ScheduleViewPager extends BaseViewPager
         FloatingActionButton Logout = view.findViewById(R.id.logout);
         Logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               Log.d("CLIP","Logout");
+                Log.d("CLIP", "Logout");
                 // Clear user personal data
                 ClipSettings.logoutUser(getContext());
                 ((MainActivity) getActivity()).changeFragment(3, false);
             }
         });
-
 
 
         //tabs superiores
@@ -142,7 +138,7 @@ public class ScheduleViewPager extends BaseViewPager
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 0) {
-                    ((MainActivity) getActivity()).changeFragment(3 , false);
+                    ((MainActivity) getActivity()).changeFragment(3, false);
                 }
 
             }
@@ -163,18 +159,9 @@ public class ScheduleViewPager extends BaseViewPager
     public void onUpdateTaskFinished(Student result) {
 
         // Refresh current view
-        // Initialize the ViewPager and set the adapter
-        mViewPager.setAdapter(new ScheduleViewPagerAdapter(getChildFragmentManager(),
-                getResources().getStringArray(R.array.schedule_tab_array), result));
-        mViewPager.setPageTransformer(true, new DepthPageTransformer());
-
-        // Bind the tabs to the ViewPager
-        PagerSlidingTabStrip tabs =  view.findViewById(R.id.tabs);
-        tabs.setViewPager(mViewPager);
-
-        
+        ProximaAula.sethorario(result);
+        ((MainActivity) getActivity()).reloadFragment(7);
     }
-
 
 
     @Override

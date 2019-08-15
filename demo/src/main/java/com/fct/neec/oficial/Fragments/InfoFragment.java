@@ -141,10 +141,10 @@ public class InfoFragment extends Fragment {
                     webview.setVisibility(View.GONE);
 
                     if (url.startsWith("https://www.fct.unl.pt/estudante/informacao-academica/prazos")) {
-                        ((MainActivity) getActivity()).changeFragment(3 , false);
+                        ((MainActivity) getActivity()).changeFragment(3, false);
                         return false;
                     } else {
-                        ((MainActivity) getActivity()).changeFragment(1 , false);
+                        ((MainActivity) getActivity()).changeFragment(1, false);
                         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         startActivity(i);
                     }
@@ -229,16 +229,15 @@ public class InfoFragment extends Fragment {
     }
 
     private void CLIP() {
-        if(ClipSettings.getYearSelected(getContext()) != null){
-            Log.d( "CLIP" , "Vai para o horario");
+        if (ClipSettings.getYearSelected(getContext()) != null) {
+            Log.d("CLIP", "Vai para o horario");
             ((MainActivity) getActivity()).changeFragment(8, false);
         }
         // If the user has already login, start the StudentNumbersActivity instead
-        else if( ClipSettings.isUserLoggedIn(getContext()) ) {
-            Log.d( "CLIP" , "ConnectClipActivity - user has already login");
+        else if (ClipSettings.isUserLoggedIn(getContext())) {
+            Log.d("CLIP", "ConnectClipActivity - user has already login");
             ((MainActivity) getActivity()).changeFragment(6, false);
-        }
-        else{
+        } else {
             ((MainActivity) getActivity()).changeFragment(5, false);
         }
     }

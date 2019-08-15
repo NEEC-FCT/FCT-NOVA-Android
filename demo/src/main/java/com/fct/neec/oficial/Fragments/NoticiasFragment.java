@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -52,62 +51,60 @@ public class NoticiasFragment extends Fragment {
         if (!isInternetAvailable()) {
             Intent intent = new Intent(getContext(), SemNet.class);
             startActivity(intent);
-        }
-
-        else{
+        } else {
 
 
-        final WebView webview = view.findViewById(R.id.webview);
+            final WebView webview = view.findViewById(R.id.webview);
 
-        webview.setVisibility(View.GONE);
-        webview.getSettings().setJavaScriptEnabled(true);
+            webview.setVisibility(View.GONE);
+            webview.getSettings().setJavaScriptEnabled(true);
 
-        webview.setWebViewClient(new WebViewClient() {
+            webview.setWebViewClient(new WebViewClient() {
 
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                webview.setVisibility(View.GONE);
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    webview.setVisibility(View.GONE);
 
-                if (!url.startsWith("https://www.fct.unl.pt/noticias?page=") && !url.equals("https://www.fct.unl.pt/noticias")) {
-                    webview.loadUrl("https://www.fct.unl.pt/noticias");
-                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(i);
-                    return true;
+                    if (!url.startsWith("https://www.fct.unl.pt/noticias?page=") && !url.equals("https://www.fct.unl.pt/noticias")) {
+                        webview.loadUrl("https://www.fct.unl.pt/noticias");
+                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(i);
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
 
 
-            @Override
-            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error){
-                Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
-                startActivity(myIntent);
-            }
+                @Override
+                public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                    Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
+                    startActivity(myIntent);
+                }
 
-            @Override
-            public void onPageFinished(WebView view, String url) {
+                @Override
+                public void onPageFinished(WebView view, String url) {
 
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('sliding-popup').style.display='none';})()");
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('header3').style.display='none';})()");
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('content_top').style.display='none';})()");
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('header2').style.display='none';})()");
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('header1').style.display='none';})()");
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('breadcrumb').style.display='none';})()");
-                webview.loadUrl("javascript:(function() { " +
-                        "document.getElementById('footer').style.display='none';})()");
-                webview.setVisibility(VISIBLE);
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('sliding-popup').style.display='none';})()");
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('header3').style.display='none';})()");
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('content_top').style.display='none';})()");
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('header2').style.display='none';})()");
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('header1').style.display='none';})()");
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('breadcrumb').style.display='none';})()");
+                    webview.loadUrl("javascript:(function() { " +
+                            "document.getElementById('footer').style.display='none';})()");
+                    webview.setVisibility(VISIBLE);
 
 
-            }
-        });
+                }
+            });
 
-        webview.loadUrl("https://www.fct.unl.pt/noticias");
+            webview.loadUrl("https://www.fct.unl.pt/noticias");
         }
         return view;
 

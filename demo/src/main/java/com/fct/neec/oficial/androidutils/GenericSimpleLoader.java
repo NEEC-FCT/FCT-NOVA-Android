@@ -1,8 +1,6 @@
-
 package com.fct.neec.oficial.androidutils;
 
 import android.content.Context;
-
 
 import androidx.loader.content.AsyncTaskLoader;
 

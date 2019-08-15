@@ -61,7 +61,7 @@ public class StudentNumbersAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
 
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_group_student_numbers, parent, false);
 
             viewHolder = new ViewHolder();
@@ -82,7 +82,7 @@ public class StudentNumbersAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
 
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_child_student_numbers, parent, false);
 
             viewHolder = new ViewHolder();

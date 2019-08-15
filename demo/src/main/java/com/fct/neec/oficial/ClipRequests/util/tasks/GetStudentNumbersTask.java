@@ -8,11 +8,6 @@ import com.fct.neec.oficial.ClipRequests.util.StudentTools;
 
 public class GetStudentNumbersTask extends BaseTask<Void, Void, User> {
 
-    public interface OnTaskFinishedListener {
-
-        public void onStudentNumbersTaskFinished(User result);
-    }
-
     private OnTaskFinishedListener mListener;
 
     public GetStudentNumbersTask(Context context, OnTaskFinishedListener listener) {
@@ -34,5 +29,10 @@ public class GetStudentNumbersTask extends BaseTask<Void, Void, User> {
 
         if (mListener != null)
             mListener.onStudentNumbersTaskFinished(result);
+    }
+
+    public interface OnTaskFinishedListener {
+
+        public void onStudentNumbersTaskFinished(User result);
     }
 }

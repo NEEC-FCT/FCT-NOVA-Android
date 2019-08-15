@@ -43,8 +43,6 @@ public class MenuPrincipal extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
-
-
                 if (star) {
                     Object item = parent.getItemAtPosition(position);
                     Log.d("Spinner", item.toString());
@@ -189,7 +187,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       //fecha a app
+        //fecha a app
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

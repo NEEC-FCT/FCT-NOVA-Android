@@ -15,24 +15,18 @@ import com.fct.neec.oficial.ClipRequests.util.SelectionBuilder;
 
 public class ClipMobileProvider extends ContentProvider {
 
-    private static UriMatcher sUriMatcher;
-
     private static final int USERS = 1;
-
     private static final int STUDENTS = 2;
-
     private static final int STUDENTS_YEAR_SEMESTER = 3;
-
     private static final int SCHEDULE_DAYS = 4;
-
     private static final int SCHEDULE_CLASSES = 5;
-
     private static final int STUDENT_CLASSES = 6;
-
     private static final int STUDENT_CLASSES_DOCS = 7;
-
     private static final int STUDENT_CALENDAR = 8;
-
+    private static UriMatcher sUriMatcher;
+    private final ThreadLocal<Boolean> mApplyingBatch = new ThreadLocal<Boolean>();
+    protected SQLiteDatabase mDb;
+    private ClipMobileDatabase mDbHelper;
 
     /**
      * Build and return a {@link UriMatcher} that catches all {@link Uri} variations supported by
@@ -69,11 +63,34 @@ public class ClipMobileProvider extends ContentProvider {
         return matcher;
     }
 
-    private final ThreadLocal<Boolean> mApplyingBatch = new ThreadLocal<Boolean>();
+    /**
+     * Builds selection using a {@link SelectionBuilder} to match the requested {@link Uri}.
+     */
+    private static SelectionBuilder buildSelection(Uri uri, int match) {
+        final SelectionBuilder builder = new SelectionBuilder();
 
-    private ClipMobileDatabase mDbHelper;
+        switch (match) {
+            case USERS:
+                return builder.table(Tables.USERS);
+            case STUDENTS:
+                return builder.table(Tables.STUDENTS);
+            case STUDENTS_YEAR_SEMESTER:
+                return builder.table(Tables.STUDENTS_YEAR_SEMESTER);
+            case SCHEDULE_DAYS:
+                return builder.table(Tables.SCHEDULE_DAYS);
+            case SCHEDULE_CLASSES:
+                return builder.table(Tables.SCHEDULE_CLASSES);
+            case STUDENT_CLASSES:
+                return builder.table(Tables.STUDENT_CLASSES);
+            case STUDENT_CLASSES_DOCS:
+                return builder.table(Tables.STUDENT_CLASSES_DOCS);
+            case STUDENT_CALENDAR:
+                return builder.table(Tables.STUDENT_CALENDAR);
 
-    protected SQLiteDatabase mDb;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+    }
 
     @Override
     public boolean onCreate() {
@@ -88,7 +105,7 @@ public class ClipMobileProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
-            String sortOrder) {
+                        String sortOrder) {
 
         final SQLiteDatabase db = mDbHelper.getReadableDatabase();
         final int match = sUriMatcher.match(uri);
@@ -108,21 +125,21 @@ public class ClipMobileProvider extends ContentProvider {
     public String getType(Uri uri) {
         final int match = sUriMatcher.match(uri);
         switch (match) {
-            case USERS :
+            case USERS:
                 return Users.CONTENT_TYPE;
-            case STUDENTS :
+            case STUDENTS:
                 return Students.CONTENT_TYPE;
-            case STUDENTS_YEAR_SEMESTER :
+            case STUDENTS_YEAR_SEMESTER:
                 return ClipMobileContract.StudentsYearSemester.CONTENT_TYPE;
-            case SCHEDULE_DAYS :
+            case SCHEDULE_DAYS:
                 return ClipMobileContract.ScheduleDays.CONTENT_TYPE;
-            case SCHEDULE_CLASSES :
+            case SCHEDULE_CLASSES:
                 return ClipMobileContract.ScheduleClasses.CONTENT_TYPE;
-            case STUDENT_CLASSES :
+            case STUDENT_CLASSES:
                 return ClipMobileContract.StudentClasses.CONTENT_TYPE;
-            case STUDENT_CLASSES_DOCS :
+            case STUDENT_CLASSES_DOCS:
                 return ClipMobileContract.StudentClassesDocs.CONTENT_TYPE;
-            case STUDENT_CALENDAR :
+            case STUDENT_CALENDAR:
                 return ClipMobileContract.StudentCalendar.CONTENT_TYPE;
 
             default:
@@ -225,7 +242,7 @@ public class ClipMobileProvider extends ContentProvider {
                 break;
             }
 
-            default :
+            default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
 
@@ -295,35 +312,6 @@ public class ClipMobileProvider extends ContentProvider {
      */
     private boolean applyingBatch() {
         return mApplyingBatch.get() != null && mApplyingBatch.get();
-    }
-
-    /**
-     * Builds selection using a {@link SelectionBuilder} to match the requested {@link Uri}.
-     */
-    private static SelectionBuilder buildSelection(Uri uri, int match) {
-        final SelectionBuilder builder = new SelectionBuilder();
-
-        switch (match) {
-            case USERS :
-                return builder.table(Tables.USERS);
-            case STUDENTS :
-                return builder.table(Tables.STUDENTS);
-            case STUDENTS_YEAR_SEMESTER :
-                return builder.table(Tables.STUDENTS_YEAR_SEMESTER);
-            case SCHEDULE_DAYS :
-                return builder.table(Tables.SCHEDULE_DAYS);
-            case SCHEDULE_CLASSES :
-                return builder.table(Tables.SCHEDULE_CLASSES);
-            case STUDENT_CLASSES :
-                return builder.table(Tables.STUDENT_CLASSES);
-            case STUDENT_CLASSES_DOCS :
-                return builder.table(Tables.STUDENT_CLASSES_DOCS);
-            case STUDENT_CALENDAR :
-                return builder.table(Tables.STUDENT_CALENDAR);
-
-            default :
-                throw new UnsupportedOperationException("Unknown uri: " + uri);
-        }
     }
 
     @Override

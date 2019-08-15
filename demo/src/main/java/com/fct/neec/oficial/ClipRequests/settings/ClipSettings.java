@@ -5,11 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ClipSettings {
@@ -57,12 +54,12 @@ public class ClipSettings {
         long loginTime = get(context).getLong(LOGIN_TIME, -1);
 
         long elapsedTime = currentTime - loginTime;
-        Log.d( "CLIP" ,"ClipSettings - newCookie? - loginTime:" + loginTime);
-        Log.d( "CLIP" ,"ClipSettings - newCookie? - currentTime:" + currentTime);
+        Log.d("CLIP", "ClipSettings - newCookie? - loginTime:" + loginTime);
+        Log.d("CLIP", "ClipSettings - newCookie? - currentTime:" + currentTime);
 
         int elapsedTimeInMinutes = (int) TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
-        Log.d( "CLIP" ,"ClipSettings - newCookie? - elapsedTime:" + elapsedTimeInMinutes);
-        
+        Log.d("CLIP", "ClipSettings - newCookie? - elapsedTime:" + elapsedTimeInMinutes);
+
         System.out.println("ClipSettings - newCookie? - elapsedTime:" + elapsedTimeInMinutes);
 
         // If the elapsedTime >= 50min, we need to request a new cookie from the server
@@ -123,7 +120,7 @@ public class ClipSettings {
         Calendar calendar = Calendar.getInstance();
 
         int month = calendar.get(Calendar.MONTH);
-        if(month >= 2 && month <= 7) //  March <= month <= September
+        if (month >= 2 && month <= 7) //  March <= month <= September
             return 2;
 
         return 1;
@@ -183,8 +180,8 @@ public class ClipSettings {
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        
-        if(semester == 1) {
+
+        if (semester == 1) {
             calendar.set(Calendar.MONTH, Calendar.SEPTEMBER);
             calendar.set(Calendar.YEAR, year - 1);
         } else {
@@ -201,8 +198,8 @@ public class ClipSettings {
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        
-        if(semester == 1) {
+
+        if (semester == 1) {
             calendar.set(Calendar.MONTH, Calendar.APRIL);
             calendar.set(Calendar.YEAR, year);
         } else {

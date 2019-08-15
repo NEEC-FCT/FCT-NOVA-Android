@@ -3,10 +3,8 @@ package com.fct.neec.oficial.ClipRequests.network;
 import android.content.Context;
 import android.util.Log;
 
-
 import com.fct.neec.oficial.ClipRequests.exceptions.ServerUnavailableException;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
-
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -17,10 +15,10 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public abstract class Request {
+    protected static final String COOKIE_NAME = "JServSessionIdroot1112";
     private static final String ID = "identificador";
     private static final String PW = "senha";
     private static final String INITIAL_REQUEST = "https://clip.unl.pt/utente/eu";
-    protected static final String COOKIE_NAME = "JServSessionIdroot1112";
 
     protected static Document requestNewCookie(Context context, String username, String password)
             throws ServerUnavailableException {
@@ -72,7 +70,7 @@ public abstract class Request {
 
             // If the cookie has expired, we need to request a new one
             Connection.Response response;
-            if( ClipSettings.isTimeForANewCookie(context) )
+            if (ClipSettings.isTimeForANewCookie(context))
                 requestNewCookie(context, ClipSettings.getLoggedInUserName(context),
                         ClipSettings.getLoggedInUserPw(context));
 
@@ -81,7 +79,7 @@ public abstract class Request {
 
             return response.parse();
         } catch (Exception e) {
-            Log.d("CLIP" , e.toString());
+            Log.d("CLIP", e.toString());
             throw new ServerUnavailableException();
         }
 
@@ -99,10 +97,10 @@ public abstract class Request {
         Elements inputs = response.parse()
                 .body().getElementsByTag("input");
 
-        for(Element input : inputs)
-            if(input.attr("name").equals(ID) || input.attr("name").equals(PW)) {
-                Log.d( "CLIP" , "Request - Requesting with user data");
-                Log.d( "CLIP" ,"Request - Requesting with user data");
+        for (Element input : inputs)
+            if (input.attr("name").equals(ID) || input.attr("name").equals(PW)) {
+                Log.d("CLIP", "Request - Requesting with user data");
+                Log.d("CLIP", "Request - Requesting with user data");
 
                 requestNewCookie(context, ClipSettings.getLoggedInUserName(context),
                         ClipSettings.getLoggedInUserPw(context));

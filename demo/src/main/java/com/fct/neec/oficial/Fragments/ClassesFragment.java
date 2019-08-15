@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import androidx.fragment.app.Fragment;
+
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentClass;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
@@ -56,7 +58,7 @@ public class ClassesFragment extends Fragment
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 0) {
-                    ((MainActivity) getActivity()).changeFragment(1 , false);
+                    ((MainActivity) getActivity()).changeFragment(1, false);
                 }
 
             }
@@ -71,12 +73,11 @@ public class ClassesFragment extends Fragment
         });
 
         // Show progress spinner
-       // showProgressSpinner(true);
+        // showProgressSpinner(true);
 
         // Start AsyncTask
         mTask = new GetStudentClassesTask(getActivity(), ClassesFragment.this);
         AndroidUtils.executeOnPool(mTask);
-
 
 
         return view;
@@ -84,13 +85,13 @@ public class ClassesFragment extends Fragment
 
     @Override
     public void onTaskFinished(Student result) {
-        if(!isAdded())
+        if (!isAdded())
             return;
 
-       // showProgressSpinner(false);
+        // showProgressSpinner(false);
 
         // Server is unavailable right now
-        if(result == null) return;
+        if (result == null) return;
 
         mListView.setAdapter(getAdapterItems(result));
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -129,6 +130,11 @@ public class ClassesFragment extends Fragment
         return adapter;
     }
 
+    protected void cancelTasks(AsyncTask mTask) {
+        if (mTask != null && mTask.getStatus() != AsyncTask.Status.FINISHED)
+            mTask.cancel(true);
+    }
+
     public static class ListViewItem {
         public String id, name, number;
 
@@ -137,11 +143,6 @@ public class ClassesFragment extends Fragment
             this.name = name;
             this.number = number;
         }
-    }
-
-    protected void cancelTasks(AsyncTask mTask) {
-        if (mTask != null && mTask.getStatus() != AsyncTask.Status.FINISHED)
-            mTask.cancel(true);
     }
 
 }

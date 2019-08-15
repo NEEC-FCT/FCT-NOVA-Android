@@ -10,14 +10,8 @@ import com.fct.neec.oficial.R;
 
 public class GetStudentClassesDocsTask extends BaseTask<Integer, Void, Student> {
 
-    public interface OnTaskFinishedListener {
-
-        public void onTaskFinished(Student result, int groupPosition);
-    }
-
     private Integer groupPosition;
     private OnTaskFinishedListener mListener;
-
     public GetStudentClassesDocsTask(Context context, OnTaskFinishedListener listener) {
         super(context);
         mListener = listener;
@@ -56,5 +50,10 @@ public class GetStudentClassesDocsTask extends BaseTask<Integer, Void, Student> 
         if (mListener != null)
             mListener.onTaskFinished(result, groupPosition);
     }
-    
+
+    public interface OnTaskFinishedListener {
+
+        public void onTaskFinished(Student result, int groupPosition);
+    }
+
 }

@@ -1,9 +1,7 @@
 package com.fct.neec.oficial.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -18,7 +16,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.fct.neec.oficial.ClipRequests.enums.Result;
-import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.tasks.ConnectClipTask;
 import com.fct.neec.oficial.MainActivity;
 import com.fct.neec.oficial.R;
@@ -63,7 +60,7 @@ public class ClipLoginFragment extends Fragment implements ConnectClipTask.OnTas
             public void onTabSelected(TabLayout.Tab tab) {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if (tab.getPosition() == 0) {
-                    ((MainActivity) getActivity()).changeFragment(3 , false);
+                    ((MainActivity) getActivity()).changeFragment(3, false);
                 }
 
             }
@@ -91,42 +88,41 @@ public class ClipLoginFragment extends Fragment implements ConnectClipTask.OnTas
 
                 // Check if the username field is not empty
                 if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(getContext(),getString(R.string.error_fields_required),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getString(R.string.error_fields_required), Toast.LENGTH_LONG).show();
                 }
 
                 // Check if the password field is not empty
                 else if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getContext(),getString(R.string.error_fields_required),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getString(R.string.error_fields_required), Toast.LENGTH_LONG).show();
                 }
 
 
-                  //  showProgressSpinner(true);
+                //  showProgressSpinner(true);
 
-                    // Start AsyncTask
-                    mTask = new ConnectClipTask(getActivity(), ClipLoginFragment.this);
-                    AndroidUtils.executeOnPool(mTask, username, password);
+                // Start AsyncTask
+                mTask = new ConnectClipTask(getActivity(), ClipLoginFragment.this);
+                AndroidUtils.executeOnPool(mTask, username, password);
 
 
             }
         });
 
-        
-        return  view;
+
+        return view;
     }
 
     @Override
     public void onTaskFinished(Result result) {
-        if(!isAdded())
+        if (!isAdded())
             return;
         //showProgressSpinner(false);
         // If there was no errors, lets go to StudentNumbersActivity
-        if(result == Result.SUCCESS) {
+        if (result == Result.SUCCESS) {
             //mudar de fragmento
-            Toast.makeText(getContext(),"Sucesso!!" , Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Sucesso!!", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).changeFragment(6, false);
-        }
-        else {
-            Toast.makeText(getContext(),"Login incorrecto" , Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getContext(), "Login incorrecto", Toast.LENGTH_LONG).show();
         }
 
     }

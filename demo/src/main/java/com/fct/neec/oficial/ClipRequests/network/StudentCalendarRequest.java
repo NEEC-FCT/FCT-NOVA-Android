@@ -24,12 +24,12 @@ public class StudentCalendarRequest extends Request {
     private static final String STUDENT_CALENDAR_TEST_3_TRIMESTER = "&tipo_de_per%EDodo_lectivo=t&per%EDodo_lectivo=";
 
     public static void getExamCalendar(Context mContext, Student student, String studentNumberId,
-                                          String year, int semester)
+                                       String year, int semester)
             throws ServerUnavailableException {
 
         String url = STUDENT_CALENDAR_EXAM_1 + year + STUDENT_CALENDAR_EXAM_2 + studentNumberId;
-        if(semester == 3) // Trimester
-            url += STUDENT_CALENDAR_EXAM_3_TRIMESTER + (semester-1);
+        if (semester == 3) // Trimester
+            url += STUDENT_CALENDAR_EXAM_3_TRIMESTER + (semester - 1);
         else
             url += STUDENT_CALENDAR_EXAM_3 + semester;
 
@@ -37,11 +37,11 @@ public class StudentCalendarRequest extends Request {
                 .body()
                 .select("tr[class=texto_tabela]");
 
-        for(Element exam : exams) {
+        for (Element exam : exams) {
             String name = exam.child(0).text();
             Elements recurso = exam.child(2).select("tr");
 
-            if(recurso.first() == null) continue;
+            if (recurso.first() == null) continue;
 
             String date = recurso.first().child(0).text();
             //String url = recurso.first().child(1) //.get(1).child(0).attr("href");
@@ -62,28 +62,28 @@ public class StudentCalendarRequest extends Request {
             throws ServerUnavailableException {
 
         String url = STUDENT_CALENDAR_TEST_1 + studentNumberId + STUDENT_CALENDAR_TEST_2 + year;
-        if(semester == 3) // Trimester
-            url += STUDENT_CALENDAR_TEST_3_TRIMESTER + (semester-1);
+        if (semester == 3) // Trimester
+            url += STUDENT_CALENDAR_TEST_3_TRIMESTER + (semester - 1);
         else
             url += STUDENT_CALENDAR_TEST_3 + semester;
-        
+
         Element body = request(mContext, url)
                 .body();
 
         // There is no calendar available!
-        if(body.childNodeSize() == 0)
+        if (body.childNodeSize() == 0)
             return;
 
         Elements tests = body.select("form[method=post]");
 
         // There is no calendar available!
-        if(tests.size() == 1)
+        if (tests.size() == 1)
             return;
-        
+
         tests = tests.get(2).select("tr");
 
-        for(Element test : tests) {
-            if(!test.hasAttr("bgcolor")) continue;
+        for (Element test : tests) {
+            if (!test.hasAttr("bgcolor")) continue;
 
             String name = test.child(1).textNodes().get(0).text();
             String number = test.child(2).text();
@@ -92,8 +92,8 @@ public class StudentCalendarRequest extends Request {
             List<TextNode> rooms = test.child(4).child(0).textNodes();
 
             String rooms_final = "";
-            for(int i = 0; i<rooms.size(); i++) {
-                if(i == rooms.size()-1)
+            for (int i = 0; i < rooms.size(); i++) {
+                if (i == rooms.size() - 1)
                     rooms_final += rooms.get(i).getWholeText();
                 else
                     rooms_final += rooms.get(i).getWholeText() + ", ";
@@ -103,7 +103,7 @@ public class StudentCalendarRequest extends Request {
             calendarAppointement.setName(name);
             calendarAppointement.setNumber(number);
             calendarAppointement.setDate(date);
-            calendarAppointement.setHour(hour.substring(1, hour.length()-1 ));
+            calendarAppointement.setHour(hour.substring(1, hour.length() - 1));
             calendarAppointement.setRooms(rooms_final);
 
             student.addStudentCalendarAppointment(false, calendarAppointement);

@@ -11,17 +11,17 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
+
 import com.fct.neec.AHBottomNavigation;
 import com.fct.neec.AHBottomNavigationAdapter;
 import com.fct.neec.AHBottomNavigationItem;
 import com.fct.neec.AHBottomNavigationViewPager;
-import com.fct.neec.oficial.Fragments.ClipLoginFragment;
 import com.fct.neec.oficial.RegrasSegurança.MyIntro;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -70,26 +70,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public Context getContext(){
+    public Context getContext() {
         return getContext();
     }
 
-    public void changeFragment(int position , boolean initUI){
+    public void changeFragment(int position, boolean initUI) {
 
-       // if(initUI)
-            initUI();
+        // if(initUI)
+        initUI();
 
-        if( position >= 5 && position  <= 7){
+        if (position >= 5 && position <= 7) {
             bottomNavigation.setCurrentItem(3);
             viewPager.setCurrentItem(position, false);
 
 
-        }
-        else  if( position >= 8 ){
+        } else if (position >= 8) {
             bottomNavigation.setCurrentItem(1);
             viewPager.setCurrentItem(position, false);
-        }
-        else{
+        } else {
             viewPager.setCurrentItem(position, false);
             bottomNavigation.setCurrentItem(position);
         }
@@ -147,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-                if(position == 0 && show){
+                if (position == 0 && show) {
                     //Sugestoes
                     show = false;
                     handler.postDelayed(new Runnable() {
@@ -162,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 						.build();
 				bottomNavigation.setNotification(notification, 0);*/
                             Snackbar.make(bottomNavigation, "Tens alguma sugestão ? \n"
-                                            +"Envia um email para geral@neec-fct.com",
+                                            + "Envia um email para geral@neec-fct.com",
                                     Snackbar.LENGTH_SHORT).setDuration(4000).show();
 
                         }
@@ -295,14 +293,10 @@ public class MainActivity extends AppCompatActivity {
         currentFragment = adapter.getCurrentFragment();
 
 
-
-
-
-
-		//Verifica se foi redirect
+        //Verifica se foi redirect
         SharedPreferences sharedPrefs = getSharedPreferences("prefName", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
-        if(sharedPrefs.contains("Separador")){
+        if (sharedPrefs.contains("Separador")) {
 
             //Obtem valor
             int position = sharedPrefs.getInt("Separador", 2);
@@ -311,8 +305,7 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
             viewPager.setCurrentItem(position, false);
             bottomNavigation.setCurrentItem(position);
-        }
-        else {
+        } else {
             viewPager.setCurrentItem(2, false);
         }
 
@@ -362,4 +355,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void reloadFragment(int i) {
+        if (i == 7) {
+            adapter.reload(i);
+            changeFragment(7, false);
+
+        }
+
+    }
 }

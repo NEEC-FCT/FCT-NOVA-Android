@@ -5,7 +5,8 @@ import java.io.Serializable;
 public class StudentYearSemester extends Entity implements Serializable {
     private String year, semester;
 
-    public StudentYearSemester() {}
+    public StudentYearSemester() {
+    }
 
     public String getYear() {
         return year;

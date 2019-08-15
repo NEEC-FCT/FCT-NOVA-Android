@@ -28,11 +28,10 @@ public class AlgoErradoAconteceu extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                if (isInternetAvailable()){
+                if (isInternetAvailable()) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                }
-                else {
+                } else {
                     handler.postDelayed(this, 900);
                 }
 
@@ -45,7 +44,7 @@ public class AlgoErradoAconteceu extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (isInternetAvailable()){
+        if (isInternetAvailable()) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }

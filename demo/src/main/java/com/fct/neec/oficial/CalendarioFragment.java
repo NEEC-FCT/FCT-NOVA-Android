@@ -15,12 +15,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +29,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
-import com.fct.neec.oficial.Fragments.ClipLoginFragment;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.google.android.material.tabs.TabLayout;
@@ -43,16 +39,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Locale;
-
 
 
 public class CalendarioFragment extends Fragment implements CalendarioAdapter.eventoListener {
@@ -161,8 +154,6 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
         });
 
 
-
-
         //Calendario
         linearContainer = view.findViewById(R.id.linear);
         recyclerView = view.findViewById(R.id.recycler);
@@ -246,16 +237,15 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
     }
 
     private void CLIP() {
-        if(ClipSettings.getYearSelected(getContext()) != null){
-            Log.d( "CLIP" , "Vai para o horario");
+        if (ClipSettings.getYearSelected(getContext()) != null) {
+            Log.d("CLIP", "Vai para o horario");
             ((MainActivity) getActivity()).changeFragment(7, false);
         }
         // If the user has already login, start the StudentNumbersActivity instead
-        else if( ClipSettings.isUserLoggedIn(getContext()) ) {
-            Log.d( "CLIP" , "ConnectClipActivity - user has already login");
+        else if (ClipSettings.isUserLoggedIn(getContext())) {
+            Log.d("CLIP", "ConnectClipActivity - user has already login");
             ((MainActivity) getActivity()).changeFragment(6, false);
-        }
-        else{
+        } else {
             ((MainActivity) getActivity()).changeFragment(5, false);
         }
     }

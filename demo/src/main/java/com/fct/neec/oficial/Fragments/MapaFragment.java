@@ -3,14 +3,11 @@ package com.fct.neec.oficial.Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,7 +15,6 @@ import android.webkit.WebViewClient;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.fct.neec.oficial.AlgoErradoAconteceu;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.SemNet;
 import com.google.android.material.tabs.TabLayout;
@@ -97,12 +93,12 @@ public class MapaFragment extends Fragment {
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-                    Log.d("URL" , url);
+                    Log.d("URL", url);
                     if (url.equals("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16") || url.equals("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16")) {
                         webview.loadUrl(url);
                     }
-                    if (url.startsWith("https://accounts.google")){
-                        Log.d("URL" , "Apanhei google");
+                    if (url.startsWith("https://accounts.google")) {
+                        Log.d("URL", "Apanhei google");
                         if (position == 0) {
                             webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
                             webview.setVisibility(View.GONE);

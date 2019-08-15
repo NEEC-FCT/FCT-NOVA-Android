@@ -25,18 +25,18 @@ public class StudentClassesDocsRequest extends Request {
 
 
     public static Student getClassesDocs(Context mContext, String studentNumberId,
-                                       String year, int semester, String course,
-                                       String docType) throws ServerUnavailableException {
+                                         String year, int semester, String course,
+                                         String docType) throws ServerUnavailableException {
 
         String url;
-        if(semester == 3) // Trimester
-            url = STUDENT_CLASS_DOCS_1_TRIMESTER + year + 
-                    STUDENT_CLASS_DOCS_2 + (semester-1);
+        if (semester == 3) // Trimester
+            url = STUDENT_CLASS_DOCS_1_TRIMESTER + year +
+                    STUDENT_CLASS_DOCS_2 + (semester - 1);
         else
             url = STUDENT_CLASS_DOCS_1 + year +
                     STUDENT_CLASS_DOCS_2 + semester;
-            
-        url +=  STUDENT_CLASS_DOCS_3 + studentNumberId +
+
+        url += STUDENT_CLASS_DOCS_3 + studentNumberId +
                 STUDENT_CLASS_DOCS_4 + course +
                 STUDENT_CLASS_DOCS_5 + docType;
 
@@ -45,8 +45,8 @@ public class StudentClassesDocsRequest extends Request {
                 .select("form[method=post]").get(1).select("tr");
 
         Student student = new Student();
-        for(Element doc : docs) {
-            if(!doc.hasAttr("bgcolor")) continue;
+        for (Element doc : docs) {
+            if (!doc.hasAttr("bgcolor")) continue;
 
             String doc_name = doc.child(0).text();
             String doc_url = doc.child(1).child(0).attr("href");

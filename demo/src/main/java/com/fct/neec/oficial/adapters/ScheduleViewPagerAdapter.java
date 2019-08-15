@@ -1,13 +1,11 @@
 package com.fct.neec.oficial.adapters;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
@@ -17,11 +15,17 @@ import com.fct.neec.oficial.Fragments.ScheduleFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleViewPagerAdapter extends FragmentPagerAdapter {
+public class ScheduleViewPagerAdapter extends FragmentStatePagerAdapter {
     public static final String SCHEDULE_CLASSES_TAG = "schedule_classes_tag";
     private final String[] tabNames;
-    private Student student;
+    public Student student;
 
+
+    public ScheduleViewPagerAdapter(FragmentManager fm, String[] tabNames, Student student) {
+        super(fm);
+        this.tabNames = tabNames;
+        this.student = student;
+    }
 
     /**
      * Create a new instance of the fragment
@@ -31,12 +35,9 @@ public class ScheduleViewPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
-
-
-    public ScheduleViewPagerAdapter(FragmentManager fm, String[] tabNames, Student student) {
-        super(fm);
-        this.tabNames = tabNames;
-        this.student = student;
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 
     @Override
@@ -59,10 +60,11 @@ public class ScheduleViewPagerAdapter extends FragmentPagerAdapter {
         return tabNames.length;
     }
 
+
     private Bundle getBundle(List<StudentScheduleClass> classes) {
         Bundle bundle = new Bundle();
 
-        if(classes != null) {
+        if (classes != null) {
             // LinkedList to ArrayList 'conversion'
             ArrayList<StudentScheduleClass> list = new ArrayList<StudentScheduleClass>();
             list.addAll(classes);
