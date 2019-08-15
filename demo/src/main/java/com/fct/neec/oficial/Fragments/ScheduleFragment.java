@@ -44,10 +44,7 @@ public class ScheduleFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
             classes = getArguments().getParcelableArrayList(ScheduleViewPagerAdapter.SCHEDULE_CLASSES_TAG);
-            //ProximaAula.setDuyuruHaberList(classes);
         }
-
-
 
 
     }

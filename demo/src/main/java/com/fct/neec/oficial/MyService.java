@@ -67,7 +67,6 @@ public class MyService extends Service {
         protected void onPostExecute(String result) {
             /*
              * Update widget UI like below sample, replace with your code*/
-            String lable1 = "India: " + total + "/" + total;
             Log.d("Widget", "Called");
             if(ProximaAula.data != null) {
                 Map<Integer, List<StudentScheduleClass>> horario = ProximaAula.data.getScheduleClasses();
@@ -76,7 +75,6 @@ public class MyService extends Service {
                 int hour = c.get(Calendar.HOUR_OF_DAY);
                 int minute = c.get(Calendar.MINUTE);
                 int diff = Integer.MAX_VALUE;
-                int pos = 0;
 
 
                 if (horario.containsKey(dayOfWeek)) {
@@ -92,7 +90,6 @@ public class MyService extends Service {
                         if (distancia <= diff) {
                             diff = distancia;
                             melhor = aula;
-                            pos = i;
                         }
                     }
 
