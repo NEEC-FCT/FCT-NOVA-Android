@@ -117,6 +117,17 @@ public class ScheduleViewPager extends BaseViewPager
                 builder.show();
             }
         });
+
+        //Logout
+        FloatingActionButton ano = view.findViewById(R.id.ano);
+        ano.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("CLIP", "Mudar ano");
+                // Clear user personal data
+                ((MainActivity) getActivity()).changeFragment(6, false);
+            }
+        });
+
         //Logout
         FloatingActionButton Logout = view.findViewById(R.id.logout);
         Logout.setOnClickListener(new View.OnClickListener() {

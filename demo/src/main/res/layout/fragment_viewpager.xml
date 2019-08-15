@@ -78,7 +78,7 @@
             fab:menu_fab_hide_animation="@anim/jump_to_down"
             fab:menu_fab_show_animation="@anim/jump_from_down"
             fab:menu_fab_size="mini"
-            fab:menu_icon="@drawable/policeman"
+            fab:menu_icon="@drawable/gears"
             fab:menu_labels_colorNormal="#333333"
             fab:menu_labels_colorPressed="#444444"
             fab:menu_labels_colorRipple="#66FFFFFF"
@@ -111,15 +111,23 @@
                 android:id="@+id/semestre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/smartphone"
+                android:src="@drawable/notebook"
                 fab:fab_label="Mudar semestre"
+                fab:fab_size="normal" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/ano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calendar"
+                fab:fab_label="Mudar ano"
                 fab:fab_size="normal" />
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/earthquake"
+                android:src="@drawable/door"
                 fab:fab_label="Logout"
                 fab:fab_size="normal" />
 
