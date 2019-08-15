@@ -14,7 +14,6 @@ import android.view.animation.OvershootInterpolator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
@@ -33,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private Fragment currentFragment;
     private MainViewPagerAdapter adapter;
     private AHBottomNavigationAdapter navigationAdapter;
-    private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
-    private boolean useMenuResource = true;
     private int[] tabColors;
     private Handler handler = new Handler();
     private Boolean show = true;
@@ -114,21 +111,11 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
         floatingActionButton = findViewById(R.id.floating_action_button);
 
-        if (useMenuResource) {
+
             tabColors = getApplicationContext().getResources().getIntArray(R.array.tab_colors);
             navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
             navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
-        } else {
-            AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.ic_apps_black_24dp, R.color.color_tab_1);
-            AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.ic_maps_local_bar, R.color.color_tab_2);
-            AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_3, R.drawable.ic_maps_local_restaurant, R.color.color_tab_3);
 
-            bottomNavigationItems.add(item1);
-            bottomNavigationItems.add(item2);
-            bottomNavigationItems.add(item3);
-
-            bottomNavigation.addItems(bottomNavigationItems);
-        }
 
         bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
         bottomNavigation.setTranslucentNavigationEnabled(true);
@@ -327,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void updateBottomNavigationItems(boolean addItems) {
 
-        if (useMenuResource) {
+
             if (addItems) {
                 navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_5);
                 navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
@@ -336,22 +323,7 @@ public class MainActivity extends AppCompatActivity {
                 navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
             }
 
-        } else {
-            if (addItems) {
-                AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.tab_4),
-                        ContextCompat.getDrawable(this, R.drawable.ic_maps_local_bar),
-                        ContextCompat.getColor(this, R.color.color_tab_4));
-                AHBottomNavigationItem item5 = new AHBottomNavigationItem(getString(R.string.tab_5),
-                        ContextCompat.getDrawable(this, R.drawable.map_25),
-                        ContextCompat.getColor(this, R.color.color_tab_5));
 
-                bottomNavigation.addItem(item4);
-                bottomNavigation.addItem(item5);
-            } else {
-                bottomNavigation.removeAllItems();
-                bottomNavigation.addItems(bottomNavigationItems);
-            }
-        }
     }
 
 
