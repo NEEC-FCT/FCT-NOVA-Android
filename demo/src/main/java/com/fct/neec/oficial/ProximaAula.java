@@ -11,14 +11,8 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.fct.neec.oficial.ClipRequests.entities.Student;
-import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
 import com.google.gson.Gson;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.Calendar;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -29,14 +23,13 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class ProximaAula extends AppWidgetProvider {
 
+    public static final String KEY_CONNECTIONS = "KEY_CONNECTIONS";
     public static Student data;
     public static RemoteViews views;
+    public static SharedPreferences mPrefs;
     public PendingIntent service = null;
-    public static final String KEY_CONNECTIONS = "KEY_CONNECTIONS";
-    public static SharedPreferences mPrefs ;
 
-
-    public static Student ReadState(){
+    public static Student ReadState() {
         Gson gson = new Gson();
         String json = mPrefs.getString("MyObject", "");
         data = gson.fromJson(json, Student.class);
@@ -44,7 +37,7 @@ public class ProximaAula extends AppWidgetProvider {
 
     }
 
-    public static void SaveState( ){
+    public static void SaveState() {
 
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();

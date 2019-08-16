@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.fct.neec.oficial.Fragments.ClassesFragment;
+import com.fct.neec.oficial.Fragments.VerCadeiras.ClassesFragment;
 import com.fct.neec.oficial.R;
 
 public class ClassListViewAdapter extends ArrayAdapter<Object> {

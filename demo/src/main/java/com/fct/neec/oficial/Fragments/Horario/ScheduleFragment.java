@@ -1,4 +1,4 @@
-package com.fct.neec.oficial.Fragments;
+package com.fct.neec.oficial.Fragments.Horario;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

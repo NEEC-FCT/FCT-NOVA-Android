@@ -12,6 +12,7 @@ public class GetStudentClassesDocsTask extends BaseTask<Integer, Void, Student> 
 
     private Integer groupPosition;
     private OnTaskFinishedListener mListener;
+
     public GetStudentClassesDocsTask(Context context, OnTaskFinishedListener listener) {
         super(context);
         mListener = listener;

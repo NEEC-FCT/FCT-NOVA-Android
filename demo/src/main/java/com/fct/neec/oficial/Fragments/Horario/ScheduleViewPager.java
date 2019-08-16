@@ -1,4 +1,4 @@
-package com.fct.neec.oficial.Fragments;
+package com.fct.neec.oficial.Fragments.Horario;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,7 +17,6 @@ import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentScheduleTask;
 import com.fct.neec.oficial.ClipRequests.util.tasks.UpdateStudentPageTask;
 import com.fct.neec.oficial.MainActivity;
-import com.fct.neec.oficial.MyService;
 import com.fct.neec.oficial.ProximaAula;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;

@@ -1,4 +1,4 @@
-package com.fct.neec.oficial.Fragments;
+package com.fct.neec.oficial.Fragments.Horario;
 
 import android.os.AsyncTask;
 import android.os.Bundle;

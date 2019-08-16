@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
 import com.fct.neec.oficial.Fragments.NoticiasFragment;
-import com.fct.neec.oficial.Fragments.ScheduleFragment;
+import com.fct.neec.oficial.Fragments.Horario.ScheduleFragment;
 
 import java.util.ArrayList;
 import java.util.List;

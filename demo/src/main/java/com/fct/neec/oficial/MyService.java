@@ -12,20 +12,12 @@ import android.widget.RemoteViews;
 
 import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class MyService extends Service {
@@ -82,8 +74,6 @@ public class MyService extends Service {
         }
 
 
-
-
         @Override
         protected void onPreExecute() {
             manager.updateAppWidget(thisWidget, view);
@@ -94,7 +84,6 @@ public class MyService extends Service {
         protected String doInBackground(String... params) {
             return null;
         }
-
 
 
         @Override
@@ -119,9 +108,9 @@ public class MyService extends Service {
                     List<StudentScheduleClass> diaAtual = horario.get(dayOfWeek);
                     Iterator<StudentScheduleClass> it = diaAtual.iterator();
 
-                    for (int i = 0 ; it.hasNext() ; i++) {
+                    for (int i = 0; it.hasNext(); i++) {
                         StudentScheduleClass aula = it.next();
-                        if( hour <= 8){
+                        if (hour <= 8) {
                             melhor = aula;
                             break;
                         }
@@ -138,24 +127,24 @@ public class MyService extends Service {
 
                     String pattern = "MM/dd/yyyy HH:mm:ss";
                     DateFormat df = new SimpleDateFormat(pattern);
-                        String comeco = melhor.getHourEnd();
-                        String hora = ( comeco.substring(0,comeco.indexOf(":") ) );
-                        String minuto =  comeco.substring(comeco.indexOf(":") + 1  );
-                        Log.d("Widget" , hora + "::" +  minuto);
-                        Calendar fecho = Calendar.getInstance();
-                        fecho.set(Calendar.HOUR_OF_DAY, Integer.parseInt(  hora));
-                        fecho.set(Calendar.MINUTE, Integer.parseInt( minuto ));
-                        fecho.set(Calendar.SECOND, 0);
-                        fecho.set(Calendar.MILLISECOND, 0);
-                        Calendar cal = Calendar.getInstance();
-                        cal.add(Calendar.MINUTE, -20);
-                        Date atual = cal.getTime();
-                        Log.d("Widget" , df.format(fecho.getTime()) + " " +  df.format(atual));
+                    String comeco = melhor.getHourEnd();
+                    String hora = (comeco.substring(0, comeco.indexOf(":")));
+                    String minuto = comeco.substring(comeco.indexOf(":") + 1);
+                    Log.d("Widget", hora + "::" + minuto);
+                    Calendar fecho = Calendar.getInstance();
+                    fecho.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hora));
+                    fecho.set(Calendar.MINUTE, Integer.parseInt(minuto));
+                    fecho.set(Calendar.SECOND, 0);
+                    fecho.set(Calendar.MILLISECOND, 0);
+                    Calendar cal = Calendar.getInstance();
+                    cal.add(Calendar.MINUTE, -20);
+                    Date atual = cal.getTime();
+                    Log.d("Widget", df.format(fecho.getTime()) + " " + df.format(atual));
 
-                        if (atual.after(fecho.getTime()) &&  current + 1 <= horario.get(dayOfWeek).size() ) {
-                               melhor = horario.get(dayOfWeek).get(current + 1);
-                               Log.d("Widget" , "Saltei");
-                        }
+                    if (atual.after(fecho.getTime()) && current + 1 <= horario.get(dayOfWeek).size()) {
+                        melhor = horario.get(dayOfWeek).get(current + 1);
+                        Log.d("Widget", "Saltei");
+                    }
 
 
                     //atualiza com o melhor
@@ -167,17 +156,14 @@ public class MyService extends Service {
                     PendingIntent configPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, configIntent, 0);
                     view.setOnClickPendingIntent(R.id.proxima_aula, configPendingIntent);
 
-                }
-                else {
+                } else {
                     view = new RemoteViews(getPackageName(), R.layout.dia_sem_aulas);
                     Intent configIntent = new Intent(getApplicationContext(), MainActivity.class);
                     PendingIntent configPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, configIntent, 0);
                     view.setOnClickPendingIntent(R.id.sem_aula, configPendingIntent);
                 }
 
-            }
-
-            else {
+            } else {
                 view = new RemoteViews(getPackageName(), R.layout.sem_aulas);
                 Intent configIntent = new Intent(getApplicationContext(), MainActivity.class);
                 PendingIntent configPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, configIntent, 0);

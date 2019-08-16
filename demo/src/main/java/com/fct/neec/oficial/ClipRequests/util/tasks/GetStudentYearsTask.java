@@ -11,6 +11,7 @@ public class GetStudentYearsTask extends BaseTask<Object, Void, Student> {
 
     private OnTaskFinishedListener mListener;
     private Integer groupPosition;
+
     public GetStudentYearsTask(Context context, OnTaskFinishedListener listener) {
         super(context);
         mListener = listener;

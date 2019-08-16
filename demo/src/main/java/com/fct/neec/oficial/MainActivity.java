@@ -19,13 +19,10 @@ import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
 import com.fct.neec.AHBottomNavigation;
 import com.fct.neec.AHBottomNavigationAdapter;
-import com.fct.neec.AHBottomNavigationItem;
 import com.fct.neec.AHBottomNavigationViewPager;
 import com.fct.neec.oficial.RegrasSegurança.MyIntro;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -112,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.floating_action_button);
 
 
-            tabColors = getApplicationContext().getResources().getIntArray(R.array.tab_colors);
-            navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
-            navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
+        tabColors = getApplicationContext().getResources().getIntArray(R.array.tab_colors);
+        navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
+        navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
 
 
         bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
@@ -315,13 +312,13 @@ public class MainActivity extends AppCompatActivity {
     public void updateBottomNavigationItems(boolean addItems) {
 
 
-            if (addItems) {
-                navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_5);
-                navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
-            } else {
-                navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
-                navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
-            }
+        if (addItems) {
+            navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_5);
+            navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
+        } else {
+            navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
+            navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
+        }
 
 
     }
