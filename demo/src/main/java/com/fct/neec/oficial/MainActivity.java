@@ -135,17 +135,18 @@ public class MainActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            // Setting custom colors for notification
-                /*
-				AHNotification notification = new AHNotification.Builder()
-						.setText(":)")
-						.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.color_notification_back))
-						.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.color_notification_text))
-						.build();
-				bottomNavigation.setNotification(notification, 0);*/
-                            Snackbar.make(bottomNavigation, "Tens alguma sugestão ? \n"
-                                            + "Envia um email para geral@neec-fct.com",
-                                    Snackbar.LENGTH_SHORT).setDuration(4000).show();
+
+
+                            SharedPreferences sp = getSharedPreferences("SHOW", MainActivity.MODE_PRIVATE);
+                            if(   sp.getBoolean("HELP", true)){
+                                Snackbar.make(bottomNavigation, "Tens alguma sugestão ? \n"
+                                                + "Envia um email para geral@neec-fct.com",
+                                        Snackbar.LENGTH_SHORT).setDuration(4000).show();
+                                //salvar
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putBoolean("HELP", false);
+                                editor.commit();
+                            }
 
                         }
                     }, 1500);

@@ -39,11 +39,14 @@ public class ProximaAula extends AppWidgetProvider {
 
     public static void SaveState() {
 
-        SharedPreferences.Editor prefsEditor = mPrefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(data);
-        prefsEditor.putString("MyObject", json);
-        prefsEditor.commit();
+        if(mPrefs != null){
+            SharedPreferences.Editor prefsEditor = mPrefs.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(data);
+            prefsEditor.putString("MyObject", json);
+            prefsEditor.commit();
+        }
+
     }
 
     public static void sethorario(Student data) {
