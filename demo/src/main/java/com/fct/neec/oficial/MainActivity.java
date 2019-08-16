@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-
                             SharedPreferences sp = getSharedPreferences("SHOW", MainActivity.MODE_PRIVATE);
                             if(   sp.getBoolean("HELP", true)){
                                 Snackbar.make(bottomNavigation, "Tens alguma sugestão ? \n"

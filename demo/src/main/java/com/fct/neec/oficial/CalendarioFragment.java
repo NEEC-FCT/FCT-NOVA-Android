@@ -214,8 +214,6 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
             @Override
             public void onDayClick(Date dateClicked) {
-                //recyclerView.removeOnScrollListener(on_scroll);
-
                 sc = true;
                 scrollToDate(dateClicked);
             }
@@ -364,7 +362,6 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                 break;
         }
         smoothScroller.setTargetPosition(i);
-        //recyclerView.removeOnScrollListener(on_scroll);
         layoutManager.startSmoothScroll(smoothScroller);
     }
 

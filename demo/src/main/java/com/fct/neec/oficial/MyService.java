@@ -137,16 +137,15 @@ public class MyService extends Service {
                     fecho.set(Calendar.SECOND, 0);
                     fecho.set(Calendar.MILLISECOND, 0);
                     Calendar cal = Calendar.getInstance();
-                    cal.add(Calendar.MINUTE, -20);
+                    cal.add(Calendar.MINUTE, 20);
                     Date atual = cal.getTime();
                     Log.d("Widget", df.format(fecho.getTime()) + " " + df.format(atual));
 
-                    if (atual.after(fecho.getTime()) && current + 1 <= horario.get(dayOfWeek).size()) {
+                    if (atual.after(fecho.getTime()) && current + 1 < horario.get(dayOfWeek).size()) {
                         melhor = horario.get(dayOfWeek).get(current + 1);
                         Log.d("Widget", "Saltei");
                     }
-
-
+                    
                     //atualiza com o melhor
                     view.setTextViewText(R.id.class_name, melhor.getName());
                     view.setTextViewText(R.id.class_hour_start, melhor.getHourStart());

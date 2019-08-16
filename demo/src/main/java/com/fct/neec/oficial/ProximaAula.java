@@ -31,9 +31,15 @@ public class ProximaAula extends AppWidgetProvider {
 
     public static Student ReadState() {
         Gson gson = new Gson();
-        String json = mPrefs.getString("MyObject", "");
-        data = gson.fromJson(json, Student.class);
-        return data;
+        if(mPrefs != null){
+            String json = mPrefs.getString("MyObject", "");
+            data = gson.fromJson(json, Student.class);
+            return data;
+        }
+        else{
+            return null;
+        }
+
 
     }
 
