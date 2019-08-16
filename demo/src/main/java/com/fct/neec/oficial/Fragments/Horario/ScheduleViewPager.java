@@ -31,6 +31,7 @@ public class ScheduleViewPager extends BaseViewPager
         UpdateStudentPageTask.OnUpdateTaskFinishedListener<Student> {
 
     public Student resultado;
+    public static boolean update;
     private GetStudentScheduleTask mTask;
     private UpdateStudentPageTask mUpdateTask;
 
@@ -82,6 +83,15 @@ public class ScheduleViewPager extends BaseViewPager
         // Bind the tabs to the ViewPager
         PagerSlidingTabStrip tabs = view.findViewById(R.id.tabs);
         tabs.setViewPager(mViewPager);
+
+        //vou atualizar a view
+        if(update){
+            update = false;
+            Log.d("CLIP" , "Atualiza view");
+            mViewPager.getAdapter().notifyDataSetChanged();
+            ProximaAula.sethorario(result);
+            ProximaAula.SaveState();
+        }
 
         //vou para tab do dia atual
         Calendar c = Calendar.getInstance();

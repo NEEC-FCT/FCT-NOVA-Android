@@ -61,9 +61,11 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
 
     public void reload(int i) {
         if (i == 7) {
+            //new fragments
             fragments.set(7, ScheduleViewPager.newInstance(7));
             fragments.set(8, ClassesFragment.newInstance(8));
             fragments.set(9, ClassesDocsFragment.newInstance(9));
+            ((ScheduleViewPager)fragments.get(7)).update = true;
         }
 
     }
