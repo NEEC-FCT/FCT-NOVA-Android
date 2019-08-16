@@ -120,7 +120,18 @@ public class ScheduleViewPager extends BaseViewPager
             }
         });
 
-        //Logout
+        //ano
+        FloatingActionButton cadeiras = view.findViewById(R.id.cadeiras);
+        cadeiras.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("CLIP", "Ver cadeiras");
+                // Clear user personal data
+                ((MainActivity) getActivity()).changeFragment(8, false);
+            }
+        });
+
+
+        //ano
         FloatingActionButton ano = view.findViewById(R.id.ano);
         ano.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

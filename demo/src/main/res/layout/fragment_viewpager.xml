@@ -106,6 +106,14 @@
             fab:menu_showShadow="true">
 
 
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/cadeiras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/books"
+                fab:fab_label="Ver cadeiras"
+                fab:fab_size="normal" />
+
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/semestre"
