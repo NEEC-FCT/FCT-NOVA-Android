@@ -17,6 +17,7 @@ import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentScheduleTask;
 import com.fct.neec.oficial.ClipRequests.util.tasks.UpdateStudentPageTask;
 import com.fct.neec.oficial.MainActivity;
+import com.fct.neec.oficial.MyService;
 import com.fct.neec.oficial.ProximaAula;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.ScheduleViewPagerAdapter;
@@ -73,6 +74,7 @@ public class ScheduleViewPager extends BaseViewPager
 
         this.resultado = result;
         ProximaAula.sethorario(result);
+        ProximaAula.SaveState();
         // Initialize the ViewPager and set the adapter
         mViewPager.setAdapter(new ScheduleViewPagerAdapter(getChildFragmentManager(),
                 getResources().getStringArray(R.array.schedule_tab_array), this.resultado));
@@ -171,6 +173,7 @@ public class ScheduleViewPager extends BaseViewPager
 
         // Refresh current view
         ProximaAula.sethorario(result);
+        ProximaAula.SaveState();
         ((MainActivity) getActivity()).reloadFragment(7);
     }
 

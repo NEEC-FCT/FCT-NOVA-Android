@@ -57,6 +57,8 @@ dependencies {
     //Permissoes
     implementation group: 'gun0912.ted', name: 'tedpermission', version: '2.2.0'
 
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -6,12 +6,22 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.fct.neec.oficial.ClipRequests.entities.Student;
+import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
+import com.google.gson.Gson;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Calendar;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -22,7 +32,26 @@ public class ProximaAula extends AppWidgetProvider {
     public static Student data;
     public static RemoteViews views;
     public PendingIntent service = null;
+    public static final String KEY_CONNECTIONS = "KEY_CONNECTIONS";
+    public static SharedPreferences mPrefs ;
 
+
+    public static Student ReadState(){
+        Gson gson = new Gson();
+        String json = mPrefs.getString("MyObject", "");
+        data = gson.fromJson(json, Student.class);
+        return data;
+
+    }
+
+    public static void SaveState( ){
+
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(data);
+        prefsEditor.putString("MyObject", json);
+        prefsEditor.commit();
+    }
 
     public static void sethorario(Student data) {
         ProximaAula.data = data;
@@ -32,16 +61,18 @@ public class ProximaAula extends AppWidgetProvider {
     void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                          int appWidgetId) {
 
+        mPrefs = context.getSharedPreferences("Teste", MODE_PRIVATE);
 
         // Construct the RemoteViews object
-        if (ProximaAula.data != null) {
-            ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.proxima_aula);
-            Intent configIntent = new Intent(context, LoadingActivity.class);
+        ReadState();
+        if (data != null) {
+            views = new RemoteViews(context.getPackageName(), R.layout.proxima_aula);
+            Intent configIntent = new Intent(context, MainActivity.class);
             PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
             views.setOnClickPendingIntent(R.id.proxima_aula, configPendingIntent);
         } else {
-            ProximaAula.views = new RemoteViews(context.getPackageName(), R.layout.sem_aulas);
-            Intent configIntent = new Intent(context, LoadingActivity.class);
+            views = new RemoteViews(context.getPackageName(), R.layout.sem_aulas);
+            Intent configIntent = new Intent(context, MainActivity.class);
             PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
             views.setOnClickPendingIntent(R.id.sem_aula, configPendingIntent);
         }
