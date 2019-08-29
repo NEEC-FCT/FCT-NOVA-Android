@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.webkit.WebViewClient;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.fct.neec.oficial.AlgoErradoAconteceu;
 import com.fct.neec.oficial.R;
@@ -101,6 +103,19 @@ public class NoticiasFragment extends Fragment {
                     webview.setVisibility(VISIBLE);
 
 
+                }
+            });
+
+
+            final SwipeRefreshLayout sw_refresh = (SwipeRefreshLayout) view.findViewById(R.id.sw_refresh);
+
+            sw_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                //following line is important to stop animation for refreshing
+                    webview.setVisibility(View.INVISIBLE);
+                    webview.reload();
+                    sw_refresh.setRefreshing(false);
                 }
             });
 
