@@ -82,7 +82,7 @@
 
     <!-- Schedule Fragment -->
 
-
+    <string name="schedule">Horário</string>
     <string name="schedule_no_classes">Sem aulas</string>
 
 
@@ -110,7 +110,7 @@
     <string name="schedule_class_room">Sala:</string>
 
     <!-- Classes/Calendar Fragment -->
-
+    <string name="calendar">Calendário</string>
 
     <string name="categories_available">Categorias disponíveis</string>
 
