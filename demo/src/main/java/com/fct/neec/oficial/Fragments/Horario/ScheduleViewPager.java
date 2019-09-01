@@ -2,6 +2,7 @@ package com.fct.neec.oficial.Fragments.Horario;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,6 +83,8 @@ public class ScheduleViewPager extends BaseViewPager
 
         // Bind the tabs to the ViewPager
         PagerSlidingTabStrip tabs = view.findViewById(R.id.tabs);
+        tabs.setTextColor(Color.WHITE);
+        tabs.setIndicatorColor(Color.WHITE);
         tabs.setViewPager(mViewPager);
 
         //vou atualizar a view

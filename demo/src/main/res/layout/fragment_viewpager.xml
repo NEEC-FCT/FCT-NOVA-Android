@@ -38,7 +38,7 @@
             android:id="@+id/tabs"
             android:layout_width="0dp"
             android:layout_height="51dp"
-            android:background="@color/main_color"
+            android:background="@android:color/holo_green_light"
             android:textColorPrimary="@color/white"
             android:textSize="@dimen/tabs_text_size"
             app:layout_constraintEnd_toEndOf="parent"
