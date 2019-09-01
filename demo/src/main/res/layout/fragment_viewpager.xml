@@ -25,12 +25,12 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calendário FCT" />
+                android:text="@string/calendar" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clip" />
+                android:text="@string/schedule" />
         </com.google.android.material.tabs.TabLayout>
 
 
@@ -77,8 +77,8 @@
             fab:menu_colorRipple="#99FFFFFF"
             fab:menu_fab_hide_animation="@anim/jump_to_down"
             fab:menu_fab_show_animation="@anim/jump_from_down"
-            fab:menu_fab_size="mini"
-            fab:menu_icon="@drawable/gears"
+            fab:menu_fab_size="normal"
+            fab:menu_icon="@drawable/settings_fab"
             fab:menu_labels_colorNormal="#333333"
             fab:menu_labels_colorPressed="#444444"
             fab:menu_labels_colorRipple="#66FFFFFF"
