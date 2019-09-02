@@ -122,7 +122,7 @@ public class ClipLoginFragment extends Fragment implements ConnectClipTask.OnTas
             Toast.makeText(getContext(), "Sucesso!!", Toast.LENGTH_LONG).show();
             ((MainActivity) getActivity()).changeFragment(6, false);
         } else {
-            Toast.makeText(getContext(), "Login incorrecto", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Login incorrecto ou questionários por responder. ", Toast.LENGTH_LONG).show();
         }
 
     }
