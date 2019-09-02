@@ -27,9 +27,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/webview"
         app:layout_constraintEnd_toEndOf="@+id/webview"
@@ -42,8 +40,8 @@
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_fab_hide_animation="@anim/jump_to_down"
         fab:menu_fab_show_animation="@anim/jump_from_down"
-        fab:menu_fab_size="mini"
-        fab:menu_icon="@drawable/policeman"
+        fab:menu_fab_size="normal"
+        fab:menu_icon="@drawable/sos"
         fab:menu_labels_colorNormal="#333333"
         fab:menu_labels_colorPressed="#444444"
         fab:menu_labels_colorRipple="#66FFFFFF"
@@ -123,9 +121,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorColor="@color/color_tab_2">
 
-        <com.google.android.material.tabs.TabItem android:text="Atos académicos" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/useful_info" />
 
-        <com.google.android.material.tabs.TabItem android:text="Clip cadeiras" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clip_files" />
     </com.google.android.material.tabs.TabLayout>
 
 

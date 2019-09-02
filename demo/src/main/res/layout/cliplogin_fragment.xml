@@ -13,9 +13,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorColor="@color/color_tab_4">
 
-        <com.google.android.material.tabs.TabItem android:text="Calendário FCT" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calendar" />
 
-        <com.google.android.material.tabs.TabItem android:text="Clip" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"

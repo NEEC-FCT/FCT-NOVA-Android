@@ -178,6 +178,12 @@
 
     </array>
 
+    <!-- Info Fragment -->
+
+    <string name="useful_info">Informações Úteis</string>
+
+    <string name="clip_files">CLIP Ficheiros</string>
+
     <!-- Info Contacts Fragment -->
 
 
