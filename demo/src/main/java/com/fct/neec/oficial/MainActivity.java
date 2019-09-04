@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         tabColors = getApplicationContext().getResources().getIntArray(R.array.tab_colors);
-        navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
+        navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_5);
         navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
 
 
@@ -129,6 +129,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                if(position == 0){
+                    Intent k = new Intent(MainActivity.this, MenuFCT.class);
+                    startActivity(k);
+                }
                 if (position == 0 && show) {
                     //Sugestoes
                     show = false;
@@ -312,13 +316,10 @@ public class MainActivity extends AppCompatActivity {
     public void updateBottomNavigationItems(boolean addItems) {
 
 
-        if (addItems) {
+
             navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_5);
             navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
-        } else {
-            navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_3);
-            navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
-        }
+
 
 
     }
