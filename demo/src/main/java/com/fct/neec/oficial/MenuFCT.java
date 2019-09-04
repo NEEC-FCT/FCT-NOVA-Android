@@ -11,7 +11,7 @@ public class MenuFCT extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_main);
+        setContentView(R.layout.menufct);
 
 
         }
