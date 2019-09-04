@@ -57,78 +57,78 @@
         app:srcCompat="@drawable/bluefundo" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/calendario"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView14"
+        app:layout_constraintEnd_toStartOf="@+id/mapa"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView9"
         app:srcCompat="@drawable/calendario" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/mapa"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView15"
-        app:layout_constraintStart_toEndOf="@+id/imageView13"
+        app:layout_constraintEnd_toStartOf="@+id/noticias"
+        app:layout_constraintStart_toEndOf="@+id/calendario"
         app:layout_constraintTop_toBottomOf="@+id/imageView9"
         app:srcCompat="@drawable/iconmapa" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/noticias"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView14"
+        app:layout_constraintStart_toEndOf="@+id/mapa"
         app:layout_constraintTop_toBottomOf="@+id/imageView9"
         app:srcCompat="@drawable/iconjornal" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/eco"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView13"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13"
+        app:layout_constraintEnd_toEndOf="@+id/calendario"
+        app:layout_constraintStart_toStartOf="@+id/calendario"
+        app:layout_constraintTop_toBottomOf="@+id/calendario"
         app:srcCompat="@drawable/eco_fct_svg" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/restaurante"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView14"
-        app:layout_constraintStart_toStartOf="@+id/imageView14"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        app:layout_constraintEnd_toEndOf="@+id/mapa"
+        app:layout_constraintStart_toStartOf="@+id/mapa"
+        app:layout_constraintTop_toBottomOf="@+id/mapa"
         app:srcCompat="@drawable/iconcomida" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/informacao"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintEnd_toEndOf="@+id/noticias"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/noticias"
+        app:layout_constraintTop_toBottomOf="@+id/noticias"
         app:srcCompat="@drawable/iconinfo" />
 
     <ImageView
-        android:id="@+id/imageView19"
+        android:id="@+id/sobre"
         android:layout_width="0dp"
         android:layout_height="59dp"
         android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17"
+        app:layout_constraintEnd_toEndOf="@+id/restaurante"
+        app:layout_constraintStart_toStartOf="@+id/restaurante"
+        app:layout_constraintTop_toBottomOf="@+id/restaurante"
         app:srcCompat="@drawable/iconequipa" />
 
     <TextView
@@ -137,9 +137,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="CALENDÁRIO"
-        app:layout_constraintEnd_toEndOf="@+id/imageView13"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        app:layout_constraintEnd_toEndOf="@+id/calendario"
+        app:layout_constraintStart_toStartOf="@+id/calendario"
+        app:layout_constraintTop_toBottomOf="@+id/calendario" />
 
     <TextView
         android:id="@+id/textView16"
@@ -147,9 +147,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="MAPA"
-        app:layout_constraintEnd_toEndOf="@+id/imageView14"
-        app:layout_constraintStart_toStartOf="@+id/imageView14"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        app:layout_constraintEnd_toEndOf="@+id/mapa"
+        app:layout_constraintStart_toStartOf="@+id/mapa"
+        app:layout_constraintTop_toBottomOf="@+id/mapa" />
 
     <TextView
         android:id="@+id/textView17"
@@ -157,9 +157,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="NOTÍCIAS"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+        app:layout_constraintEnd_toEndOf="@+id/noticias"
+        app:layout_constraintStart_toStartOf="@+id/noticias"
+        app:layout_constraintTop_toBottomOf="@+id/noticias" />
 
     <TextView
         android:id="@+id/textView18"
@@ -167,9 +167,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="ECO"
-        app:layout_constraintEnd_toEndOf="@+id/imageView16"
-        app:layout_constraintStart_toStartOf="@+id/imageView16"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+        app:layout_constraintEnd_toEndOf="@+id/eco"
+        app:layout_constraintStart_toStartOf="@+id/eco"
+        app:layout_constraintTop_toBottomOf="@+id/eco" />
 
     <TextView
         android:id="@+id/textView19"
@@ -177,9 +177,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="SOBRE"
-        app:layout_constraintEnd_toEndOf="@+id/imageView19"
-        app:layout_constraintStart_toStartOf="@+id/imageView19"
-        app:layout_constraintTop_toBottomOf="@+id/imageView19" />
+        app:layout_constraintEnd_toEndOf="@+id/sobre"
+        app:layout_constraintStart_toStartOf="@+id/sobre"
+        app:layout_constraintTop_toBottomOf="@+id/sobre" />
 
     <TextView
         android:id="@+id/textView20"
@@ -187,9 +187,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="RESTAURANTES"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+        app:layout_constraintEnd_toEndOf="@+id/restaurante"
+        app:layout_constraintStart_toStartOf="@+id/restaurante"
+        app:layout_constraintTop_toBottomOf="@+id/restaurante" />
 
     <TextView
         android:id="@+id/textView21"
@@ -197,9 +197,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="INFORMAÇÕES"
-        app:layout_constraintEnd_toEndOf="@+id/imageView18"
-        app:layout_constraintStart_toStartOf="@+id/imageView18"
-        app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+        app:layout_constraintEnd_toEndOf="@+id/informacao"
+        app:layout_constraintStart_toStartOf="@+id/informacao"
+        app:layout_constraintTop_toBottomOf="@+id/informacao" />
 
     <TextView
         android:id="@+id/textView22"
@@ -216,7 +216,7 @@
         android:id="@+id/imageView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/textView22"
