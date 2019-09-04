@@ -19,6 +19,25 @@ public class MenuFCT extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menufct);
 
+
+        //instagram
+        final ImageView facebook = (ImageView) findViewById(R.id.facebook);
+        facebook.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/fct.nova/"));
+                startActivity(browserIntent);
+            }
+        });
+
+        //instagram
+        final ImageView instagram = (ImageView) findViewById(R.id.instagram);
+        instagram.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/fctnova/"));
+                startActivity(browserIntent);
+            }
+        });
+
         //calendario
         final ImageView calendario = (ImageView) findViewById(R.id.calendario);
         calendario.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +102,13 @@ public class MenuFCT extends AppCompatActivity {
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        //Volta noticias
+        startMainActivity(2);
     }
 
     private void startMainActivity(int positon) {
