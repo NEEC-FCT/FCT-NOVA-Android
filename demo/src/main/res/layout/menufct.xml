@@ -53,4 +53,12 @@
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView7"
         app:srcCompat="@drawable/bluefundo" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="104dp"
+        android:layout_height="115dp"
+        app:srcCompat="@drawable/calendario"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="425dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
