@@ -300,7 +300,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/facebook"
         android:layout_width="37dp"
         android:layout_height="25dp"
         android:layout_marginTop="8dp"
@@ -313,11 +313,11 @@
         app:srcCompat="@drawable/face" />
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/instagram"
         android:layout_width="33dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-        app:layout_constraintEnd_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toTopOf="@+id/imageView13"
+        app:layout_constraintBottom_toBottomOf="@+id/facebook"
+        app:layout_constraintEnd_toStartOf="@+id/facebook"
+        app:layout_constraintTop_toTopOf="@+id/facebook"
         app:srcCompat="@drawable/insta" />
 </androidx.constraintlayout.widget.ConstraintLayout>
