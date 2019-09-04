@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,23 @@ public class MenuFCT extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menufct);
 
+        //NEECLogo
+        final TextView power = (TextView) findViewById(R.id.power);
+        power.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://neec-fct.com/"));
+                startActivity(browserIntent);
+            }
+        });
+
+        //NEECLogo
+        final ImageView neec = (ImageView) findViewById(R.id.neec);
+        neec.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://neec-fct.com/"));
+                startActivity(browserIntent);
+            }
+        });
 
         //instagram
         final ImageView facebook = (ImageView) findViewById(R.id.facebook);
