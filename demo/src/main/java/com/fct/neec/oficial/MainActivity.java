@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 if(position == 0){
                     Intent k = new Intent(MainActivity.this, MenuFCT.class);
                     startActivity(k);
-                }
+                }else{
                 if (position == 0 && show) {
                     //Sugestoes
                     show = false;
@@ -164,7 +164,9 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                viewPager.setCurrentItem(position, false);
+
+
+                 viewPager.setCurrentItem(position, false);
 
                 if (currentFragment == null) {
                     return true;
@@ -259,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
                                 .start();
                     }
                 }
-
+                }
                 return true;
             }
         });
