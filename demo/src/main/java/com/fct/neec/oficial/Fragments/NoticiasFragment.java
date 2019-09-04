@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -18,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.fct.neec.oficial.AlgoErradoAconteceu;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.SemNet;
 
@@ -77,11 +73,6 @@ public class NoticiasFragment extends Fragment {
                 }
 
 
-                @Override
-                public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                    Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
-                    startActivity(myIntent);
-                }
 
                 @Override
                 public void onPageFinished(WebView view, String url) {

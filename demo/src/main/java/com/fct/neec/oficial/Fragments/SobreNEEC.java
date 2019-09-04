@@ -10,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -19,7 +17,6 @@ import android.webkit.WebViewClient;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.fct.neec.oficial.AlgoErradoAconteceu;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.SemNet;
 import com.google.android.material.tabs.TabLayout;
@@ -57,15 +54,6 @@ public class SobreNEEC extends Fragment {
             webview.getSettings().setJavaScriptEnabled(true);
             webview.loadUrl("https://fctapp.neec-fct.com/SobreNEEC/");
             webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-            webview.setWebViewClient(new WebViewClient() {
-
-                                         @Override
-                                         public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                                             Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
-                                             startActivity(myIntent);
-                                         }
-                                     }
-            );
             webview.setHorizontalScrollBarEnabled(false);
             webview.setOnTouchListener(new View.OnTouchListener() {
                 float m_downX;

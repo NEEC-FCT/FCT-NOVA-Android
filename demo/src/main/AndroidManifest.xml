@@ -72,14 +72,6 @@
             android:name=".SemNet"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
-        <activity
-            android:name=".AlgoErradoAconteceu"
-            android:screenOrientation="portrait"
-            android:theme="@style/FullscreenTheme" />
-        <activity
-            android:name=".MenuFCT"
-            android:screenOrientation="portrait"
-            android:theme="@style/FullscreenTheme" />
 
 
         <service android:enabled="true" android:name=".MyService" />

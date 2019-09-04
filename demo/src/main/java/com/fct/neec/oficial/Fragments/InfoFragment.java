@@ -13,8 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -23,7 +21,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.fct.neec.oficial.AlgoErradoAconteceu;
 import com.fct.neec.oficial.BuildConfig;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.MainActivity;
@@ -129,12 +126,7 @@ public class InfoFragment extends Fragment {
 
             webview.setWebViewClient(new WebViewClient() {
 
-                @Override
-                public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                    //Your code to do
-                    Intent myIntent = new Intent(getContext(), AlgoErradoAconteceu.class);
-                    startActivity(myIntent);
-                }
+
 
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
