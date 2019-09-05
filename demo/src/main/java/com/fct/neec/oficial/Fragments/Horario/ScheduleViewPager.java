@@ -193,6 +193,9 @@ public class ScheduleViewPager extends BaseViewPager
                 if (tab.getPosition() == 0) {
                     ((MainActivity) getActivity()).changeFragment(3, false);
                 }
+                else if (tab.getPosition() == 2) {
+                    ((MainActivity) getActivity()).changeFragment(10, false);
+                }
 
             }
 

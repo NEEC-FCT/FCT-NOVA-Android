@@ -73,7 +73,11 @@ public class MainActivity extends AppCompatActivity {
         // if(initUI)
         initUI();
 
-        if (position >= 5 && position <= 7) {
+        if(position == 10){
+            bottomNavigation.setCurrentItem(3);
+            viewPager.setCurrentItem(position, false);
+        }
+        else if (position >= 5 && position <= 7 ) {
             bottomNavigation.setCurrentItem(3);
             viewPager.setCurrentItem(position, false);
 
@@ -294,11 +298,11 @@ public class MainActivity extends AppCompatActivity {
             editor.remove("Separador");
             editor.apply();
             if(position == 7 || position == 10){
-                Log.d("Changed" , "Vou para o 3 ou 10");
+               // Log.d("Changed" , "Vou para o 3 ou 10");
                 bottomNavigation.setCurrentItem(3);
             }
             else if(position == 9){
-                Log.d("Changed" , "Vou para o 1");
+               // Log.d("Changed" , "Vou para o 1");
                 bottomNavigation.setCurrentItem(1);
             }
             else{
