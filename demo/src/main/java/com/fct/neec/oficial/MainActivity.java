@@ -293,8 +293,19 @@ public class MainActivity extends AppCompatActivity {
             //apaga
             editor.remove("Separador");
             editor.apply();
+            if(position == 7 || position == 10){
+                Log.d("Changed" , "Vou para o 3 ou 10");
+                bottomNavigation.setCurrentItem(3);
+            }
+            else if(position == 9){
+                Log.d("Changed" , "Vou para o 1");
+                bottomNavigation.setCurrentItem(1);
+            }
+            else{
+                bottomNavigation.setCurrentItem(position);
+            }
             viewPager.setCurrentItem(position, false);
-            bottomNavigation.setCurrentItem(position);
+
         } else {
             viewPager.setCurrentItem(2, false);
         }

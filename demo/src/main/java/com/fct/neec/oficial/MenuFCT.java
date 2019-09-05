@@ -102,7 +102,7 @@ public class MenuFCT extends AppCompatActivity {
         final ImageView eco = (ImageView) findViewById(R.id.eco);
         eco.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // your handler code here
+                startMainActivity(4);
             }
         });
         //Restaurantes
