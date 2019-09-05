@@ -115,7 +115,10 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
             @Override
             public void onTabSelected(final TabLayout.Tab tab) {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
-                if (tab.getPosition() == 1) {
+                if(tab.getPosition() == 2){
+                    ((MainActivity) getActivity()).changeFragment(10, false);
+                }
+                else if (tab.getPosition() == 1) {
                     //mudar de fragmento
                     //call back after permission granted
                     PermissionListener permissionlistener = new PermissionListener() {

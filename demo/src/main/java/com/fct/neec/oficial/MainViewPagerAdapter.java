@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.fct.neec.oficial.Fragments.Calendario.CalendarViewPager;
 import com.fct.neec.oficial.Fragments.VerCadeiras.ClassesDocsFragment;
 import com.fct.neec.oficial.Fragments.VerCadeiras.ClassesFragment;
 import com.fct.neec.oficial.Fragments.ClipLoginFragment;
@@ -39,6 +40,7 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
         fragments.add(ScheduleViewPager.newInstance(7));
         fragments.add(ClassesFragment.newInstance(8));
         fragments.add(ClassesDocsFragment.newInstance(9));
+        fragments.add(CalendarViewPager.newInstance(10));
     }
 
     @Override

@@ -15,7 +15,7 @@ public class BaseViewPager extends Fragment {
 
 
     protected View view;
-    ViewPager mViewPager;
+    public ViewPager mViewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
