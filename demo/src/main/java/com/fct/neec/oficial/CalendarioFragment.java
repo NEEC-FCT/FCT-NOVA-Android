@@ -308,12 +308,12 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-            //    if (error != null)
-           //         Log.e("Eventos", error.getMessage());
+            /*   if (error != null)
+                  Log.e("Eventos", error.getMessage());
                 itemsData.clear();
-                itemsData.add(new Event(0, 0, "Ocorreu um erro a carregar o calendário."));
+                itemsData.add(new Event(0, 0, "Ocorreu um erro a carregar o calendário,tente novamente mais tarde"));
                 refreshAdapter();
-                refresh();
+                refresh();*/
             }
         });
 

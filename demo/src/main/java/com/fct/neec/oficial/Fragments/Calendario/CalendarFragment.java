@@ -40,6 +40,7 @@ public class CalendarFragment extends Fragment implements CalendarPickerView.OnD
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         CalendarPickerView calendar = (CalendarPickerView) view.findViewById(R.id.calendar_view);
 
+
         // Set calendar background color
         Resources resources = getActivity().getResources();
         calendar.setBackgroundColor(Color.parseColor("#ff99cc00"));

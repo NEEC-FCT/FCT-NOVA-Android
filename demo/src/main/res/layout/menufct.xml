@@ -143,7 +143,7 @@
         app:srcCompat="@drawable/logoneec" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/horario"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -156,7 +156,7 @@
         app:srcCompat="@drawable/relogio" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/clip"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -168,7 +168,7 @@
         app:srcCompat="@drawable/clip" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/avaliacao"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -305,9 +305,9 @@
         android:textAlignment="center"
         android:textColor="@color/colorActiveSmall"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintEnd_toEndOf="@+id/horario"
+        app:layout_constraintStart_toStartOf="@+id/horario"
+        app:layout_constraintTop_toBottomOf="@+id/horario" />
 
     <TextView
         android:id="@+id/textView24"
@@ -318,9 +318,9 @@
         android:textAlignment="center"
         android:textColor="@color/colorActiveSmall"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintEnd_toEndOf="@+id/clip"
+        app:layout_constraintStart_toStartOf="@+id/clip"
+        app:layout_constraintTop_toBottomOf="@+id/clip" />
 
     <TextView
         android:id="@+id/textView25"
@@ -331,7 +331,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorActiveSmall"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintStart_toStartOf="@+id/imageView12"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+        app:layout_constraintEnd_toEndOf="@+id/avaliacao"
+        app:layout_constraintStart_toStartOf="@+id/avaliacao"
+        app:layout_constraintTop_toBottomOf="@+id/avaliacao" />
 </androidx.constraintlayout.widget.ConstraintLayout>

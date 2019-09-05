@@ -38,7 +38,7 @@ public class MenuFCT extends AppCompatActivity {
             }
         });
 
-        //instagram
+        //Facebook
         final ImageView facebook = (ImageView) findViewById(R.id.facebook);
         facebook.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -75,6 +75,27 @@ public class MenuFCT extends AppCompatActivity {
         noticias.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startMainActivity(2);
+            }
+        });
+        //Horario
+        final ImageView horario = (ImageView) findViewById(R.id.horario);
+        horario.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startMainActivity(7);
+            }
+        });
+        //Clip
+        final ImageView clip = (ImageView) findViewById(R.id.clip);
+        clip.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startMainActivity(9);
+            }
+        });
+        //avaliacao
+        final ImageView avaliacao = (ImageView) findViewById(R.id.avaliacao);
+        avaliacao.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startMainActivity(10);
             }
         });
         //ECO

@@ -1,5 +1,6 @@
 package com.fct.neec.oficial.Fragments.Calendario;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,6 @@ import android.view.ViewGroup;
 import com.astuetz.PagerSlidingTabStrip;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudentCalendarTask;
-import com.fct.neec.oficial.Fragments.Horario.BaseViewPager;
-import com.fct.neec.oficial.Fragments.Horario.DepthPageTransformer;
-import com.fct.neec.oficial.Fragments.Horario.ScheduleViewPager;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.adapters.CalendarViewPagerAdapter;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
@@ -50,9 +48,15 @@ public class CalendarViewPager extends BaseViewPager
                 getResources().getStringArray(R.array.exams_tests_tab_array), result));
         mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
+
         // Bind the tabs to the ViewPager
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
+        tabs.setTextColor(Color.WHITE);
+        tabs.setIndicatorColor(Color.WHITE);
+        tabs.setShouldExpand(true);
         tabs.setViewPager(mViewPager);
+
+
     }
 
     @Override
