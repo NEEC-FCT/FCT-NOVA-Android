@@ -116,7 +116,31 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
             public void onTabSelected(final TabLayout.Tab tab) {
                 Log.d("TAB", "clicou em: " + tab.getPosition());
                 if(tab.getPosition() == 2){
-                    ((MainActivity) getActivity()).changeFragment(10, false);
+
+                    //mudar de fragmento
+                    //call back after permission granted
+                    PermissionListener permissionlistener = new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted() {
+                            CLIPAvaliacoes();
+                        }
+
+                        @Override
+                        public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                            TabLayout.Tab tab = tabLayout.getTabAt(0);
+                            tab.select();
+                        }
+
+                    };
+
+                    //check all needed permissions together
+                    TedPermission.with(getContext())
+                            .setPermissionListener(permissionlistener)
+                            .setDeniedMessage("Se recusar não poderá usar o CLIP\n" +
+                                    "\n" +
+                                    "Por favor vá a [Definições] > [Permissões]")
+                            .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            .check();
                 }
                 else if (tab.getPosition() == 1) {
                     //mudar de fragmento
@@ -235,6 +259,21 @@ public class CalendarioFragment extends Fragment implements CalendarioAdapter.ev
 
         return view;
 
+    }
+
+
+    private void CLIPAvaliacoes() {
+        if (ClipSettings.getYearSelected(getContext()) != null) {
+            Log.d("CLIP", "Vai para o horario");
+            ((MainActivity) getActivity()).changeFragment(10, false);
+        }
+        // If the user has already login, start the StudentNumbersActivity instead
+        else if (ClipSettings.isUserLoggedIn(getContext())) {
+            Log.d("CLIP", "ConnectClipActivity - user has already login");
+            ((MainActivity) getActivity()).changeFragment(6, false);
+        } else {
+            ((MainActivity) getActivity()).changeFragment(5, false);
+        }
     }
 
     private void CLIP() {

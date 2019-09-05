@@ -170,7 +170,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                 viewPager.setCurrentItem(position, false);
+                try {
+                    viewPager.setCurrentItem(position, false);
+                }
+                catch (Exception e){
+                    viewPager = findViewById(R.id.view_pager);
+                    changeFragment(3 , false);
+                }
+
 
                 if (currentFragment == null) {
                     return true;
@@ -299,6 +306,18 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
             if(position == 7 || position == 10){
                // Log.d("Changed" , "Vou para o 3 ou 10");
+                bottomNavigation.setCurrentItem(3);
+            }
+            else if(position == 6){
+                // Log.d("Changed" , "Vou para o 1");
+                bottomNavigation.setCurrentItem(3);
+            }
+            else if(position == 8){
+                // Log.d("Changed" , "Vou para o 1");
+                bottomNavigation.setCurrentItem(1);
+            }
+            else if(position == 5){
+                // Log.d("Changed" , "Vou para o 1");
                 bottomNavigation.setCurrentItem(3);
             }
             else if(position == 9){

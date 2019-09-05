@@ -140,8 +140,13 @@ public class SelectionBuilder {
         if (columns != null)
             mapColumns(columns);
 
-        return db.query(mTable, columns, getSelection(), getSelectionArgs(), groupBy, having,
-                orderBy, limit);
+        try {
+            return db.query(mTable, columns, getSelection(), getSelectionArgs(), groupBy, having,
+                    orderBy, limit);
+        }
+        catch (Exception e){
+            return null;
+        }
     }
 
     /**

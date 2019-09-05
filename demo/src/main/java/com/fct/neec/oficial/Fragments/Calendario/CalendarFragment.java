@@ -19,6 +19,7 @@ import com.squareup.timessquare.CalendarPickerView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,11 +46,24 @@ public class CalendarFragment extends Fragment implements CalendarPickerView.OnD
         Resources resources = getActivity().getResources();
         calendar.setBackgroundColor(Color.parseColor("#ff99cc00"));
         // Set calendar start/end date and highlight dates
-        calendar.init(ClipSettings.getSemesterStartDate(getActivity()),
-                ClipSettings.getSemesterEndDate(getActivity()))
-                .withHighlightedDates(getDatesToHighlight());
+        try {
+            calendar.init(ClipSettings.getSemesterStartDate(getActivity()),
+                    ClipSettings.getSemesterEndDate(getActivity()))
+                    .withHighlightedDates(getDatesToHighlight());
 
-        calendar.setOnDateSelectedListener(this);
+            calendar.setOnDateSelectedListener(this);
+        }
+        catch (Exception e){
+            final Calendar lastYear = Calendar.getInstance();
+            final Calendar nextYear = Calendar.getInstance();
+            nextYear.add(Calendar.YEAR, 1);
+
+            calendar.init(lastYear.getTime(), nextYear.getTime()) //
+                    .inMode(CalendarPickerView.SelectionMode.SINGLE) //
+                    .withSelectedDate(new Date());
+
+            calendar.setOnDateSelectedListener(this);
+        }
 
         return view;
     }

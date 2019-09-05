@@ -122,6 +122,10 @@ public class StudentNumbersFragment extends Fragment
                 if (tab.getPosition() == 0) {
                     ((MainActivity) getActivity()).changeFragment(3, false);
                 }
+                if( tab.getPosition() == 2){
+                     tab = tabLayout.getTabAt(1);
+                    tab.select();
+                }
 
             }
 

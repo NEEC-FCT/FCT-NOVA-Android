@@ -47,19 +47,23 @@ public class CalendarViewPager extends BaseViewPager
         if(result == null) return;
 
         // Initialize the ViewPager and set an adapter
-        mViewPager.setAdapter(new CalendarViewPagerAdapter(getChildFragmentManager(),
-                getResources().getStringArray(R.array.exams_tests_tab_array), result));
-        mViewPager.setPageTransformer(true, new DepthPageTransformer());
+        try {
+            mViewPager.setAdapter(new CalendarViewPagerAdapter(getChildFragmentManager(),
+                    getResources().getStringArray(R.array.exams_tests_tab_array), result));
+            mViewPager.setPageTransformer(true, new DepthPageTransformer());
 
 
-        // Bind the tabs to the ViewPager
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
-        tabs.setTextColor(Color.WHITE);
-        tabs.setIndicatorColor(Color.WHITE);
-        tabs.setShouldExpand(true);
-        tabs.setViewPager(mViewPager);
+            // Bind the tabs to the ViewPager
+            PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
+            tabs.setTextColor(Color.WHITE);
+            tabs.setIndicatorColor(Color.WHITE);
+            tabs.setShouldExpand(true);
+            tabs.setViewPager(mViewPager);
 
+        }
+        catch (Exception e){
 
+        }
         //tabs superiores
         final TabLayout tabLayout = view.findViewById(R.id.tabLayout);
         TabLayout.Tab tab = tabLayout.getTabAt(2);

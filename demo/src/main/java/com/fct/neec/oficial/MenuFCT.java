@@ -1,15 +1,24 @@
 package com.fct.neec.oficial;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
+import com.google.android.material.tabs.TabLayout;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 public class MenuFCT extends AppCompatActivity {
 
@@ -150,7 +159,130 @@ public class MenuFCT extends AppCompatActivity {
         startMainActivity(2);
     }
 
-    private void startMainActivity(int positon) {
+    private void startMainActivity(final int positon) {
+        //mudar de fragmento
+        //call back after permission granted
+        if( positon == 9 || positon == 7 || positon == 10 ){
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                if( positon == 9){
+                    Log.d("CLIP", "Selecionei 10");
+                    if (ClipSettings.getYearSelected( MenuFCT.this ) != null) {
+                        Log.d("CLIP", "Vai para o horario");
+
+                        if (ClipSettings.getYearSelected( MenuFCT.this ) != null) {
+                            Log.d("CLIP", "Vai para o horario");
+
+                            goToMain(8);
+                        }
+                        // If the user has already login, start the StudentNumbersActivity instead
+                        else if (ClipSettings.isUserLoggedIn( MenuFCT.this )) {
+                            Log.d("CLIP", "ConnectClipActivity - user has already login");
+
+                            goToMain(6);
+                        } else {
+                            goToMain(5);
+                        }
+                    }
+                    // If the user has already login, start the StudentNumbersActivity instead
+                    else if (ClipSettings.isUserLoggedIn(MenuFCT.this)) {
+                        Log.d("CLIP", "ConnectClipActivity - user has already login");
+
+                        goToMain(6);
+                    } else {
+                        Log.d("CLIP", "Vai para o login");
+                        goToMain(5);
+                    }
+                }
+                else if( positon == 7){
+                    Log.d("CLIP", "Selecionei 10");
+                    if (ClipSettings.getYearSelected( MenuFCT.this ) != null) {
+                        Log.d("CLIP", "Vai para o horario");
+
+                        if (ClipSettings.getYearSelected( MenuFCT.this ) != null) {
+                            Log.d("CLIP", "Vai para o horario");
+
+                            goToMain(7);
+                        }
+                        // If the user has already login, start the StudentNumbersActivity instead
+                        else if (ClipSettings.isUserLoggedIn( MenuFCT.this )) {
+                            Log.d("CLIP", "ConnectClipActivity - user has already login");
+
+                            goToMain(6);
+                        } else {
+                            goToMain(5);
+                        }
+                    }
+                    // If the user has already login, start the StudentNumbersActivity instead
+                    else if (ClipSettings.isUserLoggedIn(MenuFCT.this)) {
+                        Log.d("CLIP", "ConnectClipActivity - user has already login");
+
+                        goToMain(6);
+                    } else {
+                        Log.d("CLIP", "Vai para o login");
+                        goToMain(5);
+                    }
+                }
+                else if( positon == 10){
+                    Log.d("CLIP", "Selecionei 10");
+                    if (ClipSettings.getYearSelected( MenuFCT.this ) != null) {
+                        Log.d("CLIP", "Vai para o horario");
+
+                        if (ClipSettings.getYearSelected( MenuFCT.this ) != null) {
+                            Log.d("CLIP", "Vai para o horario");
+
+                            goToMain(10);
+                        }
+                        // If the user has already login, start the StudentNumbersActivity instead
+                        else if (ClipSettings.isUserLoggedIn( MenuFCT.this )) {
+                            Log.d("CLIP", "ConnectClipActivity - user has already login");
+
+                            goToMain(6);
+                        } else {
+                            goToMain(5);
+                        }
+                    }
+                    // If the user has already login, start the StudentNumbersActivity instead
+                    else if (ClipSettings.isUserLoggedIn(MenuFCT.this)) {
+                        Log.d("CLIP", "ConnectClipActivity - user has already login");
+
+                        goToMain(6);
+                    } else {
+                        Log.d("CLIP", "Vai para o login");
+                        goToMain(5);
+                    }
+                }
+                else {
+                    goToMain(positon);
+                }
+
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+
+            }
+
+        };
+
+        //check all needed permissions together
+        TedPermission.with(MenuFCT.this)
+                .setPermissionListener(permissionlistener)
+                .setDeniedMessage("Se recusar não poderá usar o CLIP\n" +
+                        "\n" +
+                        "Por favor vá a [Definições] > [Permissões]")
+                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .check();
+        }
+        else {
+            goToMain(positon);
+        }
+
+
+    }
+
+    private void goToMain(int positon) {
         SharedPreferences preferences = getSharedPreferences("prefName", MODE_PRIVATE);
         SharedPreferences.Editor edit = preferences.edit();
         edit.putInt("Separador", positon);
@@ -159,7 +291,6 @@ public class MenuFCT extends AppCompatActivity {
         Intent myIntent = new Intent(MenuFCT.this, MainActivity.class);
         startActivity(myIntent);
     }
-
 
 
 }

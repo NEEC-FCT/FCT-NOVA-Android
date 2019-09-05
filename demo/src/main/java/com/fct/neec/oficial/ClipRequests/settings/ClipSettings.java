@@ -102,14 +102,18 @@ public class ClipSettings {
 
     public static String getYearSelectedFormatted(Context context) {
         String year = get(context).getString(YEAR_SELECTED, null);
-        String[] split = year.split("/"); // [ "2014", "15" ]
+        if( year != null ){
+            String[] split = year.split("/"); // [ "2014", "15" ]
 
-        String chars = split[1]; // [ "15" ]
+            String chars = split[1]; // [ "15" ]
 
-        String newString = split[0].substring(0, chars.length()); // [ "20" ]
-        newString = newString.concat(chars); // [ "2015" ]
+            String newString = split[0].substring(0, chars.length()); // [ "20" ]
+            newString = newString.concat(chars); // [ "2015" ]
 
-        return newString;
+            return newString;
+        }
+        return  null;
+
     }
 
     public static void saveYearSelected(Context context, String yearSelected) {
@@ -175,21 +179,27 @@ public class ClipSettings {
     }
 
     public static Date getSemesterStartDate(Context context) {
-        int year = Integer.parseInt(ClipSettings.getYearSelectedFormatted(context));
-        int semester = ClipSettings.getSemesterSelected(context);
+        try {
+            int year = Integer.parseInt(ClipSettings.getYearSelectedFormatted(context));
+            int semester = ClipSettings.getSemesterSelected(context);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
 
-        if (semester == 1) {
-            calendar.set(Calendar.MONTH, Calendar.SEPTEMBER);
-            calendar.set(Calendar.YEAR, year - 1);
-        } else {
-            calendar.set(Calendar.MONTH, Calendar.MARCH);
-            calendar.set(Calendar.YEAR, year);
+            if (semester == 1) {
+                calendar.set(Calendar.MONTH, Calendar.SEPTEMBER);
+                calendar.set(Calendar.YEAR, year - 1);
+            } else {
+                calendar.set(Calendar.MONTH, Calendar.MARCH);
+                calendar.set(Calendar.YEAR, year);
+            }
+
+            return calendar.getTime();
+        }
+        catch (Exception e){
+            return null;
         }
 
-        return calendar.getTime();
     }
 
     public static Date getSemesterEndDate(Context context) {

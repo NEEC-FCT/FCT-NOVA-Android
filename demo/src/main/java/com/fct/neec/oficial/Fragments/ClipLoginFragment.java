@@ -62,7 +62,10 @@ public class ClipLoginFragment extends Fragment implements ConnectClipTask.OnTas
                 if (tab.getPosition() == 0) {
                     ((MainActivity) getActivity()).changeFragment(3, false);
                 }
-
+                else if( tab.getPosition() == 2){
+                    tab = tabLayout.getTabAt(1);
+                    tab.select();
+                }
             }
 
             @Override

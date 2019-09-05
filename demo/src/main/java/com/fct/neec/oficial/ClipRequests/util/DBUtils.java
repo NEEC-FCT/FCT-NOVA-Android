@@ -61,26 +61,33 @@ public class DBUtils {
 
     public static User getStudents(Context mContext, long userId) {
 
-        final Cursor students_cursor = mContext.getContentResolver().query(
-                ClipMobileContract.Students.CONTENT_URI, null,
-                ClipMobileContract.Users.REF_USERS_ID + "=?", new String[]{String.valueOf(userId)}, null);
 
-        User user = new User();
-        while (students_cursor.moveToNext()) {
-            String id = students_cursor.getString(0);
-            String number_id = students_cursor.getString(2);
-            String number = students_cursor.getString(3);
+            final Cursor students_cursor = mContext.getContentResolver().query(
+                    ClipMobileContract.Students.CONTENT_URI, null,
+                    ClipMobileContract.Users.REF_USERS_ID + "=?", new String[]{String.valueOf(userId)}, null);
 
-            Student student = new Student();
-            student.setId(id);
-            student.setNumberId(number_id);
-            student.setNumber(number);
+            User user = new User();
+        try {
+            while (students_cursor.moveToNext()) {
+                String id = students_cursor.getString(0);
+                String number_id = students_cursor.getString(2);
+                String number = students_cursor.getString(3);
 
-            user.addStudent(student);
+                Student student = new Student();
+                student.setId(id);
+                student.setNumberId(number_id);
+                student.setNumber(number);
+
+                user.addStudent(student);
+            }
+            students_cursor.close();
         }
-        students_cursor.close();
+        catch (Exception e){
 
-        return user;
+        }
+            return user;
+
+
     }
 
     public static void insertStudentsNumbers(Context mContext, long userId, User user) {
@@ -178,28 +185,33 @@ public class DBUtils {
     public static String getYearSemesterId(Context mContext, String studentId, String year, int semester) {
 
         // First, we get the yearSemester ID
-        final Cursor studentYearSemester_cursor = mContext.getContentResolver().query(
-                ClipMobileContract.StudentsYearSemester.CONTENT_URI,
-                new String[]{ClipMobileContract.StudentsYearSemester._ID},
-                ClipMobileContract.Students.REF_STUDENTS_ID + "=? AND " +
-                        ClipMobileContract.StudentsYearSemester.YEAR + "=? AND " +
-                        ClipMobileContract.StudentsYearSemester.SEMESTER + "=?",
-                new String[]{studentId, year, String.valueOf(semester)}, null);
+        try {
+            final Cursor studentYearSemester_cursor = mContext.getContentResolver().query(
+                    ClipMobileContract.StudentsYearSemester.CONTENT_URI,
+                    new String[]{ClipMobileContract.StudentsYearSemester._ID},
+                    ClipMobileContract.Students.REF_STUDENTS_ID + "=? AND " +
+                            ClipMobileContract.StudentsYearSemester.YEAR + "=? AND " +
+                            ClipMobileContract.StudentsYearSemester.SEMESTER + "=?",
+                    new String[]{studentId, year, String.valueOf(semester)}, null);
 
-        if (studentYearSemester_cursor.getCount() == 0) {
+            if (studentYearSemester_cursor.getCount() == 0) {
+                studentYearSemester_cursor.close();
+
+                Log.d("CLIP", "getYearSemesterId - COUNT==0");
+
+                return null;
+            }
+
+            studentYearSemester_cursor.moveToFirst();
+            String yearSemesterId = studentYearSemester_cursor.getString(0);
+
             studentYearSemester_cursor.close();
 
-            Log.d("CLIP", "getYearSemesterId - COUNT==0");
-
-            return null;
+            return yearSemesterId;
         }
-
-        studentYearSemester_cursor.moveToFirst();
-        String yearSemesterId = studentYearSemester_cursor.getString(0);
-
-        studentYearSemester_cursor.close();
-
-        return yearSemesterId;
+        catch (Exception e){
+            return  null;
+        }
     }
 
     public static Student getStudentSchedule(Context mContext, String yearSemesterId) {
@@ -444,40 +456,45 @@ public class DBUtils {
     public static Student getStudentCalendar(Context mContext, String yearSemesterId) {
 
         // Get student calendar
-        final Cursor studentCalendar_cursor = mContext.getContentResolver().query(
-                ClipMobileContract.StudentCalendar.CONTENT_URI, null,
-                ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID + "=?",
-                new String[]{yearSemesterId}, null);
+        try {
+            final Cursor studentCalendar_cursor = mContext.getContentResolver().query(
+                    ClipMobileContract.StudentCalendar.CONTENT_URI, null,
+                    ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID + "=?",
+                    new String[]{yearSemesterId}, null);
 
-        if (studentCalendar_cursor.getCount() == 0) {
+            if (studentCalendar_cursor.getCount() == 0) {
+                studentCalendar_cursor.close();
+
+                return null;
+            }
+
+            Student student = new Student();
+            while (studentCalendar_cursor.moveToNext()) {
+                int calendarAppointmentIsExam = studentCalendar_cursor.getInt(2);
+                String calendarAppointmentName = studentCalendar_cursor.getString(3);
+                String calendarAppointmentDate = studentCalendar_cursor.getString(4);
+                String calendarAppointmentHour = studentCalendar_cursor.getString(5);
+                String calendarAppointmentRooms = studentCalendar_cursor.getString(6);
+                String calendarAppointmentNumber = studentCalendar_cursor.getString(7);
+
+                Log.d("CLIP", "REQUEST NAME:: " + calendarAppointmentName);
+
+                StudentCalendar calendarAppointement = new StudentCalendar();
+                calendarAppointement.setName(calendarAppointmentName);
+                calendarAppointement.setDate(calendarAppointmentDate);
+                calendarAppointement.setHour(calendarAppointmentHour);
+                calendarAppointement.setRooms(calendarAppointmentRooms);
+                calendarAppointement.setNumber(calendarAppointmentNumber);
+
+                student.addStudentCalendarAppointment((calendarAppointmentIsExam == 1), calendarAppointement);
+            }
             studentCalendar_cursor.close();
 
+            return student;
+        }
+        catch (Exception e){
             return null;
         }
-
-        Student student = new Student();
-        while (studentCalendar_cursor.moveToNext()) {
-            int calendarAppointmentIsExam = studentCalendar_cursor.getInt(2);
-            String calendarAppointmentName = studentCalendar_cursor.getString(3);
-            String calendarAppointmentDate = studentCalendar_cursor.getString(4);
-            String calendarAppointmentHour = studentCalendar_cursor.getString(5);
-            String calendarAppointmentRooms = studentCalendar_cursor.getString(6);
-            String calendarAppointmentNumber = studentCalendar_cursor.getString(7);
-
-            Log.d("CLIP", "REQUEST NAME:: " + calendarAppointmentName);
-
-            StudentCalendar calendarAppointement = new StudentCalendar();
-            calendarAppointement.setName(calendarAppointmentName);
-            calendarAppointement.setDate(calendarAppointmentDate);
-            calendarAppointement.setHour(calendarAppointmentHour);
-            calendarAppointement.setRooms(calendarAppointmentRooms);
-            calendarAppointement.setNumber(calendarAppointmentNumber);
-
-            student.addStudentCalendarAppointment((calendarAppointmentIsExam == 1), calendarAppointement);
-        }
-        studentCalendar_cursor.close();
-
-        return student;
     }
 
     public static void insertStudentCalendar(Context mContext, String yearSemesterId, Student student) {
