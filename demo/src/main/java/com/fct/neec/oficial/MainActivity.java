@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d("CDA", "onBackPressed Called");
-        Intent k = new Intent(MainActivity.this, MenuPrincipal.class);
+        Intent k = new Intent(MainActivity.this, MenuFCT.class);
         startActivity(k);
     }
 
