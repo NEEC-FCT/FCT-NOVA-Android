@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -129,6 +130,22 @@ public class ScheduleViewPager extends BaseViewPager
                     }
                 });
                 builder.show();
+            }
+        });
+
+
+        //Refresh
+        FloatingActionButton refresh = view.findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("CLIP", "Ver Refresh");
+                // Refreshing
+                Toast.makeText(getContext(), getString(R.string.refreshing),
+                        Toast.LENGTH_LONG).show();
+
+                // Start AsyncTask
+                mUpdateTask = new UpdateStudentPageTask(getContext(), ScheduleViewPager.this);
+                AndroidUtils.executeOnPool(mUpdateTask);
             }
         });
 
