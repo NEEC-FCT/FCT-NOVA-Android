@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import com.fct.neec.oficial.R;
@@ -16,6 +17,7 @@ public class BaseViewPager extends Fragment {
 
     protected View view;
     public ViewPager mViewPager;
+    public SwipeRefreshLayout sw_refresh;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

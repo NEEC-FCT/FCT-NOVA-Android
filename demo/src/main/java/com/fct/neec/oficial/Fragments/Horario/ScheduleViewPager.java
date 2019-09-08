@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
@@ -134,6 +135,23 @@ public class ScheduleViewPager extends BaseViewPager
         });
 
 
+        sw_refresh = (SwipeRefreshLayout) view.findViewById(R.id.sw_refresh);
+
+        sw_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //following line is important to stop animation for refreshing
+                Log.d("CLIP", "Ver Refresh");
+                // Refreshing
+                Toast.makeText(getContext(), getString(R.string.refreshing),
+                        Toast.LENGTH_LONG).show();
+
+                // Start AsyncTask
+                mUpdateTask = new UpdateStudentPageTask(getContext(), ScheduleViewPager.this);
+                AndroidUtils.executeOnPool(mUpdateTask);
+            }
+        });
+
         //Refresh
         FloatingActionButton refresh = view.findViewById(R.id.refresh);
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -217,6 +235,7 @@ public class ScheduleViewPager extends BaseViewPager
         // Refresh current view
         ProximaAula.sethorario(result);
         ProximaAula.SaveState();
+        sw_refresh.setRefreshing(false);
         ((MainActivity) getActivity()).reloadFragment(7);
     }
 
