@@ -7,8 +7,8 @@ android {
         applicationId "com.fct.neec.oficial"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 14
-        versionName "3.40"
+        versionCode 16
+        versionName "3.60"
         vectorDrawables.useSupportLibrary = true
     }
 

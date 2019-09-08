@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingLeft="32dp"
         android:paddingRight="29dp"
-        android:text="Bem-vindo à Faculdade de Ciências e Tecnologias"
+        android:text="Bem-vindo à Faculdade de Ciências e Tecnologia"
         android:textColor="#ffffff"
         android:textSize="27sp"
         android:textStyle="bold" />
