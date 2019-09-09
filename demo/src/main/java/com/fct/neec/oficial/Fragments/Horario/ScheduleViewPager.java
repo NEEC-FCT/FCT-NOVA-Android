@@ -7,12 +7,14 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
@@ -45,6 +47,8 @@ public class ScheduleViewPager extends BaseViewPager
         ScheduleViewPager fragment = new ScheduleViewPager();
         return fragment;
     }
+
+
 
 
     public boolean isInternetAvailable() {
@@ -133,6 +137,23 @@ public class ScheduleViewPager extends BaseViewPager
                 builder.show();
             }
         });
+
+
+
+        mViewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled( int position, float v, int i1 ) {
+            }
+
+            @Override
+            public void onPageSelected( int position ) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged( int state ) {
+                enableDisableSwipeRefresh( state == ViewPager.SCROLL_STATE_IDLE );
+            }
+        } );
 
 
         sw_refresh = (SwipeRefreshLayout) view.findViewById(R.id.sw_refresh);
@@ -226,6 +247,12 @@ public class ScheduleViewPager extends BaseViewPager
             }
         });
 
+    }
+
+    private void enableDisableSwipeRefresh(boolean enable) {
+        if (sw_refresh != null) {
+            sw_refresh.setEnabled(enable);
+        }
     }
 
 

@@ -19,6 +19,8 @@ public class BaseViewPager extends Fragment {
     public ViewPager mViewPager;
     public SwipeRefreshLayout sw_refresh;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
