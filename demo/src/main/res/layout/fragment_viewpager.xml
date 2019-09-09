@@ -88,7 +88,7 @@
             fab:menu_fab_hide_animation="@anim/jump_to_down"
             fab:menu_fab_show_animation="@anim/jump_from_down"
             fab:menu_fab_size="normal"
-            fab:menu_icon="@drawable/settings_fab"
+            fab:menu_icon="@drawable/settinbfab"
             fab:menu_labels_colorNormal="#333333"
             fab:menu_labels_colorPressed="#444444"
             fab:menu_labels_colorRipple="#66FFFFFF"
