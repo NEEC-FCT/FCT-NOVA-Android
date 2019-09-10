@@ -21,6 +21,8 @@
 
         <com.google.android.material.tabs.TabItem android:text="ECO FCT" />
 
+        <com.google.android.material.tabs.TabItem android:text="Entidades" />
+
     </com.google.android.material.tabs.TabLayout>
 
     <WebView

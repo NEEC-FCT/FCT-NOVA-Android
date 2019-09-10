@@ -72,8 +72,12 @@ public class MapaFragment extends Fragment {
                         webview.setVisibility(View.GONE);
 
                     }
-                    if (position == 1) {
+                    else if (position == 1) {
                         webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16");
+                        webview.setVisibility(View.GONE);
+                    }
+                    else if (position == 2) {
+                        webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1pDVA9v49vnMkY9QF49Bxvxi08m39VSLq&ll=38.661303032631146%2C-9.205898544352294&z=16");
                         webview.setVisibility(View.GONE);
                     }
                 }
