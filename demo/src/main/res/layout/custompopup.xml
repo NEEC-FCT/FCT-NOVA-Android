@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:background="#FFB30F"
+            android:background="#426BBD"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_weight="1"
@@ -67,7 +67,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="#437F97"
+            android:background="#5ABDCE"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_weight="1"
