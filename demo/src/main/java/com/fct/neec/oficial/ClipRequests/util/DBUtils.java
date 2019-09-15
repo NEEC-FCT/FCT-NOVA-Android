@@ -223,9 +223,13 @@ public class DBUtils {
                 ClipMobileContract.StudentsYearSemester.REF_STUDENTS_YEAR_SEMESTER_ID + "=?",
                 new String[]{yearSemesterId}, null);
 
-        if (studentScheduleDays_cursor.getCount() == 0) {
-            studentScheduleDays_cursor.close();
-
+        try {
+            if (studentScheduleDays_cursor.getCount() == 0) {
+                studentScheduleDays_cursor.close();
+                return null;
+            }
+        }
+        catch (NullPointerException e){
             return null;
         }
 

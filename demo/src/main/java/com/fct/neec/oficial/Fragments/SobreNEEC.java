@@ -42,8 +42,9 @@ public class SobreNEEC extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.menufct, container, false);
-/*
+
+        View view = inflater.inflate(R.layout.emptyview, container, false);
+        /*
         if (!isInternetAvailable()) {
             Intent intent = new Intent(getContext(), SemNet.class);
             startActivity(intent);
@@ -160,7 +161,9 @@ public class SobreNEEC extends Fragment {
                 public void onTabReselected(TabLayout.Tab tab) {
                 }
             });
-        }*/
+        }
+        */
+
         return view;
     }
 

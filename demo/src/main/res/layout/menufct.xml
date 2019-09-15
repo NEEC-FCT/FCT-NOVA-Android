@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
-        android:layout_height="170dp"
+        android:layout_height="146dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,15 +34,17 @@
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="0dp"
-        android:layout_height="102dp"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
         app:srcCompat="@drawable/fctbranco" />
 
     <ImageView
@@ -55,7 +57,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="0.051"
+        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/bluefundo" />
 
     <ImageView
@@ -63,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/mapa"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView9"
@@ -74,7 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@+id/noticias"
         app:layout_constraintStart_toEndOf="@+id/calendario"
@@ -85,7 +87,7 @@
         android:id="@+id/noticias"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/mapa"
@@ -336,4 +338,26 @@
         app:layout_constraintEnd_toEndOf="@+id/avaliacao"
         app:layout_constraintStart_toStartOf="@+id/avaliacao"
         app:layout_constraintTop_toBottomOf="@+id/avaliacao" />
+
+    <ImageView
+        android:id="@+id/propinas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sobre"
+        app:layout_constraintEnd_toEndOf="@+id/informacao"
+        app:layout_constraintStart_toStartOf="@+id/informacao"
+        app:layout_constraintTop_toTopOf="@+id/sobre"
+        app:srcCompat="@drawable/iconmb" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Propinas"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintEnd_toEndOf="@+id/propinas"
+        app:layout_constraintStart_toStartOf="@+id/propinas"
+        app:layout_constraintTop_toTopOf="@+id/textView19" />
 </androidx.constraintlayout.widget.ConstraintLayout>
