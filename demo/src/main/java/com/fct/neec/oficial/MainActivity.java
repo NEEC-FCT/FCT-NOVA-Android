@@ -1,9 +1,12 @@
 package com.fct.neec.oficial;
 
 import android.animation.Animator;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +14,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private int[] tabColors;
     private Handler handler = new Handler();
     private Boolean show = true;
+    Dialog myDialog;
 
     // UI
     private AHBottomNavigationViewPager viewPager;
@@ -59,8 +65,20 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.startActivity(intent);
 
         }
+
+
         setContentView(R.layout.activity_home);
         initUI();
+
+        Boolean thanks = pref.getBoolean("thanks", true);
+        if (thanks) {
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("thanks", false);
+            editor.commit();
+            myDialog = new Dialog(this);
+            ShowPopup( findViewById(android.R.id.content) );
+
+        }
     }
 
 
@@ -137,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent k = new Intent(MainActivity.this, MenuFCT.class);
                     startActivity(k);
                 }else{
-                if (position == 0 && show) {
+                if (position == 1 && show) {
                     //Sugestoes
                     show = false;
                     handler.postDelayed(new Runnable() {
@@ -351,15 +369,32 @@ public class MainActivity extends AppCompatActivity {
      */
     public void updateBottomNavigationItems(boolean addItems) {
 
-
-
             navigationAdapter = new AHBottomNavigationAdapter(this, R.menu.bottom_navigation_menu_5);
             navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
 
-
-
     }
 
+    public void ShowPopup(View v) {
+        TextView txtclose;
+        Button btnFollow;
+        myDialog.setContentView(R.layout.custompopup);
+        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        btnFollow = (Button) myDialog.findViewById(R.id.btnfollow);
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
 
     public void reloadFragment(int i) {
         if (i == 7) {
