@@ -2,6 +2,7 @@ package com.fct.neec.oficial.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,7 +61,20 @@ public class MapaFragment extends Fragment {
             webview.getSettings().setJavaScriptEnabled(true);
             webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
             webview.setVisibility(View.GONE);
-            webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
+            SharedPreferences settings = getActivity().getSharedPreferences("ECO", 0);
+            int tabbed = settings.getInt("ECO", 0);
+            if(tabbed == 0){
+                webview.loadUrl("https://www.google.com/maps/d/viewer?mid=1puDPKCs1qt4eyU1fK2EfzPCHyQzkfm6n&ll=38.661303032631146%2C-9.205898544352294&z=16");
+            }
+            else if( tabbed == 1){
+                SharedPreferences.Editor editor = settings.edit();
+                editor.remove("ECO");
+                editor.apply();
+                TabLayout.Tab tab = tabLayout.getTabAt(1);
+                tab.select();
+                webview.loadUrl("https://www.google.com/maps/d/u/0/viewer?mid=1TdpAcDgdncinIqJLrr504ZMAJe6zQ2il&ll=38.661303032631146%2C-9.205898544352294&z=16");
+            }
+
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override

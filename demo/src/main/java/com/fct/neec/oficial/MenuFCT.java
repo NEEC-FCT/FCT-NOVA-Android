@@ -116,6 +116,10 @@ public class MenuFCT extends AppCompatActivity {
         final ImageView eco = (ImageView) findViewById(R.id.eco);
         eco.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                SharedPreferences settings = getSharedPreferences("ECO", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("ECO", 1);
+                editor.commit();
                 startMainActivity(4);
             }
         });
