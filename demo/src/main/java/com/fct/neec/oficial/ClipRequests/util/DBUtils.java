@@ -3,10 +3,10 @@ package com.fct.neec.oficial.ClipRequests.util;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
-
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentCalendar;
 import com.fct.neec.oficial.ClipRequests.entities.StudentClass;
@@ -15,6 +15,7 @@ import com.fct.neec.oficial.ClipRequests.entities.StudentScheduleClass;
 import com.fct.neec.oficial.ClipRequests.entities.StudentYearSemester;
 import com.fct.neec.oficial.ClipRequests.entities.User;
 import com.fct.neec.oficial.ClipRequests.provider.ClipMobileContract;
+import com.fct.neec.oficial.MenuFCT;
 
 import java.util.List;
 import java.util.Map;
@@ -230,7 +231,9 @@ public class DBUtils {
             }
         }
         catch (NullPointerException e){
-            return null;
+            //Go to menu
+            Intent intent = new Intent(mContext, MenuFCT.class);
+            mContext.startActivity(intent);
         }
 
         Student student = new Student();
