@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import com.fct.neec.oficial.ClipRequests.dialogs.CalendarDialogFragment;
 import com.fct.neec.oficial.ClipRequests.entities.StudentCalendar;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.R;
@@ -73,7 +74,25 @@ public class CalendarFragment extends Fragment implements CalendarPickerView.OnD
         if(this.calendar == null)
             return;
 
-        Log.d("Calendario" , "Abrir input ??");
+        for (StudentCalendar appointment : this.calendar) {
+            try {
+                Date appointmentDate = format.parse(appointment.getDate());
+
+                if(appointmentDate.equals(date)) {
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(APPOINTMENT_TAG, appointment);
+
+                    // Create an instance of the dialog fragment and show it
+                    DialogFragment dialog = new CalendarDialogFragment();
+                    dialog.setArguments(bundle);
+                    dialog.show(getFragmentManager(), "CalendarDialogFragment");
+                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @Override
