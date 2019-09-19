@@ -201,6 +201,8 @@ public class StudentScheduleRequest extends Request {
         cadeiras.put("Análise Matemática IV CT", horario);
         cadeiras.put("Análise Matemática IV DT", horario);
         cadeiras.put("Análise Matemática IV ET", horario);
+        //Redes de computadores
+        cadeiras.put("Redes de ComputadoresT", horario);
 
 
     }
