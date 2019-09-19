@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,12 +26,11 @@ public class StudentScheduleRequest extends Request {
     private static final String STUDENT_SCHEDULE_2 = "&institui%E7%E3o=97747&aluno=";
     private static final String STUDENT_SCHEDULE_3 = "&tipo_de_per%EDodo_lectivo=s&per%EDodo_lectivo=";
     private static final String STUDENT_SCHEDULE_3_TRIMESTER = "&tipo_de_per%EDodo_lectivo=t&per%EDodo_lectivo=";
-    private static HashMap<String, ArrayList<Integer>> cadeiras;
+
 
     public static Student getSchedule(Context mContext, String studentNumberId, String year, int semester)
             throws ServerUnavailableException {
 
-        initDB();
         String url = STUDENT_SCHEDULE_1 + year + STUDENT_SCHEDULE_2 + studentNumberId;
         if (semester == 3) // Trimester
             url += STUDENT_SCHEDULE_3_TRIMESTER + (semester - 1);
@@ -79,13 +77,8 @@ public class StudentScheduleRequest extends Request {
 
                     int dateDuration = (Integer.parseInt(scheduleClassDuration) / 2);
 
-                    String searckKey = scheduleClassName + scheduleClassType.substring(0,findIndexNumber(scheduleClassType));
 
-                    Log.d("PATCH" , searckKey );
-
-                    if( cadeiras.containsKey(searckKey)){
-                        Log.d("PATCH" , "Encontrei " + searckKey );
-                        ArrayList<Integer> duracao = cadeiras.get(searckKey);
+                    if( Integer.parseInt(scheduleClassDuration) == 3 ){
                         if (horas_fim.text().length() == 1) {
                             // Start hour
                             scheduleClassHourStart = horas_inicio.text();
@@ -94,8 +87,8 @@ public class StudentScheduleRequest extends Request {
 
                             Calendar calendar1 = Calendar.getInstance();
                             calendar1.setTime(dateStart);
-                            calendar1.add(Calendar.HOUR, duracao.get(0));
-                            calendar1.add(Calendar.MINUTE, duracao.get(1));
+                            calendar1.add(Calendar.HOUR, 1);
+                            calendar1.add(Calendar.MINUTE, 30);
 
                             // End hour
                             if(  calendar1.get(Calendar.MINUTE) == 0)
@@ -115,8 +108,9 @@ public class StudentScheduleRequest extends Request {
                             scheduleClassHourStart = calendar1.get(Calendar.HOUR_OF_DAY) + ":" + calendar1.get(Calendar.MINUTE);
 
                             // Calculate end hour
-                            calendar1.add(Calendar.HOUR, duracao.get(0));
-                            calendar1.add(Calendar.MINUTE, duracao.get(1));
+                            calendar1.add(Calendar.HOUR, 1);
+                            calendar1.add(Calendar.MINUTE, 30);
+
 
                             // End hour
                             if(  calendar1.get(Calendar.MINUTE) == 0)
@@ -185,26 +179,5 @@ public class StudentScheduleRequest extends Request {
         return  matcher.start(1) ;
     }
 
-    public static void initDB(){
-        //init
-        cadeiras = new HashMap<>();
-        //IA Teorica
-        ArrayList<Integer> horario = new ArrayList<Integer>();
-        horario.add(1);
-        horario.add(30);
-        cadeiras.put("Inteligência ArtificialT", horario);
-        //MDS Teorica
-        cadeiras.put("Métodos de Desenvolvimento de SoftwareT", horario);
-        //AM 4
-        cadeiras.put("Análise Matemática IV AT", horario);
-        cadeiras.put("Análise Matemática IV BT", horario);
-        cadeiras.put("Análise Matemática IV CT", horario);
-        cadeiras.put("Análise Matemática IV DT", horario);
-        cadeiras.put("Análise Matemática IV ET", horario);
-        //Redes de computadores
-        cadeiras.put("Redes de ComputadoresT", horario);
-
-
-    }
 
 }
