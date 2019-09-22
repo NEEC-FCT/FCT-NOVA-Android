@@ -77,7 +77,10 @@
             android:name=".MenuFCT"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
-
+        <activity
+            android:name=".PerdidosMasAchados.PerdidosEAchados"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
 
         <service android:enabled="true" android:name=".MyService" />
 

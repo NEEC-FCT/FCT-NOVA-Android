@@ -1,8 +1,6 @@
 package com.fct.neec.oficial;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
-import com.google.android.material.tabs.TabLayout;
+import com.fct.neec.oficial.PerdidosMasAchados.PerdidosEAchados;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -33,6 +30,15 @@ public class MenuFCT extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menufct);
+
+        //Perdidos Mas achados
+        final ImageView perdidos = (ImageView) findViewById(R.id.perdidos);
+        perdidos.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MenuFCT.this, PerdidosEAchados.class);
+                startActivity(myIntent);
+            }
+        });
 
         //NEECLogo
         final TextView power = (TextView) findViewById(R.id.power);

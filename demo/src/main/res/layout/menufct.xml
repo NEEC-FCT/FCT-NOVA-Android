@@ -360,4 +360,27 @@
         app:layout_constraintEnd_toEndOf="@+id/propinas"
         app:layout_constraintStart_toStartOf="@+id/propinas"
         app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+    <ImageView
+        android:id="@+id/perdidos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sobre"
+        app:layout_constraintEnd_toEndOf="@+id/eco"
+        app:layout_constraintStart_toStartOf="@+id/eco"
+        app:layout_constraintTop_toTopOf="@+id/sobre"
+        app:srcCompat="@drawable/iconperdidos" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Perdidos"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/perdidos"
+        app:layout_constraintStart_toStartOf="@+id/perdidos"
+        app:layout_constraintTop_toBottomOf="@+id/perdidos" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
