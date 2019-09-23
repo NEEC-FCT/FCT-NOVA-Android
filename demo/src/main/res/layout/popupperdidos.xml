@@ -52,6 +52,11 @@
             android:inputType="textPersonName"
             android:text="Descrição ou nota" />
 
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/pickFoto"
             android:layout_width="match_parent"
