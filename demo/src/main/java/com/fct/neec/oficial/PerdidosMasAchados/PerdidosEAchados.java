@@ -79,9 +79,7 @@ public class PerdidosEAchados extends AppCompatActivity {
             Log.i("PERDIDOS", "onActivityResult: file path : " + realPath);
             //setup params
             uploadFile(realPath);
-        //    String result = PedidoFormData.multipartRequest("https://fcthub.neec-fct.com/PHP/uploadPerdidos.php", params, realPath, "image", "imge/*");
-            //next parse result string
-      //      Log.i("PERDIDOS", "Pedido deu em  : " + result);
+
 
         } else {
             Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
@@ -190,6 +188,28 @@ public class PerdidosEAchados extends AppCompatActivity {
 
                 // send multipart form data necesssary after file data...
                 dos.writeBytes(lineEnd);
+                dos.writeBytes(twoHyphens + boundary  + lineEnd);
+
+                //Send parameters
+                //Nome
+                dos.writeBytes("Content-Disposition: form-data; name=\"nome\";" + lineEnd);
+                dos.writeBytes(lineEnd);
+                dos.writeBytes("Veloso" + lineEnd);
+                //local
+                dos.writeBytes(twoHyphens + boundary  + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"local\";" + lineEnd);
+                dos.writeBytes(lineEnd);
+                dos.writeBytes("local" + lineEnd);
+                //descricao
+                dos.writeBytes(twoHyphens + boundary  + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"descricao\";" + lineEnd);
+                dos.writeBytes(lineEnd);
+                dos.writeBytes("descricao" + lineEnd);
+                dos.writeBytes(twoHyphens + boundary  + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"categoria\";" + lineEnd);
+                dos.writeBytes(lineEnd);
+                dos.writeBytes("categoria" + lineEnd);
+                //Fim do Pedido
                 dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
 
                 // Responses from the server (code and message)

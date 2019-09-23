@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FCT-NOVA-Android.iml" filepath="$PROJECT_DIR$/FCT-NOVA-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ahbottomnavigation/FCT-NOVA-Android-ahbottomnavigation.iml" filepath="$PROJECT_DIR$/ahbottomnavigation/FCT-NOVA-Android-ahbottomnavigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/FCT-NOVA-Android-demo.iml" filepath="$PROJECT_DIR$/demo/FCT-NOVA-Android-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Github-FCT-NOVA-Android.iml" filepath="$PROJECT_DIR$/Github-FCT-NOVA-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/ahbottomnavigation/ahbottomnavigation.iml" filepath="$PROJECT_DIR$/ahbottomnavigation/ahbottomnavigation.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
     </modules>
