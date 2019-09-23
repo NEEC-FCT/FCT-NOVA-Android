@@ -11,8 +11,6 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
-//import android.provider.<span id="IL_AD11" class="IL_AD">MediaStore</span>;
-
 @SuppressLint("NewApi")
 @TargetApi(Build.VERSION_CODES.KITKAT)
 public class ImageFilePath {
