@@ -16,6 +16,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
@@ -42,9 +43,14 @@ import java.util.Map;
 
 public class PerdidosEAchados extends AppCompatActivity {
 
-    Dialog myDialog;
-    static ProgressDialog dialog;
+    private Dialog myDialog;
+    private EditText nome;
+    private EditText local;
+    private EditText descricao;
+    private static String categoria = null;
+    private static ProgressDialog dialog;
     public static final int PICK_IMAGE = 1;
+    private static String fileURL = null;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,8 @@ public class PerdidosEAchados extends AppCompatActivity {
 
     public static void uploadDone(){
         Log.d("Uploader" , "Upload done");
+        fileURL = null;
+        categoria = null;
         dialog.dismiss();
     }
 
@@ -77,13 +85,12 @@ public class PerdidosEAchados extends AppCompatActivity {
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
 
-            String realPath = ImageFilePath.getPath(PerdidosEAchados.this, data.getData());
+            fileURL = ImageFilePath.getPath(PerdidosEAchados.this, data.getData());
 
-            Log.i("PERDIDOS", "onActivityResult: file path : " + realPath);
+            Log.i("PERDIDOS", "onActivityResult: file path : " + fileURL);
             //setup params
              dialog = ProgressDialog.show(PerdidosEAchados.this, "",
                     "Enviando,por favor aguarde ... ", true);
-            new UploadBackground().execute(realPath,"nome","local","descricao","categoria");
 
 
         } else {
@@ -98,11 +105,36 @@ public class PerdidosEAchados extends AppCompatActivity {
         Button btnFollow;
         myDialog.setContentView(R.layout.popupperdidos);
         txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        //Edit Texts
+        nome = myDialog.findViewById(R.id.name);
+        local =  myDialog.findViewById(R.id.local);
+        descricao = myDialog.findViewById(R.id.nota);
+        final Spinner dropdown = myDialog.findViewById(R.id.spinner1);
+
+        String[] items = new String[]{ "Roupa" , "Cartões" , "Material eletrónico" , "Óculos" , "Malas" , "Chaves" , "Livros, sebentas e cadernos" , "Outros" };
+        final String[] valuesPOST = new String[]{ "roupa" , "cartoes" , "eletro" , "oculos" , "malas" , "chaves" , "livros" , "outros" };
+
+
+
         btnFollow = (Button) myDialog.findViewById(R.id.btnfollow);
         btnFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 myDialog.dismiss();
+                if(nome.getText().toString().isEmpty()){
+                    Toast.makeText(PerdidosEAchados.this,"O nome não pode estar vazio" , Toast.LENGTH_LONG).show();
+                }
+                else if (local.getText().toString().isEmpty()){
+                    Toast.makeText(PerdidosEAchados.this,"O local não pode estar vazio" , Toast.LENGTH_LONG).show();
+                }
+                else if (descricao.getText().toString().isEmpty()){
+                    Toast.makeText(PerdidosEAchados.this,"A descrição não pode estar vazio" , Toast.LENGTH_LONG).show();
+                }
+                else {
+                    new UploadBackground().execute(fileURL, nome.getText().toString(), local.getText().toString(),
+                            descricao.getText().toString(), valuesPOST[dropdown.getSelectedItemPosition()]);
+                }
             }
         });
         txtclose.setOnClickListener(new View.OnClickListener() {
@@ -113,14 +145,12 @@ public class PerdidosEAchados extends AppCompatActivity {
         });
         //Spinner
         //get the spinner from the xml.
-        Spinner dropdown = myDialog.findViewById(R.id.spinner1);
+
         //create a list of items for the spinner.
-        String[] items = new String[]{ "Roupa" , "Cartões" , "Material eletrónico" , "Óculos" , "Malas" , "Chaves" , "Livros, sebentas e cadernos" , "Outros" };
-        String[] valuesPOST = new String[]{ "roupa" , "cartoes" , "eletro" , "oculos" , "malas" , "chaves" , "livros" , "outros" };
 
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    android:background="@color/color_tab_2"
+    android:background="@color/color_tab_4"
     android:padding="5dp"
     android:layout_gravity="center">
     <TextView
@@ -23,57 +23,68 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/download"
+            android:src="@drawable/loststuff"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"/>
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:textColor="#ffffff"
+            android:ems="12"
             android:inputType="textPersonName"
             android:text="Nome" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/local"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:textColor="#ffffff"
+            android:ems="12"
             android:inputType="textPersonName"
             android:text="Local onde foi encontrado" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/nota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="12"
             android:inputType="textPersonName"
+            android:textColor="@color/white"
             android:text="Descrição ou nota" />
 
         <Spinner
             android:id="@+id/spinner1"
             android:layout_width="match_parent"
+            android:textColor="@color/white"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/pickFoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttonstyle"
+            android:textColor="@color/white"
             android:text="Escolher Foto" />
+
+
+        <Button
+            android:id="@+id/btnfollow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/buttonstyle"
+            android:text="Enviar"
+            android:textColor="@color/white" />
+
+
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnfollow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/buttonstyle"
-        android:text="Enviar"
-        android:textColor="@color/white" />
+
 
 </LinearLayout>
