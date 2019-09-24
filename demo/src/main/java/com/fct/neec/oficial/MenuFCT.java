@@ -150,19 +150,9 @@ public class MenuFCT extends AppCompatActivity {
         final ImageView propinas = (ImageView) findViewById(R.id.propinas);
         propinas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new AlertDialog.Builder(MenuFCT.this)
-                        .setTitle("Brevemente")
-                        .setMessage("Estamos a desenvolver esta funcionalidade, obrigado pela compreensão")
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Continue with delete operation
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                //start activity
+                Intent myIntent = new Intent(MenuFCT.this, Propinas.class);
+                startActivity(myIntent);
 
             }
         });

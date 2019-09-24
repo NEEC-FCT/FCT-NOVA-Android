@@ -126,23 +126,13 @@ public class StudentTools {
      */
 
 
-    public static Student getPropinas(Context mContext, String studentId, String year, String yearFormatted,
-                                             int semester, String studentNumberId)
+    public static void getPropinas(Context mContext ,String yearFormatted,
+                                              String studentNumberId)
             throws ServerUnavailableException {
-
-        // First, we get the yearSemesterId
-        String yearSemesterId = DBUtils.getYearSemesterId(mContext, studentId, year, semester);
-
-        Student student = DBUtils.getStudentSchedule(mContext, yearSemesterId);
-
-        Log.d("CLIP", "has " + (student != null));
-
-        if (student != null)
-            return student;
 
 
         // Get student schedule from the server
-        StudentPropinasRequest.getPropinas(mContext,student , studentNumberId, yearFormatted);
+        StudentPropinasRequest.getPropinas(mContext , yearFormatted , studentNumberId);
 
         Log.d("CLIP", "Propinas request done!");
 
@@ -150,7 +140,6 @@ public class StudentTools {
 
         Log.d("CLIP", "schedule inserted!");
 
-        return student;
     }
 
 
