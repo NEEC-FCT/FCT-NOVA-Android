@@ -27,16 +27,21 @@ public class StudentPropinasRequest extends Request {
 
         Log.d("Propinas" , "URL is " + url);
 
-        Elements exams = request(mContext, url)
-                .body()
-                .select("tr[class=vdisplay]");
+        Elements linhas = request(mContext, url)
+                .body().select("tbody").select("tr");
 
-        Log.d("Propinas" , exams.toString());
-        for (Element exam : exams) {
-            Log.d("Propinas" , exam.toString());
+        for (Element linha : linhas){
+            if(linha.childNodeSize() == 8  ) {
+                if (linha.child(1).text().contains("prestação") || linha.child(1).text().contains("Pagamento")) {
+                    Log.d("URL" , linha.child(1).children().attr("href"));
+                    Log.d("Nome" , linha.child(1).text());
+                    Log.d("Pagamento" , linha.child(2).text());
+                    Log.d("Data" , linha.child(3).text());
+
+                }
+            }
+
         }
 
     }
-
-
 }
