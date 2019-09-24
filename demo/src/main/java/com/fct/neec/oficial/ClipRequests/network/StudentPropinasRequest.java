@@ -15,22 +15,19 @@ import java.util.List;
 public class StudentPropinasRequest extends Request {
 
     private static final String Base = "https://clip.unl.pt/utente/eu/aluno/acto_administrativo/pagamentos_acad%E9micos/propinas/\n" +
-            "refer%EAncias?tipo_de_per%EDodo_escolar=a&";
-    private static final String STUDENT_CALENDAR_EXAM_2 = "&aluno=";
-    private static final String STUDENT_CALENDAR_EXAM_3 = "&institui%E7%E3o=97747&tipo_de_per%EDodo_lectivo=s&per%EDodo_lectivo=";
-    private static final String STUDENT_CALENDAR_EXAM_3_TRIMESTER = "&institui%E7%E3o=97747&tipo_de_per%EDodo_lectivo=t&per%EDodo_lectivo=";
+            "refer%EAncias?tipo_de_per%EDodo_escolar=a&ano_lectivo=";
+    private static final String STUDENT_NUMBER = "&per%EDodo_escolar=1&aluno=";
+    private static final String INSTITUICAO = "&institui%E7%E3o=97747";
 
 
 
     public static void getPropinas(Context mContext, Student student, String studentNumberId,
-                                       String year, int semester)
+                                       String year)
             throws ServerUnavailableException {
 
-        String url = STUDENT_CALENDAR_EXAM_1 + year + STUDENT_CALENDAR_EXAM_2 + studentNumberId;
-        if (semester == 3) // Trimester
-            url += STUDENT_CALENDAR_EXAM_3_TRIMESTER + (semester - 1);
-        else
-            url += STUDENT_CALENDAR_EXAM_3 + semester;
+        String url = Base + year + STUDENT_NUMBER + studentNumberId + INSTITUICAO;
+
+
 
         Elements exams = request(mContext, url)
                 .body()
