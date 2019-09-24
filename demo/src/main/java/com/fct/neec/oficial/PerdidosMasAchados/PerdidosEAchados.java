@@ -3,14 +3,11 @@ package com.fct.neec.oficial.PerdidosMasAchados;
 import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -18,47 +15,36 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.fct.neec.oficial.R;
-import com.google.android.material.tabs.TabLayout;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
-
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-public class PerdidosEAchados extends AppCompatActivity {
 
-    private Dialog myDialog;
+public class PerdidosEAchados extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+
+    private static Dialog myDialog;
     private EditText nome;
     private EditText local;
     private EditText descricao;
-    private static String categoria = null;
+    private static Context context;
     private static ProgressDialog dialog;
-    public static final int PICK_IMAGE = 1;
+    private static final int PICK_IMAGE = 1;
     private static String fileURL = null;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private WebView web;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perdidosmasachados);
-
         myDialog = new Dialog(this);
-        //Get Object
         //NEECLogo
         final ImageView add = (ImageView) findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
@@ -66,16 +52,26 @@ public class PerdidosEAchados extends AppCompatActivity {
                 ShowPopup( findViewById(android.R.id.content) );
             }
         });
-        WebView web = findViewById(R.id.webview);
+        web = findViewById(R.id.webview);
         web.loadUrl("https://fctapp.neec-fct.com/PerdidosAchados/");
+        context = PerdidosEAchados.this;
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+    }
+
+    @Override
+    public void onRefresh() {
+        web.reload();
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
 
     public static void uploadDone(){
         Log.d("Uploader" , "Upload done");
         fileURL = null;
-        categoria = null;
         dialog.dismiss();
+        myDialog.dismiss();
+        Toast.makeText(context,"Enviado com Sucesso!" , Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -84,13 +80,10 @@ public class PerdidosEAchados extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
-
             fileURL = ImageFilePath.getPath(PerdidosEAchados.this, data.getData());
 
             Log.i("PERDIDOS", "onActivityResult: file path : " + fileURL);
             //setup params
-             dialog = ProgressDialog.show(PerdidosEAchados.this, "",
-                    "Enviando,por favor aguarde ... ", true);
 
 
         } else {
@@ -106,7 +99,7 @@ public class PerdidosEAchados extends AppCompatActivity {
         myDialog.setContentView(R.layout.popupperdidos);
         txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
         //Edit Texts
-        nome = myDialog.findViewById(R.id.name);
+        nome = myDialog.findViewById(R.id.nome);
         local =  myDialog.findViewById(R.id.local);
         descricao = myDialog.findViewById(R.id.nota);
         final Spinner dropdown = myDialog.findViewById(R.id.spinner1);
@@ -121,7 +114,7 @@ public class PerdidosEAchados extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                myDialog.dismiss();
+
                 if(nome.getText().toString().isEmpty()){
                     Toast.makeText(PerdidosEAchados.this,"O nome não pode estar vazio" , Toast.LENGTH_LONG).show();
                 }
@@ -131,7 +124,14 @@ public class PerdidosEAchados extends AppCompatActivity {
                 else if (descricao.getText().toString().isEmpty()){
                     Toast.makeText(PerdidosEAchados.this,"A descrição não pode estar vazio" , Toast.LENGTH_LONG).show();
                 }
+                else if ( fileURL == null){
+                    Toast.makeText(PerdidosEAchados.this,"Tem de escolher uma foto" , Toast.LENGTH_LONG).show();
+                }
+
                 else {
+                  //  myDialog.dismiss();
+                    dialog = ProgressDialog.show(PerdidosEAchados.this, "",
+                            "Enviando,por favor aguarde ... ", true);
                     new UploadBackground().execute(fileURL, nome.getText().toString(), local.getText().toString(),
                             descricao.getText().toString(), valuesPOST[dropdown.getSelectedItemPosition()]);
                 }
@@ -191,9 +191,4 @@ public class PerdidosEAchados extends AppCompatActivity {
 
         myDialog.show();
     }
-
-
-
-
-
 }

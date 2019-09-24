@@ -35,7 +35,8 @@
             android:textColor="#ffffff"
             android:ems="12"
             android:inputType="textPersonName"
-            android:text="Nome" />
+            android:textColorHint="@color/white"
+            android:hint="Nome" />
 
         <EditText
             android:id="@+id/local"
@@ -43,17 +44,19 @@
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:ems="12"
+            android:textColorHint="@color/white"
             android:inputType="textPersonName"
-            android:text="Local onde foi encontrado" />
+            android:hint="Local onde foi encontrado" />
 
         <EditText
             android:id="@+id/nota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="12"
+            android:textColorHint="@color/white"
             android:inputType="textPersonName"
             android:textColor="@color/white"
-            android:text="Descrição ou nota" />
+            android:hint="Descrição ou nota" />
 
         <Spinner
             android:id="@+id/spinner1"
