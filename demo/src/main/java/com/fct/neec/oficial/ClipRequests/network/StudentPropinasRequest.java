@@ -1,6 +1,7 @@
 package com.fct.neec.oficial.ClipRequests.network;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.entities.StudentCalendar;
@@ -31,24 +32,10 @@ public class StudentPropinasRequest extends Request {
 
         Elements exams = request(mContext, url)
                 .body()
-                .select("tr[class=texto_tabela]");
+                .select("tr[class=vdisplay]");
 
         for (Element exam : exams) {
-            String name = exam.child(0).text();
-            Elements recurso = exam.child(2).select("tr");
-
-            if (recurso.first() == null) continue;
-
-            String date = recurso.first().child(0).text();
-            //String url = recurso.first().child(1) //.get(1).child(0).attr("href");
-            String hour = recurso.get(1).child(0).child(0).text();
-
-            StudentCalendar calendarAppointement = new StudentCalendar();
-            calendarAppointement.setName(name);
-            calendarAppointement.setDate(date);
-            calendarAppointement.setHour(hour);
-
-            student.addStudentCalendarAppointment(true, calendarAppointement);
+            Log.d("Propinas" , exam.toString());
         }
 
     }

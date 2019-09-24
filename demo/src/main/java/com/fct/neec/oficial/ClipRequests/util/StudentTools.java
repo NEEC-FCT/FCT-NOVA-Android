@@ -10,6 +10,7 @@ import com.fct.neec.oficial.ClipRequests.exceptions.ServerUnavailableException;
 import com.fct.neec.oficial.ClipRequests.network.StudentCalendarRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentClassesDocsRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentClassesRequest;
+import com.fct.neec.oficial.ClipRequests.network.StudentPropinasRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentScheduleRequest;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
@@ -123,6 +124,34 @@ public class StudentTools {
     /*
      * ////////////////////////////// STUDENT SCHEDULE  //////////////////////////////
      */
+
+
+    public static Student getPropinas(Context mContext, String studentId, String year, String yearFormatted,
+                                             int semester, String studentNumberId)
+            throws ServerUnavailableException {
+
+        // First, we get the yearSemesterId
+        String yearSemesterId = DBUtils.getYearSemesterId(mContext, studentId, year, semester);
+
+        Student student = DBUtils.getStudentSchedule(mContext, yearSemesterId);
+
+        Log.d("CLIP", "has " + (student != null));
+
+        if (student != null)
+            return student;
+
+
+        // Get student schedule from the server
+        StudentPropinasRequest.getPropinas(mContext,student , studentNumberId, yearFormatted);
+
+        Log.d("CLIP", "Propinas request done!");
+
+        // Insert schedule on database
+
+        Log.d("CLIP", "schedule inserted!");
+
+        return student;
+    }
 
 
     public static Student getStudentSchedule(Context mContext, String studentId, String year, String yearFormatted,
