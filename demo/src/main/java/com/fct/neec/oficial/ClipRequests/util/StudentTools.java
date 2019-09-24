@@ -11,6 +11,7 @@ import com.fct.neec.oficial.ClipRequests.network.StudentCalendarRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentClassesDocsRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentClassesRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentPropinasRequest;
+import com.fct.neec.oficial.ClipRequests.network.StudentReferenciasMB;
 import com.fct.neec.oficial.ClipRequests.network.StudentRequest;
 import com.fct.neec.oficial.ClipRequests.network.StudentScheduleRequest;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
@@ -125,6 +126,18 @@ public class StudentTools {
      * ////////////////////////////// STUDENT SCHEDULE  //////////////////////////////
      */
 
+
+    public static void getReferenciasMB(Context mContext ,String url)
+            throws ServerUnavailableException {
+
+
+        // Get student schedule from the server
+        StudentReferenciasMB.GetStudentReferencias(mContext , url);
+
+        Log.d("CLIP", "MB request done!");
+
+
+    }
 
     public static void getPropinas(Context mContext ,String yearFormatted,
                                               String studentNumberId)

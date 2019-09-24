@@ -151,7 +151,7 @@ public class MenuFCT extends AppCompatActivity {
         propinas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //start activity
-                Intent myIntent = new Intent(MenuFCT.this, Propinas.class);
+                Intent myIntent = new Intent(MenuFCT.this, ShowMB.class);
                 startActivity(myIntent);
 
             }
