@@ -80,12 +80,12 @@
 
 
         <activity
-            android:name=".Propinas"
+            android:name=".Propinas.Propinas"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
 
         <activity
-            android:name=".ShowMB"
+            android:name=".Propinas.ShowMB"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
 

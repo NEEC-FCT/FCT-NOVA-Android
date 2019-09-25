@@ -143,7 +143,6 @@ public class StudentTools {
                                               String studentNumberId)
             throws ServerUnavailableException {
 
-
         // Get student schedule from the server
         StudentPropinasRequest.getPropinas(mContext , yearFormatted , studentNumberId);
 
