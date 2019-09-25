@@ -58,11 +58,11 @@ public class ShowMB extends AppCompatActivity implements GetStudentMB.OnTaskFini
         DB = getHashMap(ShowMB.this);
         String selected = ClipSettings.getSelectedMBURL(ShowMB.this);
         StudenPropinas info = DB.get(selected);
-        descricao.setText(info.getNome());
-        entidade.setText(info.getEntidade());
-        referencia.setText(info.getReferencia());
-        montante.setText(info.getMontante());
-        data.setText(info.getData());
+        descricao.setText("DESCRIÇÃO                        " + info.getNome());
+        entidade.setText("ENTIDADE                        " + info.getEntidade());
+        referencia.setText("REFERÊNCIA                    " + info.getReferencia());
+        montante.setText("MONTANTE                        " + info.getMontante() );
+        data.setText("DATA LIMITE                        " + info.getData());
 
     }
 
