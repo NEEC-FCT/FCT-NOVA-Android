@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:textSize="18sp"
-                card_view:layout_constraintEnd_toStartOf="@+id/montante"
+                card_view:layout_constraintEnd_toStartOf="@+id/data"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +45,7 @@
                 android:layout_marginBottom="8dp"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/montante" />
+                card_view:layout_constraintTop_toBottomOf="@+id/data" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

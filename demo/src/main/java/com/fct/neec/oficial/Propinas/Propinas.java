@@ -12,23 +12,17 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.fct.neec.oficial.ClipRequests.entities.StudenPropinas;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudenPropinas;
-import com.fct.neec.oficial.MenuFCT;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Propinas extends AppCompatActivity implements GetStudenPropinas.OnTaskFinishedListener<Student> , View.OnClickListener {
@@ -54,17 +48,12 @@ public class Propinas extends AppCompatActivity implements GetStudenPropinas.OnT
 
         setContentView(R.layout.propinas);
          table = (TableLayout)Propinas.this.findViewById(R.id.attrib_table);
-
-
-
         // Start AsyncTask
         mTask = new GetStudenPropinas(Propinas.this, this);
         AndroidUtils.executeOnPool(mTask);
 
 
     }
-
-
 
 
     @Override
@@ -78,9 +67,7 @@ public class Propinas extends AppCompatActivity implements GetStudenPropinas.OnT
         Intent myIntent = new Intent(Propinas.this, ShowMB.class);
         startActivity(myIntent);
 
-
     }
-
 
 
     @Override
