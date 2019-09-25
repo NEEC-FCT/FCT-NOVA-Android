@@ -60,9 +60,6 @@ dependencies {
     //Calendario
     implementation 'com.squareup:android-times-square:1.6.4@aar'
 
-    //TableView
-    implementation 'com.github.levitnudi:LegacyTableView:1.2'
-
 
 }
 

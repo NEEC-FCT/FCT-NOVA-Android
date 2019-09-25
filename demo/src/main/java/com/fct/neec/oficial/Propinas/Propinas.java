@@ -24,7 +24,7 @@ import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.levitnudi.legacytableview.LegacyTableView;
+
 
 import java.util.HashMap;
 import java.util.Iterator;
