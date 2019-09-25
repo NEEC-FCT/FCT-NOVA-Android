@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,15 +24,29 @@ public class ShowMB extends AppCompatActivity implements GetStudentMB.OnTaskFini
 
 
     private GetStudentMB mTask;
+    private HashMap<String, StudenPropinas> DB;
+    private TextView descricao;
+    private TextView entidade;
+    private TextView referencia;
+    private TextView montante;
+    private TextView data;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.propinas);
+        setContentView(R.layout.showmb);
+
+         descricao = findViewById(R.id.descricao);
+         entidade =  findViewById(R.id.entidade);
+         referencia = findViewById(R.id.referencia);
+         montante = findViewById(R.id.montante);
+         data = findViewById(R.id.data);
+
 
         // Start AsyncTask
         mTask = new GetStudentMB(ShowMB.this, this);
         AndroidUtils.executeOnPool(mTask);
+
 
 
     }
@@ -39,16 +54,18 @@ public class ShowMB extends AppCompatActivity implements GetStudentMB.OnTaskFini
     @Override
     public void onTaskFinished(Student result) {
 
+
+        DB = getHashMap(ShowMB.this);
+        String selected = ClipSettings.getSelectedMBURL(ShowMB.this);
+        StudenPropinas info = DB.get(selected);
+        descricao.setText(info.getNome());
+        entidade.setText(info.getEntidade());
+        referencia.setText(info.getReferencia());
+        montante.setText(info.getMontante());
+        data.setText(info.getData());
+
     }
 
-    public static void saveHashMap( Object obj , Context mContext ) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        SharedPreferences.Editor editor = prefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(obj);
-        editor.putString("MB",json);
-        editor.apply();     // This line is IMPORTANT !!!
-    }
 
     public static HashMap<String, StudenPropinas> getHashMap(Context mContext) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
@@ -62,7 +79,6 @@ public class ShowMB extends AppCompatActivity implements GetStudentMB.OnTaskFini
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         cancelTasks(mTask);
     }
 
