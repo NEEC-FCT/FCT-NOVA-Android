@@ -28,7 +28,6 @@ public class ShowMB extends AppCompatActivity implements GetStudentMB.OnTaskFini
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.propinas);
-        ClipSettings.saveMBSelected(ShowMB.this," /utente/eu/aluno/acto_administrativo/pagamentos_acad%E9micos/propinas/refer%EAncias?tipo_de_per%EDodo_escolar=a&ano_lectivo=2020&institui%E7%E3o=97747&aluno=88508&per%EDodo_escolar=1&presta%E7%E3o=0");
 
         // Start AsyncTask
         mTask = new GetStudentMB(ShowMB.this, this);

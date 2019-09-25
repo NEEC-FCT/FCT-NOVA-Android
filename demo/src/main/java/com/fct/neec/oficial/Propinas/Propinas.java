@@ -1,6 +1,7 @@
 package com.fct.neec.oficial.Propinas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -16,7 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fct.neec.oficial.ClipRequests.entities.StudenPropinas;
 import com.fct.neec.oficial.ClipRequests.entities.Student;
+import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.ClipRequests.util.tasks.GetStudenPropinas;
+import com.fct.neec.oficial.MenuFCT;
 import com.fct.neec.oficial.R;
 import com.fct.neec.oficial.androidutils.AndroidUtils;
 import com.google.gson.Gson;
@@ -66,11 +69,15 @@ public class Propinas extends AppCompatActivity implements GetStudenPropinas.OnT
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
 
         int clicked_id = v.getId(); // here you get id for clicked TableRow
 
         System.out.println("ID is --- " + clicked_id);
+        String[] array = new TreeSet<>(DB.keySet()).toArray(new String[DB.size()]);
+        ClipSettings.saveMBSelected(Propinas.this , array[clicked_id]);
+        Intent myIntent = new Intent(Propinas.this, ShowMB.class);
+        startActivity(myIntent);
+
 
     }
 
