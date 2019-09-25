@@ -2,7 +2,6 @@ package com.fct.neec.oficial;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -12,11 +11,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fct.neec.oficial.ClipRequests.settings.ClipSettings;
 import com.fct.neec.oficial.PerdidosMasAchados.PerdidosEAchados;
+import com.fct.neec.oficial.Propinas.Propinas;
+import com.fct.neec.oficial.Propinas.ShowMB;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -156,19 +156,9 @@ public class MenuFCT extends AppCompatActivity {
         final ImageView propinas = (ImageView) findViewById(R.id.propinas);
         propinas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new AlertDialog.Builder(MenuFCT.this)
-                        .setTitle("Brevemente")
-                        .setMessage("Estamos a desenvolver esta funcionalidade, obrigado pela compreensão")
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Continue with delete operation
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                //start activity
+                Intent myIntent = new Intent(MenuFCT.this, Propinas.class);
+                startActivity(myIntent);
 
             }
         });

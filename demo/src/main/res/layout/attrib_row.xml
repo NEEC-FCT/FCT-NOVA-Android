@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow   xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+
+        android:id="@+id/Descricao"
+        android:layout_weight="0.60"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:textStyle="normal"/>
+    <TextView
+
+        android:id="@+id/Montante"
+        android:gravity="right"
+        android:padding="10dp"
+        android:layout_weight="0.20"
+        android:textSize="16dp"
+        android:textStyle="normal"/>
+
+    <TextView
+
+        android:id="@+id/Data"
+        android:gravity="right"
+        android:padding="10dp"
+        android:layout_weight="0.20"
+        android:textSize="16dp"
+        android:textStyle="normal"/>
+</TableRow>

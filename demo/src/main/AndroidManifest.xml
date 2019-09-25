@@ -82,6 +82,16 @@
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
 
+        <activity
+            android:name=".Propinas.Propinas"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+
+        <activity
+            android:name=".Propinas.ShowMB"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+
         <service android:enabled="true" android:name=".MyService" />
 
     </application>

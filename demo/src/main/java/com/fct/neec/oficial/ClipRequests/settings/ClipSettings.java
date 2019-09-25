@@ -29,12 +29,18 @@ public class ClipSettings {
 
     private final static String STUDENT_SCHEDULE_SELECTED = "com.fct.neec.oficial.studentClassSelected";
 
+    private final static String STUDENT_SELECTED_MB = "com.fct.neec.oficial.mb";
+
     private static SharedPreferences get(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     private static SharedPreferences.Editor edit(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context).edit();
+    }
+
+    public static String getSelectedMBURL(Context context) {
+        return get(context).getString(STUDENT_SELECTED_MB, null);
     }
 
     public static String getCookie(Context context) {
@@ -114,6 +120,10 @@ public class ClipSettings {
         }
         return  null;
 
+    }
+
+    public static void saveMBSelected(Context context, String url) {
+        edit(context).putString(STUDENT_SELECTED_MB , url).commit();
     }
 
     public static void saveYearSelected(Context context, String yearSelected) {
